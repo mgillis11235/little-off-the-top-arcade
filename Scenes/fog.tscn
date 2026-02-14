@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8dekyondjsqr"]
+
+[ext_resource type="Shader" path="res://Scenes/fog.gdshader" id="1_jgkju"]
+[ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="2_tljkk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4k4uu"]
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4r3vm"]
+width = 1152
+height = 648
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_4k4uu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4mss"]
+shader = ExtResource("1_jgkju")
+shader_parameter/density = 1.0
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_4r3vm")
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = 2
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1152, 648)
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxLayer"]
+material = SubResource("ShaderMaterial_m4mss")
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(964, 535)
+scale = Vector2(0.497222, 0.497222)
+texture = ExtResource("2_tljkk")

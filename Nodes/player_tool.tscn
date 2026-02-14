@@ -1,0 +1,214 @@
+[gd_scene load_steps=29 format=3 uid="uid://38reb7jxkxpu"]
+
+[ext_resource type="Script" path="res://Scripts/player_tool.gd" id="1_pe6wh"]
+[ext_resource type="Texture2D" uid="uid://dph0bog6tuwj1" path="res://Sprites/Razor_v2.png" id="2_uo3il"]
+[ext_resource type="Texture2D" uid="uid://b3j0iba8lmfgb" path="res://Sprites/HairDye_Recolorable.png" id="3_1uqih"]
+[ext_resource type="Texture2D" uid="uid://b38gmwojbnj3x" path="res://Sprites/Rogaine.png" id="4_ph12o"]
+[ext_resource type="Texture2D" uid="uid://dkywda36o426o" path="res://Sprites/FireExtinguisher.png" id="5_4wn3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlo20"]
+size = Vector2(20, 4)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08bwd"]
+radius = 20.025
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52mbp"]
+atlas = ExtResource("2_uo3il")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmyfj"]
+atlas = ExtResource("2_uo3il")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a3hr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52mbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmyfj")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frhnh"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yrro"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtpjs"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ftro"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frhnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yrro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtpjs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdq8x"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykwug"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7beg"]
+atlas = ExtResource("3_1uqih")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gch3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdq8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykwug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7beg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njex7"]
+atlas = ExtResource("4_ph12o")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7etp"]
+atlas = ExtResource("4_ph12o")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y28tb"]
+atlas = ExtResource("4_ph12o")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge3l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njex7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7etp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y28tb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv63n"]
+atlas = ExtResource("5_4wn3x")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wsou"]
+atlas = ExtResource("5_4wn3x")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksw2l"]
+atlas = ExtResource("5_4wn3x")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vo4ir"]
+atlas = ExtResource("5_4wn3x")
+region = Rect2(2000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr2tx"]
+atlas = ExtResource("5_4wn3x")
+region = Rect2(2500, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aqkq7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv63n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wsou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksw2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vo4ir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gr2tx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerTool" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_pe6wh")
+
+[node name="DefaultShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_mlo20")
+
+[node name="FireExtShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_08bwd")
+disabled = true
+
+[node name="RazorAnim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 27)
+scale = Vector2(0.273333, 0.273333)
+sprite_frames = SubResource("SpriteFrames_a3hr6")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="DyeAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(21, -34)
+scale = Vector2(0.273333, 0.273333)
+sprite_frames = SubResource("SpriteFrames_5ftro")
+autoplay = "default"
+frame_progress = 0.400258
+
+[node name="DyeColorAnim" type="AnimatedSprite2D" parent="DyeAnim"]
+sprite_frames = SubResource("SpriteFrames_gch3d")
+autoplay = "default"
+frame_progress = 0.559244
+
+[node name="RogaineAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -41)
+scale = Vector2(0.273333, 0.273333)
+sprite_frames = SubResource("SpriteFrames_ge3l2")
+autoplay = "default"
+frame_progress = 0.254812
+
+[node name="FireExtAnim" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-38, -22)
+scale = Vector2(0.273333, 0.273333)
+sprite_frames = SubResource("SpriteFrames_aqkq7")
+autoplay = "default"
+frame_progress = 0.85627

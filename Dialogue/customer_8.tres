@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://djfifi0kfa3rx"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_v6g1j"]
+
+[resource]
+script = ExtResource("1_v6g1j")
+customerName = "Llonna Summers"
+referenceName = ""
+reqDialogue = "I'm ready for a big change. Time for a bold new look."
+midDialogue = Array[String](["I'm gonna look so different after this cut. Like a whole new person."])
+finshDialogueHappy = "A whole new hairstyle! I love it!"
+finshDialogueUpset = "No! It's too different! I wanted a big change, not a seismic one!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

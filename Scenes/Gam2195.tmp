@@ -1,0 +1,247 @@
+[gd_scene load_steps=17 format=3 uid="uid://1ay3si68glap"]
+
+[ext_resource type="Script" path="res://Scripts/game_manager.gd" id="1_vfnu2"]
+[ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
+[ext_resource type="PackedScene" uid="uid://bpnupbm43fwd3" path="res://Nodes/Llamas/customer_1.tscn" id="2_suv86"]
+[ext_resource type="Texture2D" uid="uid://cqi07jxfrnl21" path="res://Sprites/UI_Box_Big.png" id="4_4r1vn"]
+[ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="4_akp6u"]
+[ext_resource type="Texture2D" uid="uid://klpqkjvye2qm" path="res://Sprites/UI_Box_Big2.png" id="5_enmim"]
+[ext_resource type="Script" path="res://Scripts/speech_bubble_manager.gd" id="7_v8bqo"]
+
+[sub_resource type="Animation" id="Animation_rdfi2"]
+resource_name = "Appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(400, 0), Vector2(328.571, 20), Vector2(200, 0), Vector2(87.5, 20), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l3dnc"]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.733333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-71.429, 20), Vector2(-200, 0), Vector2(-312.5, 20), Vector2(-400, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cuo3r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2xp4"]
+_data = {
+"Appear": SubResource("Animation_rdfi2"),
+"Disappear": SubResource("Animation_l3dnc"),
+"RESET": SubResource("Animation_cuo3r")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpbgw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4r1vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_enmim")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="Animation" id="Animation_uxmoi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.496667, 0.496667)]
+}
+
+[sub_resource type="Animation" id="Animation_e421s"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 300), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.14159, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.497, 0.497)]
+}
+
+[sub_resource type="Animation" id="Animation_ostm6"]
+resource_name = "disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.14159]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.497, 0.497), Vector2(0.25, 0.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q7kv6"]
+_data = {
+"RESET": SubResource("Animation_uxmoi"),
+"appear": SubResource("Animation_e421s"),
+"disappear": SubResource("Animation_ostm6")
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vfnu2")
+
+[node name="PlayerTool" parent="." instance=ExtResource("2_lo1ph")]
+visible = false
+z_index = 1000
+speed = 125.0
+friction = 0.1
+acceleration = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3.6, 3.6)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -4096
+scale = Vector2(0.138889, 0.138889)
+texture = ExtResource("4_akp6u")
+
+[node name="CustomerHolder" type="Node2D" parent="."]
+
+[node name="CustomerAnimator" type="AnimationPlayer" parent="CustomerHolder"]
+libraries = {
+"": SubResource("AnimationLibrary_b2xp4")
+}
+
+[node name="Customer1" parent="CustomerHolder" instance=ExtResource("2_suv86")]
+
+[node name="ReferenceHolder" type="Node2D" parent="."]
+visible = false
+z_index = 1000
+scale = Vector2(0.496667, 0.496667)
+
+[node name="ReferenceBackdrop" type="AnimatedSprite2D" parent="ReferenceHolder"]
+sprite_frames = SubResource("SpriteFrames_qpbgw")
+autoplay = "default"
+frame_progress = 0.323702
+
+[node name="ReferenceAnimator" type="AnimationPlayer" parent="ReferenceHolder"]
+libraries = {
+"": SubResource("AnimationLibrary_q7kv6")
+}
+
+[node name="SpeechBubbleManager" type="Node" parent="."]
+script = ExtResource("7_v8bqo")
+
+[node name="SpeechBubbleHolder" type="Node2D" parent="SpeechBubbleManager"]
+position = Vector2(-177, -78)

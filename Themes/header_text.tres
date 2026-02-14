@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ivb4q04wd7r1"]
+
+[ext_resource type="FontFile" uid="uid://c8ufwkpiyl4ts" path="res://Fonts/FreckleFace-Regular.ttf" id="1_hadkl"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(1, 1, 1, 1)
+Label/constants/shadow_outline_size = 5
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_hadkl")

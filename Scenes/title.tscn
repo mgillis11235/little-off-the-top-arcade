@@ -1,0 +1,167 @@
+[gd_scene load_steps=12 format=3 uid="uid://6kpwl2hr7yqm"]
+
+[ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="1_duvqs"]
+[ext_resource type="Script" path="res://Scenes/title.gd" id="1_gfsg2"]
+[ext_resource type="FontFile" uid="uid://kvccbs5mpmjv" path="res://Fonts/DynaPuff-VariableFont_wdth,wght.ttf" id="2_n4vwh"]
+[ext_resource type="VideoStream" path="res://Video/title_screen.ogv" id="2_w7ybc"]
+[ext_resource type="VideoStream" path="res://Video/title-zoom.ogv" id="3_0qid2"]
+[ext_resource type="AudioStream" uid="uid://bugw0kaqt34qn" path="res://Audio/title_theme.mp3" id="6_af645"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jroi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c135u"]
+bg_color = Color(0.826192, 0.733746, 0.565492, 1)
+border_width_bottom = 5
+border_color = Color(0.512916, 0.43114, 0.278998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxojj"]
+bg_color = Color(0.719242, 0.620137, 0.437805, 1)
+border_width_bottom = 5
+border_color = Color(0.512916, 0.43114, 0.278998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hfjr"]
+bg_color = Color(0.58693, 0.496349, 0.328305, 1)
+border_width_bottom = 5
+border_color = Color(0.512916, 0.43114, 0.278998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_wc4n1"]
+Button/styles/focus = SubResource("StyleBoxEmpty_jroi7")
+Button/styles/hover = SubResource("StyleBoxFlat_c135u")
+Button/styles/normal = SubResource("StyleBoxFlat_dxojj")
+Button/styles/pressed = SubResource("StyleBoxFlat_3hfjr")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wc4n1")
+script = ExtResource("1_gfsg2")
+
+[node name="TitleScreenMovie" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 962.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_w7ybc")
+autoplay = true
+expand = true
+loop = true
+
+[node name="TitleScreenMovieStart" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 962.0
+offset_bottom = 541.0
+stream = ExtResource("3_0qid2")
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -121.0
+offset_top = 296.0
+offset_right = 119.0
+offset_bottom = 502.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.947946, 0.947946)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Play"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Credits"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 0.823529)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2110.0
+offset_top = -1609.0
+offset_right = 1730.0
+offset_bottom = 551.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_duvqs")
+
+[node name="Title" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = -128.5
+offset_right = 354.0
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_n4vwh")
+theme_override_font_sizes/font_size = 105
+text = "A LLITTLE OFF THE TOP"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TitleSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_af645")
+autoplay = true
+bus = &"Music"
+
+[connection signal="finished" from="TitleScreenMovie" to="." method="_on_title_screen_movie_finished"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

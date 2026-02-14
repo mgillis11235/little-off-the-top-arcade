@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bv2jx8svqswa1"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_ml7qa"]
+
+[resource]
+script = ExtResource("1_ml7qa")
+customerName = "Mr. Roy Llama"
+referenceName = ""
+reqDialogue = "I woke up today thinking NEW HAIR COLOR!"
+midDialogue = Array[String](["FYI I'm urinating as we speak"])
+finshDialogueHappy = "Beautiful world... here I come!!!!!!"
+finshDialogueUpset = "Oh God, I have to hide my horrible fur from the world!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

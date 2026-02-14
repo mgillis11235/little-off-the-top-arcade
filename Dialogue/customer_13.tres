@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dw8x6gqld01ha"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_mjngg"]
+
+[resource]
+script = ExtResource("1_mjngg")
+customerName = "Llom Deluise"
+referenceName = ""
+reqDialogue = "Please shave and dye an \"L\" into my fur. I'm proposing to my partner Laura today!"
+midDialogue = Array[String](["Funny, today might be the most important day of my life."])
+finshDialogueHappy = "She's gonna say yes! She's gonna say yes!"
+finshDialogueUpset = "This throws off my entire plan!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

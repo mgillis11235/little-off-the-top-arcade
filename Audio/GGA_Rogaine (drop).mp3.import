@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4s4jwxrr3e8q"
+path="res://.godot/imported/GGA_Rogaine (drop).mp3-9cec8d8b0a6a22bc20538287814e5a13.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Rogaine (drop).mp3"
+dest_files=["res://.godot/imported/GGA_Rogaine (drop).mp3-9cec8d8b0a6a22bc20538287814e5a13.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

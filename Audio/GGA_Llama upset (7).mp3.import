@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nak85b011w5"
+path="res://.godot/imported/GGA_Llama upset (7).mp3-de3fbdc3b41553d1f31bb34168def72e.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Llama upset (7).mp3"
+dest_files=["res://.godot/imported/GGA_Llama upset (7).mp3-de3fbdc3b41553d1f31bb34168def72e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

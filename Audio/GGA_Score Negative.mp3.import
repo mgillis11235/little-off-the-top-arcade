@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dh7e7k7wdufpq"
+path="res://.godot/imported/GGA_Score Negative.mp3-7b94281d37531933a53b3f2c98a3107b.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Score Negative.mp3"
+dest_files=["res://.godot/imported/GGA_Score Negative.mp3-7b94281d37531933a53b3f2c98a3107b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

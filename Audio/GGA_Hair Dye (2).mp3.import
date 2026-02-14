@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c64i7321lgw2v"
+path="res://.godot/imported/GGA_Hair Dye (2).mp3-971fe7457326f99587a8ebeedeb3d555.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Hair Dye (2).mp3"
+dest_files=["res://.godot/imported/GGA_Hair Dye (2).mp3-971fe7457326f99587a8ebeedeb3d555.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

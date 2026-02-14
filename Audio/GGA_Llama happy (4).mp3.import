@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0wp2r6hiyqem"
+path="res://.godot/imported/GGA_Llama happy (4).mp3-eeeb2ece890e7522107833eb7bed68c9.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Llama happy (4).mp3"
+dest_files=["res://.godot/imported/GGA_Llama happy (4).mp3-eeeb2ece890e7522107833eb7bed68c9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
