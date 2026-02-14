@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjxakke5m0bq5"
+path="res://.godot/imported/GGA_Razor Rev (1).mp3-f211bb7693dea4d1e6e816f14bf46c3c.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Razor Rev (1).mp3"
+dest_files=["res://.godot/imported/GGA_Razor Rev (1).mp3-f211bb7693dea4d1e6e816f14bf46c3c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

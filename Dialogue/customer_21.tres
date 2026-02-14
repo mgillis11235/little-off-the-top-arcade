@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ujt2pkgbxkde"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_37c80"]
+
+[resource]
+script = ExtResource("1_37c80")
+customerName = "Llamas Aquinas"
+referenceName = ""
+reqDialogue = "I'm terribly afraid of razors. Please be careful"
+midDialogue = Array[String](["I'm terribly afraid of razors. Please be careful"])
+finshDialogueHappy = "Ahh... Thank you..."
+finshDialogueUpset = "What are you doing with that razor? ..."
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

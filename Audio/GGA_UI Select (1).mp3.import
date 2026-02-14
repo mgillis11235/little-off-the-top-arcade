@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bp4ugk4o0t4th"
+path="res://.godot/imported/GGA_UI Select (1).mp3-21f14c6ecafdb45dca863020cd34b832.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_UI Select (1).mp3"
+dest_files=["res://.godot/imported/GGA_UI Select (1).mp3-21f14c6ecafdb45dca863020cd34b832.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

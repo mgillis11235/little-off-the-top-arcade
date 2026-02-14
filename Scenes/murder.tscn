@@ -1,0 +1,689 @@
+[gd_scene load_steps=63 format=3 uid="uid://cjpc87wpddyh1"]
+
+[ext_resource type="Script" path="res://Scenes/murdertext.gd" id="1_8pmos"]
+[ext_resource type="Script" path="res://Scenes/murder.gd" id="1_lbj5c"]
+[ext_resource type="FontFile" uid="uid://x0mman6mhvfv" path="res://Fonts/Mansalva-Regular.ttf" id="2_hei2a"]
+[ext_resource type="FontFile" uid="uid://k6tclqsc0x84" path="res://Fonts/BowlbyOneSC-Regular.ttf" id="3_fayvv"]
+[ext_resource type="AudioStream" uid="uid://8b5bs7wx7c2v" path="res://Audio/sometimesiwanttocurlupanddie.wav" id="4_mjgux"]
+[ext_resource type="AudioStream" uid="uid://ciwvtc3go8svt" path="res://Audio/Car_Door.mp3" id="6_csop8"]
+[ext_resource type="Texture2D" uid="uid://dh3sevcdu3u0k" path="res://Sprites/Moon.png" id="6_eu0jm"]
+[ext_resource type="AudioStream" uid="uid://dyqkbg0bq5n23" path="res://Audio/Car_Engine.wav" id="7_k0thi"]
+[ext_resource type="AudioStream" uid="uid://dib87u0a7o20i" path="res://Audio/Desert_Tone.wav" id="8_83arb"]
+[ext_resource type="AudioStream" uid="uid://dparymehdi54b" path="res://Audio/Shovel.wav" id="9_wp74j"]
+[ext_resource type="AudioStream" uid="uid://vm8m8ay4sq1" path="res://Audio/whimper.wav" id="10_71h3q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynsri"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkyy7"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqess"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bav3n"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_883k7"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxses"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyqt0"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18u4b"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fag8"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qnew"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckx0y"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syseh"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1000, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1qio"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uifc"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72g5e"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m731y"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_873tn"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m80xl"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a08da"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea66p"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77x87"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(1900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubqa2"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2000, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf55n"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2psjp"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reqlt"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gpvy"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efd2o"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gk0n"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu4bj"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iik0y"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7k50p"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(2900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krsgv"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3000, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xd0d"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tepng"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkfam"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31rg1"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5grji"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6mtd"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teho3"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dxnx"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nqgx"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(3900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4oq2"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4000, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm2wi"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw10j"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_334wl"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbfmy"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emnwq"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbpl1"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hqiw"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vj48"]
+atlas = ExtResource("6_eu0jm")
+region = Rect2(4900, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x38g8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynsri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkyy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqess")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bav3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_883k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxses")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyqt0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18u4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fag8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qnew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckx0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syseh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1qio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uifc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72g5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m731y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_873tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m80xl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a08da")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ea66p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77x87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubqa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf55n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2psjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reqlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gpvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efd2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gk0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu4bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iik0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7k50p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krsgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xd0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tepng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkfam")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31rg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5grji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6mtd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teho3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dxnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nqgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4oq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hm2wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw10j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_334wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbfmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emnwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbpl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hqiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vj48")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_8pmos")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_hei2a")
+theme_override_font_sizes/normal_font_size = 60
+text = "You killed him..."
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_lbj5c")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "You Killed Him..."
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "How Could You?"
+
+[node name="RichTextLabel9" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "AND WITH AN ELECTRIC RAZOR? HOW? HOW?"
+
+[node name="RichTextLabel9b" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "WHAT IS  WRONG WITH YOU?  "
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "You're a terrible barber!"
+
+[node name="RichTextLabel4b" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "All he wanted was a haircut. And now he's dead..."
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Okay... okay... shit.... what do you do now?"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 50.0
+offset_top = 59.0
+offset_right = 669.0
+offset_bottom = 174.0
+theme_override_fonts/font = ExtResource("3_fayvv")
+theme_override_font_sizes/font_size = 70
+text = "Bury Body"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Button"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = -8.0
+offset_right = 1975.0
+offset_bottom = 1099.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Bury Body?"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 261.0
+offset_right = 688.0
+offset_bottom = 398.0
+theme_override_fonts/font = ExtResource("3_fayvv")
+theme_override_font_sizes/font_size = 84
+text = "Turn Self In"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Button2"]
+visible = false
+layout_mode = 0
+offset_right = 1971.0
+offset_bottom = 1107.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Turn Self In?"
+
+[node name="RichTextLabel8" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "You can't risk it. You load the body in your car and drive out to the desert."
+
+[node name="RichTextLabel11" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "As you drive, your mind narrows to a single point. All fear drains away. "
+
+[node name="RichTextLabel10" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Eventually, you arrive. The moon is a clean sphere spinning 
+above. "
+
+[node name="RichTextLabel10b" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Will you bury the remains?"
+
+[node name="RichTextLabel12" type="RichTextLabel" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = 42.0
+offset_right = 1951.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "You dig and dig and dig. You dig and dig and dig."
+
+[node name="RichTextLabel12b" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 61.0
+offset_top = 441.0
+offset_right = 2032.0
+offset_bottom = 1548.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "And dig and dig. And dig and dig and dig."
+
+[node name="RichTextLabel12c" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 29.0
+offset_top = 672.0
+offset_right = 2000.0
+offset_bottom = 1779.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig. "
+
+[node name="RichTextLabel12d" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 65.0
+offset_top = 42.0
+offset_right = 2036.0
+offset_bottom = 1149.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig. And dig and dig. You dig and dig and dig."
+
+[node name="RichTextLabel14" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 38.0
+offset_top = 59.0
+offset_right = 1463.0
+offset_bottom = 1166.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "The cosmic eternity of space stretches on forever. And you below, so small,   your bloody hands tinted a terrble azure. What have you done? What have you done?  What have you done?"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+offset_left = 653.0
+offset_top = 407.0
+offset_right = 1272.0
+offset_bottom = 522.0
+theme_override_fonts/font = ExtResource("3_fayvv")
+theme_override_font_sizes/font_size = 70
+text = "Yes"
+
+[node name="RichTextLabel6" type="RichTextLabel" parent="Button3"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = -8.0
+offset_right = 1975.0
+offset_bottom = 1099.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Yes"
+
+[node name="Button4" type="Button" parent="."]
+visible = false
+offset_left = 655.0
+offset_top = 587.0
+offset_right = 1278.0
+offset_bottom = 724.0
+theme_override_fonts/font = ExtResource("3_fayvv")
+theme_override_font_sizes/font_size = 84
+text = "Of course"
+
+[node name="RichTextLabel7" type="RichTextLabel" parent="Button4"]
+visible = false
+layout_mode = 0
+offset_right = 1971.0
+offset_bottom = 1107.0
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_fayvv")
+theme_override_font_sizes/normal_font_size = 84
+text = "Of course"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mjgux")
+autoplay = true
+
+[node name="Car_Door" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(38, 59)
+stream = ExtResource("6_csop8")
+
+[node name="Car_Engine" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(38, 59)
+stream = ExtResource("7_k0thi")
+
+[node name="Desert_Tone" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(38, 59)
+stream = ExtResource("8_83arb")
+
+[node name="Digging_Noise" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(38, 59)
+stream = ExtResource("9_wp74j")
+
+[node name="Whimper_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_71h3q")
+
+[node name="MoonSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1532.5, 326.5)
+scale = Vector2(3.63, 3.63)
+sprite_frames = SubResource("SpriteFrames_x38g8")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]

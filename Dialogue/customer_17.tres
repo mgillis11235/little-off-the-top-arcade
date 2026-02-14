@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dleeymnjdiac7"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_0x1j1"]
+
+[resource]
+script = ExtResource("1_0x1j1")
+customerName = "Tommy Ballama"
+referenceName = ""
+reqDialogue = "MY HAIR IS ON FIRE!!! HELP MEEEEEE!!!!!"
+midDialogue = Array[String](["AHHHHHHH! HELPPPP!!!!! JESUS!!!!", "IT BURNS!!!!!!"])
+finshDialogueHappy = "I look pretty good in soot, don't you think?"
+finshDialogueUpset = "Why... didn't you put me out?"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

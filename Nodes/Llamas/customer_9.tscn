@@ -1,0 +1,910 @@
+[gd_scene load_steps=73 format=3 uid="uid://2q5mwrv5j7lp"]
+
+[ext_resource type="Script" path="res://Scripts/base_llama.gd" id="1_82nt7"]
+[ext_resource type="Resource" uid="uid://2wt4ppioc41l" path="res://Dialogue/customer_9.tres" id="2_3whru"]
+[ext_resource type="PackedScene" uid="uid://c6cc6rbxjdpwf" path="res://Nodes/base_fur_tuft.tscn" id="3_ku78n"]
+[ext_resource type="Texture2D" uid="uid://csc2138rheyyc" path="res://Sprites/LlamaRig/LlamaBodyIDLE.png" id="4_gcsxk"]
+[ext_resource type="Texture2D" uid="uid://cjale23d17f8p" path="res://Sprites/LlamaRig/LLAMAEyeBIG.png" id="5_seh1b"]
+[ext_resource type="Texture2D" uid="uid://clm5xfxseoo0a" path="res://Sprites/LlamaRig/LlamaEyeIDLE.png" id="6_8rxxl"]
+[ext_resource type="Texture2D" uid="uid://vm8g213wdkaw" path="res://Sprites/LlamaRig/LLAMABrow_ANGRY.png" id="7_udbqm"]
+[ext_resource type="Texture2D" uid="uid://7hv2e0giycum" path="res://Sprites/LlamaRig/LLAMABrow_HAPPY.png" id="8_via2j"]
+[ext_resource type="Texture2D" uid="uid://d2iee4wmveq6x" path="res://Sprites/LlamaRig/LlamaBrowIDLE.png" id="9_1mk53"]
+[ext_resource type="Texture2D" uid="uid://cudokomhhup6d" path="res://Sprites/LlamaRig/LLAMABrow_SAD.png" id="10_ubo1q"]
+[ext_resource type="Texture2D" uid="uid://87l2shj2y1pr" path="res://Sprites/LlamaRig/LlamaFRONTear.png" id="11_flmy4"]
+[ext_resource type="Texture2D" uid="uid://cldq6staee1ec" path="res://Sprites/LlamaRig/LlamaMouthIDLE_HAPPY.png" id="12_30fv7"]
+[ext_resource type="Texture2D" uid="uid://8a1tq17ndbwr" path="res://Sprites/LlamaRig/UI_Box_Big.png" id="13_j2kmk"]
+[ext_resource type="Texture2D" uid="uid://bcg0im127amse" path="res://Sprites/LlamaRig/LlamaMouthIDLE_SAD.png" id="14_ib7pk"]
+[ext_resource type="AudioStream" uid="uid://n3rk2khuryxu" path="res://Audio/GGA_Llama Happy (1).mp3" id="15_4jx0p"]
+[ext_resource type="Texture2D" uid="uid://kkdxlg0hh1v8" path="res://Sprites/eyepatch.png" id="15_88qow"]
+[ext_resource type="AudioStream" uid="uid://b5cdwy7bhruiw" path="res://Audio/GGA_Llama Happy (2).mp3" id="16_w74ua"]
+[ext_resource type="AudioStream" uid="uid://047v1psij1me" path="res://Audio/GGA_Llama Happy (3).mp3" id="17_322lv"]
+[ext_resource type="AudioStream" uid="uid://dddl18qyvsqks" path="res://Audio/GGA_Llama spit.mp3" id="18_yuti5"]
+[ext_resource type="AudioStream" uid="uid://bjs4ydeb040ww" path="res://Audio/GGA_Llama Upset (1).mp3" id="19_mcjsg"]
+[ext_resource type="AudioStream" uid="uid://db5ukp8x0euoi" path="res://Audio/GGA_Llama Upset (2).mp3" id="20_hgoht"]
+[ext_resource type="AudioStream" uid="uid://titi40aijf6m" path="res://Audio/GGA_Llama Upset (3).mp3" id="21_x7oi0"]
+[ext_resource type="AudioStream" uid="uid://c538mjhx3wk0s" path="res://Audio/GGA_Fire Extinguisher.mp3" id="22_cyjie"]
+[ext_resource type="AudioStream" uid="uid://che5n24is444v" path="res://Audio/GGA_Hair Dye (1).mp3" id="23_rvenn"]
+[ext_resource type="AudioStream" uid="uid://c64i7321lgw2v" path="res://Audio/GGA_Hair Dye (2).mp3" id="24_em0cx"]
+[ext_resource type="AudioStream" uid="uid://bc5s70oshhhc3" path="res://Audio/GGA_Razor Shave.mp3" id="25_0vyvm"]
+[ext_resource type="AudioStream" uid="uid://b4s4jwxrr3e8q" path="res://Audio/GGA_Rogaine (drop).mp3" id="26_hlem6"]
+[ext_resource type="AudioStream" uid="uid://bde47lwk54xti" path="res://Audio/GGA_Rogaine (pick-up).mp3" id="27_0p3ya"]
+[ext_resource type="AudioStream" uid="uid://cr06vyg7ad2h4" path="res://Audio/GGA_Rogaine (squeeze).mp3" id="28_yqi31"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p36hv"]
+atlas = ExtResource("4_gcsxk")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tvpj"]
+atlas = ExtResource("4_gcsxk")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jgfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p36hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tvpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok0h8"]
+atlas = ExtResource("5_seh1b")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bosak"]
+atlas = ExtResource("5_seh1b")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jhc1"]
+atlas = ExtResource("5_seh1b")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7bj"]
+atlas = ExtResource("5_seh1b")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7uw"]
+atlas = ExtResource("6_8rxxl")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml0mx"]
+atlas = ExtResource("6_8rxxl")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31r2f"]
+atlas = ExtResource("6_8rxxl")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrg3d"]
+atlas = ExtResource("6_8rxxl")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js45b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok0h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bosak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jhc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7bj")
+}],
+"loop": true,
+"name": &"EyeBig",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws7uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml0mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31r2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrg3d")
+}],
+"loop": true,
+"name": &"EyeIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2d27"]
+atlas = ExtResource("7_udbqm")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mthuk"]
+atlas = ExtResource("7_udbqm")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j4y5"]
+atlas = ExtResource("7_udbqm")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yljs2"]
+atlas = ExtResource("7_udbqm")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mychf"]
+atlas = ExtResource("8_via2j")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhgak"]
+atlas = ExtResource("8_via2j")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rahgl"]
+atlas = ExtResource("8_via2j")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6pl4"]
+atlas = ExtResource("8_via2j")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepvu"]
+atlas = ExtResource("9_1mk53")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r2uj"]
+atlas = ExtResource("9_1mk53")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb6i0"]
+atlas = ExtResource("9_1mk53")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miuib"]
+atlas = ExtResource("9_1mk53")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bypte"]
+atlas = ExtResource("10_ubo1q")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0dar"]
+atlas = ExtResource("10_ubo1q")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcin6"]
+atlas = ExtResource("10_ubo1q")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nkjp"]
+atlas = ExtResource("10_ubo1q")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af7m6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2d27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mthuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j4y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yljs2")
+}],
+"loop": true,
+"name": &"EyebrowAngry",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mychf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhgak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rahgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6pl4")
+}],
+"loop": true,
+"name": &"EyebrowHappy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r2uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb6i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miuib")
+}],
+"loop": true,
+"name": &"EyebrowIdle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bypte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0dar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcin6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nkjp")
+}],
+"loop": true,
+"name": &"EyebrowSad",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmi8t"]
+atlas = ExtResource("11_flmy4")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxa46"]
+atlas = ExtResource("11_flmy4")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7jw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmi8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxa46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cp8t"]
+atlas = ExtResource("12_30fv7")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nv5c"]
+atlas = ExtResource("12_30fv7")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkocb"]
+atlas = ExtResource("13_j2kmk")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7toav"]
+atlas = ExtResource("13_j2kmk")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su21m"]
+atlas = ExtResource("13_j2kmk")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs34d"]
+atlas = ExtResource("14_ib7pk")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgig7"]
+atlas = ExtResource("14_ib7pk")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcv14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cp8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nv5c")
+}],
+"loop": true,
+"name": &"MouthHappy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkocb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7toav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su21m")
+}],
+"loop": true,
+"name": &"MouthIdle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs34d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgig7")
+}],
+"loop": true,
+"name": &"MouthUpset",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j6jm"]
+atlas = ExtResource("15_88qow")
+region = Rect2(720, 0, 720, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8cbd"]
+atlas = ExtResource("15_88qow")
+region = Rect2(0, 0, 720, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8k3h8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j6jm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8cbd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises")]
+position = Vector2(-32, -3)
+script = ExtResource("1_82nt7")
+skinColor = Color(0.368003, 0.995476, 0.937512, 1)
+furColor = Color(0.470586, 0.255368, 0.0697711, 1)
+disable_rogaine = true
+disable_fire_extinguisher = true
+disable_dye = true
+dialogue = ExtResource("2_3whru")
+bigEyesWhenHappy = true
+bigEyesWhenUpset = true
+happyNoises = [NodePath("LlamaSFX/GgaLlamaHappy(1)"), NodePath("LlamaSFX/GgaLlamaHappy(2)"), NodePath("LlamaSFX/GgaLlamaHappy(3)")]
+upsetNoises = [NodePath("LlamaSFX/GgaLlamaUpset(1)"), NodePath("LlamaSFX/GgaLlamaUpset(2)"), NodePath("LlamaSFX/GgaLlamaUpset(3)")]
+
+[node name="Tufts" type="Node2D" parent="."]
+
+[node name="BaseFurTuft" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(11, -49)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft2" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(27, -55)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft3" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(29, -41)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft4" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(45, -45)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft5" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(51, -36)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft6" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(60, -61)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft7" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(66, -50)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft8" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(76, -45)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft9" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(75, -31)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft10" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(58, -30)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft11" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(88, -45)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft12" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(81, -56)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft13" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(72, -68)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft14" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(59, -73)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft15" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(41, -74)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft16" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(21, -71)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft17" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(12, -72)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft18" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-5, -53)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft19" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(16, -81)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft20" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(35, -87)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft21" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(63, -86)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft22" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(82, -75)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft23" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(94, -59)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft24" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(102, -38)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft25" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(94, -20)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft26" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(88, -13)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft27" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(88, -14)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft28" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(72, -14)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft29" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(92, 6)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft30" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(102, -6)
+desiredState = 1
+noStubble = true
+llama = NodePath("../..")
+
+[node name="BaseFurTuft31" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(66, 5)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft32" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(57, -6)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft33" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(52, -20)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft34" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(47, 7)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft35" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(31, 22)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft36" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(47, 31)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft37" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(57, 19)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft38" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-24, -43)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft39" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-41, -31)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft40" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-50, -18)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft41" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-27, -19)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft42" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(-18, -30)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft43" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(1, -23)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft44" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(0, -35)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft45" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(0, -35)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft46" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(76, 17)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft47" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(82, 32)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft48" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(94, 23)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft49" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(89, 50)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft50" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(62, 39)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft51" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(71, 55)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft52" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(44, 48)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft53" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(34, 55)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft54" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(30, 42)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft55" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(17, 73)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft56" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(43, 72)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft57" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(60, 56)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft58" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(72, 75)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft59" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(58, 79)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft60" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(66, 90)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft61" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(74, 105)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft62" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(50, 100)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft63" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(39, 86)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft64" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(27, 95)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft65" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(23, 86)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft66" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(8, 95)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft67" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(3, 113)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft68" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(16, 113)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft69" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(32, 113)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft70" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(53, 118)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft71" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(77, 120)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft72" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(59, 132)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft73" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(32, 126)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft74" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(42, 132)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft75" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(23, 130)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft76" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(10, 131)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft77" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(10, 131)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft78" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_ku78n")]
+position = Vector2(10, 131)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="LlamaRig" type="Node2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="Body" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = -1
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_8jgfq")
+autoplay = "default"
+frame_progress = 0.160444
+
+[node name="Eye" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 900
+position = Vector2(4, -10)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_js45b")
+animation = &"EyeIdle"
+autoplay = "EyeIdle"
+frame_progress = 0.530935
+
+[node name="Eyebrow" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 900
+position = Vector2(5, -8)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_af7m6")
+animation = &"EyebrowIdle"
+autoplay = "EyebrowIdle"
+frame_progress = 0.500746
+
+[node name="FrontEar" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 901
+position = Vector2(-15, -13)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_c7jw1")
+autoplay = "default"
+frame_progress = 0.908434
+
+[node name="Mouth" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 901
+position = Vector2(-16, 10)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_kcv14")
+animation = &"MouthIdle"
+autoplay = "MouthIdle"
+frame_progress = 0.0296438
+
+[node name="Eyepatch" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 910
+position = Vector2(2, -77)
+scale = Vector2(0.343594, 0.39038)
+sprite_frames = SubResource("SpriteFrames_8k3h8")
+autoplay = "default"
+frame_progress = 0.988527
+
+[node name="LlamaSFX" type="Node" parent="."]
+
+[node name="GgaLlamaHappy(1)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("15_4jx0p")
+bus = &"SFX"
+
+[node name="GgaLlamaHappy(2)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("16_w74ua")
+bus = &"SFX"
+
+[node name="GgaLlamaHappy(3)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("17_322lv")
+bus = &"SFX"
+
+[node name="GgaLlamaSpit" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("18_yuti5")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(1)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("19_mcjsg")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(2)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("20_hgoht")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(3)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("21_x7oi0")
+bus = &"SFX"
+
+[node name="FurSFX" type="Node" parent="."]
+
+[node name="GgaFireExtinguisher" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("22_cyjie")
+bus = &"SFX"
+
+[node name="GgaHairDye(1)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("23_rvenn")
+bus = &"SFX"
+
+[node name="GgaHairDye(2)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("24_em0cx")
+bus = &"SFX"
+
+[node name="GgaRazorShave" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("25_0vyvm")
+bus = &"SFX"
+
+[node name="GgaRogaine(drop)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("26_hlem6")
+bus = &"SFX"
+
+[node name="GgaRogaine(pick-up)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("27_0p3ya")
+bus = &"SFX"
+
+[node name="GgaRogaine(squeeze)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("28_yqi31")
+bus = &"SFX"

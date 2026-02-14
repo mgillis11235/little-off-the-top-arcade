@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dg6jrivvy3wmx"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_8bt1s"]
+
+[resource]
+script = ExtResource("1_8bt1s")
+customerName = "Llombudsman Perry"
+referenceName = ""
+reqDialogue = "Do your magic"
+midDialogue = Array[String](["How about that new episode of that show on TV?"])
+finshDialogueHappy = "I look 10 years younger!"
+finshDialogueUpset = "You fraud! That's not what I asked for!"
+reactiveDialogueAny = Array[String](["You're changing it too much!", "Stop! Stop it!", "Hey, I said stop it!", "STOPPPPP!!!!!!!", "YOU'RE RUINING EVERYTHING!!!!"])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

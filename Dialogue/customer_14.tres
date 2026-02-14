@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://bvhlmk8h7ao2w"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_rvpnn"]
+
+[resource]
+script = ExtResource("1_rvpnn")
+customerName = "Lllll L. Llllllllll"
+referenceName = ""
+reqDialogue = "My horoscope said I was destined for a hair regrowth supplement"
+midDialogue = Array[String](["My siblings are a lot splotchier"])
+finshDialogueHappy = "It's a whole new me!"
+finshDialogueUpset = "Life is hard for a guy like me."
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

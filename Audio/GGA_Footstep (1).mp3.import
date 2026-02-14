@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c8a7wree1fj6e"
+path="res://.godot/imported/GGA_Footstep (1).mp3-e8eb546bdd2f7a724fcd0a2a12ade594.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Footstep (1).mp3"
+dest_files=["res://.godot/imported/GGA_Footstep (1).mp3-e8eb546bdd2f7a724fcd0a2a12ade594.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dfjjdttkf55pc"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_7wyga"]
+
+[resource]
+script = ExtResource("1_7wyga")
+customerName = "LLama Cool J"
+referenceName = ""
+reqDialogue = "My friend Llama Del Rey was just here. I wanna look like her."
+midDialogue = Array[String](["Chewing on stuff... great, isn't it?"])
+finshDialogueHappy = "It's everything I dreamed of and more"
+finshDialogueUpset = "This haircut is a tragedy"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

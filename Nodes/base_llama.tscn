@@ -1,0 +1,464 @@
+[gd_scene load_steps=69 format=3 uid="uid://b1l5fbjfvc7i"]
+
+[ext_resource type="Resource" uid="uid://br6t2bb7b6gwl" path="res://Dialogue/customer_1.tres" id="2_8jd6k"]
+[ext_resource type="PackedScene" uid="uid://c6cc6rbxjdpwf" path="res://Nodes/base_fur_tuft.tscn" id="2_8pj2q"]
+[ext_resource type="Script" path="res://Scripts/base_llama.gd" id="2_mw0qn"]
+[ext_resource type="AudioStream" uid="uid://bc5s70oshhhc3" path="res://Audio/GGA_Razor Shave.mp3" id="3_ergji"]
+[ext_resource type="Texture2D" uid="uid://cjale23d17f8p" path="res://Sprites/LlamaRig/LLAMAEyeBIG.png" id="4_e487p"]
+[ext_resource type="Texture2D" uid="uid://csc2138rheyyc" path="res://Sprites/LlamaRig/LlamaBodyIDLE.png" id="4_thibd"]
+[ext_resource type="Texture2D" uid="uid://clm5xfxseoo0a" path="res://Sprites/LlamaRig/LlamaEyeIDLE.png" id="5_ycdms"]
+[ext_resource type="Texture2D" uid="uid://87l2shj2y1pr" path="res://Sprites/LlamaRig/LlamaFRONTear.png" id="6_6x8ws"]
+[ext_resource type="Texture2D" uid="uid://vm8g213wdkaw" path="res://Sprites/LlamaRig/LLAMABrow_ANGRY.png" id="6_30dwg"]
+[ext_resource type="Texture2D" uid="uid://7hv2e0giycum" path="res://Sprites/LlamaRig/LLAMABrow_HAPPY.png" id="7_lb76l"]
+[ext_resource type="Texture2D" uid="uid://cldq6staee1ec" path="res://Sprites/LlamaRig/LlamaMouthIDLE_HAPPY.png" id="7_lmipp"]
+[ext_resource type="Texture2D" uid="uid://d2iee4wmveq6x" path="res://Sprites/LlamaRig/LlamaBrowIDLE.png" id="8_0ld1a"]
+[ext_resource type="Texture2D" uid="uid://8a1tq17ndbwr" path="res://Sprites/LlamaRig/UI_Box_Big.png" id="8_bnmx7"]
+[ext_resource type="Texture2D" uid="uid://cudokomhhup6d" path="res://Sprites/LlamaRig/LLAMABrow_SAD.png" id="9_82out"]
+[ext_resource type="Texture2D" uid="uid://bcg0im127amse" path="res://Sprites/LlamaRig/LlamaMouthIDLE_SAD.png" id="9_dfeq5"]
+[ext_resource type="AudioStream" uid="uid://n3rk2khuryxu" path="res://Audio/GGA_Llama Happy (1).mp3" id="14_8gxqh"]
+[ext_resource type="AudioStream" uid="uid://c538mjhx3wk0s" path="res://Audio/GGA_Fire Extinguisher.mp3" id="14_8ma00"]
+[ext_resource type="AudioStream" uid="uid://b5cdwy7bhruiw" path="res://Audio/GGA_Llama Happy (2).mp3" id="15_jgjxr"]
+[ext_resource type="AudioStream" uid="uid://che5n24is444v" path="res://Audio/GGA_Hair Dye (1).mp3" id="15_kquf2"]
+[ext_resource type="AudioStream" uid="uid://047v1psij1me" path="res://Audio/GGA_Llama Happy (3).mp3" id="16_cdfgt"]
+[ext_resource type="AudioStream" uid="uid://c64i7321lgw2v" path="res://Audio/GGA_Hair Dye (2).mp3" id="16_usjcm"]
+[ext_resource type="AudioStream" uid="uid://dddl18qyvsqks" path="res://Audio/GGA_Llama spit.mp3" id="17_p5bmq"]
+[ext_resource type="AudioStream" uid="uid://b4s4jwxrr3e8q" path="res://Audio/GGA_Rogaine (drop).mp3" id="18_fkl3b"]
+[ext_resource type="AudioStream" uid="uid://bde47lwk54xti" path="res://Audio/GGA_Rogaine (pick-up).mp3" id="19_hb45l"]
+[ext_resource type="AudioStream" uid="uid://cr06vyg7ad2h4" path="res://Audio/GGA_Rogaine (squeeze).mp3" id="20_rau26"]
+[ext_resource type="AudioStream" uid="uid://bjs4ydeb040ww" path="res://Audio/GGA_Llama Upset (1).mp3" id="21_rfosw"]
+[ext_resource type="AudioStream" uid="uid://db5ukp8x0euoi" path="res://Audio/GGA_Llama Upset (2).mp3" id="22_jv3go"]
+[ext_resource type="AudioStream" uid="uid://titi40aijf6m" path="res://Audio/GGA_Llama Upset (3).mp3" id="23_qfm2g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p36hv"]
+atlas = ExtResource("4_thibd")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tvpj"]
+atlas = ExtResource("4_thibd")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jgfq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p36hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tvpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok0h8"]
+atlas = ExtResource("4_e487p")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bosak"]
+atlas = ExtResource("4_e487p")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jhc1"]
+atlas = ExtResource("4_e487p")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7bj"]
+atlas = ExtResource("4_e487p")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws7uw"]
+atlas = ExtResource("5_ycdms")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ml0mx"]
+atlas = ExtResource("5_ycdms")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31r2f"]
+atlas = ExtResource("5_ycdms")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrg3d"]
+atlas = ExtResource("5_ycdms")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js45b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok0h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bosak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jhc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7bj")
+}],
+"loop": true,
+"name": &"EyeBig",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws7uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ml0mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31r2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrg3d")
+}],
+"loop": true,
+"name": &"EyeIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2d27"]
+atlas = ExtResource("6_30dwg")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mthuk"]
+atlas = ExtResource("6_30dwg")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j4y5"]
+atlas = ExtResource("6_30dwg")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yljs2"]
+atlas = ExtResource("6_30dwg")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mychf"]
+atlas = ExtResource("7_lb76l")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhgak"]
+atlas = ExtResource("7_lb76l")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rahgl"]
+atlas = ExtResource("7_lb76l")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6pl4"]
+atlas = ExtResource("7_lb76l")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yepvu"]
+atlas = ExtResource("8_0ld1a")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r2uj"]
+atlas = ExtResource("8_0ld1a")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb6i0"]
+atlas = ExtResource("8_0ld1a")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miuib"]
+atlas = ExtResource("8_0ld1a")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bypte"]
+atlas = ExtResource("9_82out")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0dar"]
+atlas = ExtResource("9_82out")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcin6"]
+atlas = ExtResource("9_82out")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5nkjp"]
+atlas = ExtResource("9_82out")
+region = Rect2(2160, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_af7m6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2d27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mthuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j4y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yljs2")
+}],
+"loop": true,
+"name": &"EyebrowAngry",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mychf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhgak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rahgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6pl4")
+}],
+"loop": true,
+"name": &"EyebrowHappy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yepvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r2uj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb6i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miuib")
+}],
+"loop": true,
+"name": &"EyebrowIdle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bypte")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0dar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcin6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5nkjp")
+}],
+"loop": true,
+"name": &"EyebrowSad",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmi8t"]
+atlas = ExtResource("6_6x8ws")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxa46"]
+atlas = ExtResource("6_6x8ws")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7jw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmi8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxa46")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cp8t"]
+atlas = ExtResource("7_lmipp")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nv5c"]
+atlas = ExtResource("7_lmipp")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkocb"]
+atlas = ExtResource("8_bnmx7")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7toav"]
+atlas = ExtResource("8_bnmx7")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su21m"]
+atlas = ExtResource("8_bnmx7")
+region = Rect2(1440, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs34d"]
+atlas = ExtResource("9_dfeq5")
+region = Rect2(0, 0, 720, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgig7"]
+atlas = ExtResource("9_dfeq5")
+region = Rect2(720, 0, 720, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcv14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cp8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nv5c")
+}],
+"loop": true,
+"name": &"MouthHappy",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gkocb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7toav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su21m")
+}],
+"loop": true,
+"name": &"MouthIdle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs34d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgig7")
+}],
+"loop": true,
+"name": &"MouthUpset",
+"speed": 4.0
+}]
+
+[node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises")]
+script = ExtResource("2_mw0qn")
+skinColor = Color(0.982375, 0.741534, 0.673774, 1)
+furColor = Color(0.428456, 0.1807, 0.150023, 1)
+dialogue = ExtResource("2_8jd6k")
+happyNoises = [NodePath("LlamaSFX/GgaLlamaHappy(1)"), NodePath("LlamaSFX/GgaLlamaHappy(2)"), NodePath("LlamaSFX/GgaLlamaHappy(3)")]
+upsetNoises = [NodePath("LlamaSFX/GgaLlamaUpset(1)"), NodePath("LlamaSFX/GgaLlamaUpset(2)"), NodePath("LlamaSFX/GgaLlamaUpset(3)")]
+
+[node name="Tufts" type="Node2D" parent="."]
+
+[node name="BaseFurTuft" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("2_8pj2q")]
+position = Vector2(11, -49)
+llama = NodePath("../..")
+
+[node name="LlamaRig" type="Node2D" parent="."]
+position = Vector2(0, 25)
+
+[node name="Body" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = -1
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_8jgfq")
+autoplay = "default"
+frame_progress = 0.160444
+
+[node name="Eye" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 900
+position = Vector2(4, -10)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_js45b")
+animation = &"EyeIdle"
+autoplay = "EyeIdle"
+frame_progress = 0.530935
+
+[node name="Eyebrow" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 900
+position = Vector2(5, -8)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_af7m6")
+animation = &"EyebrowIdle"
+autoplay = "EyebrowIdle"
+frame_progress = 0.500746
+
+[node name="FrontEar" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 901
+position = Vector2(-15, -13)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_c7jw1")
+autoplay = "default"
+frame_progress = 0.908434
+
+[node name="Mouth" type="AnimatedSprite2D" parent="LlamaRig"]
+z_index = 901
+position = Vector2(-16, 10)
+scale = Vector2(0.377778, 0.377778)
+sprite_frames = SubResource("SpriteFrames_kcv14")
+animation = &"MouthIdle"
+autoplay = "MouthIdle"
+frame_progress = 0.0296438
+
+[node name="LlamaSFX" type="Node" parent="."]
+
+[node name="GgaLlamaHappy(1)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("14_8gxqh")
+bus = &"SFX"
+
+[node name="GgaLlamaHappy(2)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("15_jgjxr")
+bus = &"SFX"
+
+[node name="GgaLlamaHappy(3)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("16_cdfgt")
+bus = &"SFX"
+
+[node name="GgaLlamaSpit" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("17_p5bmq")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(1)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("21_rfosw")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(2)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("22_jv3go")
+bus = &"SFX"
+
+[node name="GgaLlamaUpset(3)" type="AudioStreamPlayer" parent="LlamaSFX"]
+stream = ExtResource("23_qfm2g")
+bus = &"SFX"
+
+[node name="FurSFX" type="Node" parent="."]
+
+[node name="GgaFireExtinguisher" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("14_8ma00")
+bus = &"SFX"
+
+[node name="GgaHairDye(1)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("15_kquf2")
+bus = &"SFX"
+
+[node name="GgaHairDye(2)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("16_usjcm")
+bus = &"SFX"
+
+[node name="GgaRazorShave" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("3_ergji")
+bus = &"SFX"
+
+[node name="GgaRogaine(drop)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("18_fkl3b")
+bus = &"SFX"
+
+[node name="GgaRogaine(pick-up)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("19_hb45l")
+bus = &"SFX"
+
+[node name="GgaRogaine(squeeze)" type="AudioStreamPlayer" parent="FurSFX"]
+stream = ExtResource("20_rau26")
+bus = &"SFX"

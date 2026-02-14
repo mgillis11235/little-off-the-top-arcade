@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://chxbp1flspp4e"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_2adsj"]
+
+[resource]
+script = ExtResource("1_2adsj")
+customerName = "Mitt Llamney"
+referenceName = ""
+reqDialogue = "Make things as tidy as you could, good sir! I'm heading to the Grand Llama Soiree this very eve!"
+midDialogue = Array[String](["I must call to your attention that I've felt a tickle"])
+finshDialogueHappy = "Great work! I look like a million Drops of Spit"
+finshDialogueUpset = "Horrendous! I'll be the laughingstock of tonight's festivities!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c538mjhx3wk0s"
+path="res://.godot/imported/GGA_Fire Extinguisher.mp3-7c97e3e35f7862832f6925029b464e3e.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Fire Extinguisher.mp3"
+dest_files=["res://.godot/imported/GGA_Fire Extinguisher.mp3-7c97e3e35f7862832f6925029b464e3e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

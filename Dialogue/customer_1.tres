@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://br6t2bb7b6gwl"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_8vsm2"]
+
+[resource]
+script = ExtResource("1_8vsm2")
+customerName = "Andrew Llama"
+referenceName = ""
+reqDialogue = "Shave me. All of me"
+midDialogue = Array[String](["Pretty good weather, huh?"])
+finshDialogueHappy = "I look great! Thanks so much."
+finshDialogueUpset = "I'm... not happy with this."
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

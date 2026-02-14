@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://ci7c1oi76jhu0"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_f44tf"]
+
+[resource]
+script = ExtResource("1_f44tf")
+customerName = "Llamar Burton"
+referenceName = ""
+reqDialogue = " Let's go big this time. No, not you! I'm talking to my hairstylist"
+midDialogue = Array[String](["You're doing it all wrong! No, I'm talking to you now! Not the hairstylist.", "I'm gonna need this half-price! No, not you, hairstylist!", "STOP! Don't do anything! Yes, you, not the hairstylist!"])
+finshDialogueHappy = "Ride the lightning! No, I'm talking to the hairstylist"
+finshDialogueUpset = "Are you freaking kidding me? Yes, that was for you, the terrible hairstylist!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

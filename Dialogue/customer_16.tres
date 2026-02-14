@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://db6aqjhthlcij"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_88xx2"]
+
+[resource]
+script = ExtResource("1_88xx2")
+customerName = "Gallamileo Gallamilei"
+referenceName = ""
+reqDialogue = "Shave it all off."
+midDialogue = Array[String](["...", "WAIT! I change my mind! Put it back on.", "No. I can't keep changing my mind like this. Shave me. Do it.", "But company photos are today. Maybe this is a mistake...", "But then again, I always change my mind on these things. I should just commit."])
+finshDialogueHappy = "I guess it looks okay. I kinda miss how it was before though."
+finshDialogueUpset = "No no no, I should've just gotten it all cut!"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

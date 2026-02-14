@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbyb6uwstbgpb"
+path="res://.godot/imported/MPC 4 ZE 2485.mp3-e4bae53ee50da24e365c2d53a46be03a.mp3str"
+
+[deps]
+
+source_file="res://Audio/MPC 4 ZE 2485.mp3"
+dest_files=["res://.godot/imported/MPC 4 ZE 2485.mp3-e4bae53ee50da24e365c2d53a46be03a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

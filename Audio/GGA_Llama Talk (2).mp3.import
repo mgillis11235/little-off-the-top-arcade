@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de75mhitqtiel"
+path="res://.godot/imported/GGA_Llama Talk (2).mp3-15b4d79eb86672d39ad2273cfa0e0cb4.mp3str"
+
+[deps]
+
+source_file="res://Audio/GGA_Llama Talk (2).mp3"
+dest_files=["res://.godot/imported/GGA_Llama Talk (2).mp3-15b4d79eb86672d39ad2273cfa0e0cb4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

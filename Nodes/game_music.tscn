@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6sb31qnlpt0i"]
+
+[ext_resource type="AudioStream" uid="uid://bjtyvrojx5qpy" path="res://Audio/alpaca wtf WITH solo.mp3" id="1_18sjp"]
+
+[node name="GameMusic" type="Node"]
+
+[node name="AlpacaWtfWithSolo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_18sjp")
+autoplay = true
+bus = &"Music"
