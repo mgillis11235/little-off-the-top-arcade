@@ -169,5 +169,5 @@ bus = &"Music"
 
 [connection signal="finished" from="TitleScreenMovie" to="." method="_on_title_screen_movie_finished"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Story" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Time Trial" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Time Trial" to="." method="_on_arcade_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

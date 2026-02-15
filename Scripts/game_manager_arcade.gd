@@ -1,6 +1,6 @@
 extends BaseGameManager
 
-class_name Game_Manager
+class_name Game_Manager_Arcade
 
 var murdered: bool
 
@@ -100,7 +100,7 @@ func sequence_next():
 					load_llama(llamas[customerProgress])
 				else:
 					await get_tree().create_timer(.75).timeout
-					murder()
+					score_screen()
 					pass
 		Sequence.GAMEPLAY:
 			start_gameplay()
@@ -349,12 +349,11 @@ func _process(delta: float) -> void:
 			$Sounds/Whimper.play()
 			await get_tree().create_timer(.5).timeout
 			print("murder 4")
-			murder()
+			score_screen()
 
-func murder():
+func score_screen():
 	print("Murder!")
-	get_tree().change_scene_to_file("res://Scenes/murder.tscn")	
-
+	get_tree().change_scene_to_file("res://Scenes/score_screen.tscn")
 func _on_timer_timeout():
 	if seqCurrent == Sequence.GAMEPLAY:
 		sequence_next()

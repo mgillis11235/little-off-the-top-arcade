@@ -6,7 +6,7 @@ class_name Tool
 @export var acceleration: float
 @export var startingPoint: Vector2
 
-@export var gm: Game_Manager
+@export var gm: BaseGameManager
 
 enum Modes {RAZOR, DYE, ROGAINE, FIRE_EXTINGUISHER}
 signal tool_mode_changed(mode: Modes)

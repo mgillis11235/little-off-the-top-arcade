@@ -14,6 +14,12 @@ func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
+func _on_arcade_pressed() -> void:
+	$MarginContainer.set_visible(false)
+	#$Credits.set_visible(false)
+	$TitleScreenMovieStart.play()
+	await get_tree().create_timer(3.5).timeout
+	get_tree().change_scene_to_file("res://Scenes/Arcade.tscn")
 
 
 func _on_credits_pressed() -> void:
