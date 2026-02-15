@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Llama Grooming Game"
+config/name="A Little Off The Top ARCADE"
 run/main_scene="res://Scenes/title.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
