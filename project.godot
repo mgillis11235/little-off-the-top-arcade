@@ -26,6 +26,10 @@ window/size/viewport_height=1080
 window/size/initial_position_type=4
 window/stretch/mode="viewport"
 
+[editor]
+
+movie_writer/movie_file="/Users/mgillis/Documents/GitHub/little-off-the-top-arcade/movie.avi"
+
 [input]
 
 Up={

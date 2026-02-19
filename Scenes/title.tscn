@@ -163,6 +163,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="TitleSong" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("6_af645")
 autoplay = true
 bus = &"Music"
