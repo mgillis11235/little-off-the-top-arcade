@@ -1336,7 +1336,7 @@ wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="Label" type="Label" parent="GameTimeLabel"]
+[node name="GameTimeHeader" type="Label" parent="GameTimeLabel"]
 layout_mode = 0
 offset_left = -25.0
 offset_top = 37.5
@@ -1347,6 +1347,22 @@ theme_override_colors/font_color = Color(0.870588, 0.870588, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "game time"
+
+[node name="BonusTime" type="Label" parent="GameTimeLabel"]
+visible = false
+layout_mode = 0
+offset_left = 72.0
+offset_top = 9.0
+offset_right = 154.0
+offset_bottom = 53.0
+theme = ExtResource("8_nv5ob")
+theme_override_colors/font_color = Color(0.972442, 0.612307, 0.465922, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -10
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 20
+text = "+5 sec
+bonus"
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 collision_layer = 8

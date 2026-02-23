@@ -232,6 +232,12 @@ func play_mid_dialogue(totalTime):
 func start_scoring():
 	$Sounds/GgaHaircutEnd.play()
 	add_time_to_timer(game_time_timer, 5)
+	var tween = create_tween()
+	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
+	tween.tween_interval(1.0)
+	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
+	tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
+	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
 	$PlayerTool.active = false
 	currentCustomer.toolEnabled = false
 	#sound effect!
