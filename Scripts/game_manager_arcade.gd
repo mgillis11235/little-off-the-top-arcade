@@ -22,6 +22,9 @@ signal sequence_update(seq: Sequence)
 @onready var header_label: Label = $TutorialHolder/HeaderLabel
 @onready var tutorial_label: Label = $TutorialHolder/TutorialLabel
 @onready var tutorial_anim: AnimationPlayer = $TutorialHolder/TutorialAnim
+@onready var game_time_label = $GameTimeLabel
+@onready var game_time_timer = $GameTimeLabel/GameTimeTimer
+
 
 @onready var llamas = {
 	0: preload("res://Nodes/Llamas/customer_1.tscn"),
@@ -73,6 +76,9 @@ var tutorialMode: bool
 func _ready() -> void:
 	$PlayerTool.active = false
 	sequence_next()
+	game_time_label.text = str(game_time_timer.time_left)
+	game_time_timer.paused = true
+	
 
 func call_tutorial(header: String, body: String):
 	$Sounds/GgaWoosh.play()
@@ -325,10 +331,14 @@ func start_post():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("Interact") and seqCurrent == Sequence.NONE and tutorialOverride:
+		game_time_timer.paused = false
 		sequence_next()
 		tutorial_anim.play("Disappear")
 		$"Sounds/GgaUiSelect(1)".play()
 		pass
+	# end the cut	
+	if event.is_action_pressed("Interact") and seqCurrent == Sequence.GAMEPLAY:
+		sequence_next()
 	if event.is_action_pressed("Preview") and seqCurrent == Sequence.GAMEPLAY:
 		#ref_appear()
 		pass
@@ -337,11 +347,13 @@ func _input(event: InputEvent):
 		pass
 
 func _process(delta: float) -> void:
+	game_time_label.text = str(int(game_time_timer.time_left))
 	if currentCustomer != null:
 		if currentCustomer.murdered and !murdered:
 			murdered = true
 			print("murder 2")
-			$Sounds/AlpacaWtfWithSolo.stop()
+			#$Sounds/AlpacaWtfWithSolo.stop()
+			$Sounds/PopPunkTheme.stop()
 			$"Sounds/GgaHairDye(2)".play()
 			$CustomerHolder/BloodSplatter.play("Splatter")
 			await get_tree().create_timer(.5).timeout
@@ -354,10 +366,13 @@ func _process(delta: float) -> void:
 func score_screen():
 	print("Murder!")
 	get_tree().change_scene_to_file("res://Scenes/score_screen.tscn")
+	
 func _on_timer_timeout():
 	if seqCurrent == Sequence.GAMEPLAY:
 		sequence_next()
 
+func _on_game_time_timer_timeout():
+	score_screen()
 
 func _on_player_tool_tool_mode_changed(mode: Tool.Modes) -> void:
 	toolMode = mode

@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://drboq8w537e8a"]
+[gd_scene load_steps=128 format=3 uid="uid://drboq8w537e8a"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager_arcade.gd" id="1_fqh0p"]
 [ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
@@ -43,6 +43,7 @@
 [ext_resource type="AudioStream" uid="uid://bt4bdq04ghc68" path="res://Audio/alpaca-spedup-arcade.mp3" id="36_ndvy2"]
 [ext_resource type="AudioStream" uid="uid://du2qw0mda7288" path="res://Audio/GGA_Footstep (3).mp3" id="37_2nngs"]
 [ext_resource type="AudioStream" uid="uid://vm8m8ay4sq1" path="res://Audio/whimper.wav" id="38_4auu2"]
+[ext_resource type="AudioStream" uid="uid://ciscen6r1t0wv" path="res://Audio/tech_oasis-take-me-away.mp3" id="43_4vt2p"]
 
 [sub_resource type="Animation" id="Animation_rdfi2"]
 resource_name = "Appear"
@@ -1263,7 +1264,6 @@ stream = ExtResource("33_ukmuy")
 
 [node name="AlpacaWtfWithSolo" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("36_ndvy2")
-autoplay = true
 bus = &"Music"
 
 [node name="GgaDouse(2)" type="AudioStreamPlayer" parent="Sounds"]
@@ -1290,6 +1290,46 @@ bus = &"SFX"
 stream = ExtResource("38_4auu2")
 volume_db = 5.759
 bus = &"SFX"
+
+[node name="PopPunkTheme" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("43_4vt2p")
+volume_db = -6.0
+autoplay = true
+bus = &"Music"
+parameters/looping = false
+
+[node name="GameTimeLabel" type="Label" parent="."]
+z_index = 3001
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -234.0
+offset_top = -140.0
+offset_right = -36.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_vlfs3")
+theme_override_colors/font_color = Color(0.871547, 0.871546, 1.54018e-06, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+
+[node name="GameTimeTimer" type="Timer" parent="GameTimeLabel"]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="GameTimeLabel"]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 37.5
+offset_right = 119.0
+offset_bottom = 77.5
+theme = ExtResource("7_vlfs3")
+theme_override_colors/font_color = Color(0.870588, 0.870588, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Game Time"
 
 [node name="TimerLabel" type="Label" parent="."]
 offset_left = 218.0
@@ -1329,4 +1369,5 @@ shape = SubResource("WorldBoundaryShape2D_jt6oj")
 [connection signal="tool_mode_changed" from="PlayerTool" to="." method="_on_player_tool_tool_mode_changed"]
 [connection signal="tool_mode_changed" from="PlayerTool" to="PlayerTool" method="_on_tool_mode_changed"]
 [connection signal="tool_mode_changed" from="PlayerTool" to="ToolHolder" method="_on_player_tool_tool_mode_changed"]
+[connection signal="timeout" from="GameTimeLabel/GameTimeTimer" to="." method="_on_game_time_timer_timeout"]
 [connection signal="timeout" from="TimerLabel/Timer" to="." method="_on_timer_timeout"]
