@@ -181,12 +181,12 @@ func start_gameplay():
 	var totalTime = 10
 	if currentCustomer.timeOverride != 0:
 		totalTime = currentCustomer.timeOverride
-	$TimerLabel/Timer.wait_time = totalTime
+	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
 	
 	play_mid_dialogue(totalTime)
 	#$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.midDialogue[0], totalTime - 1, currentDialogue.customerName)
 	
-	$TimerLabel/Timer.start()
+	$PlayerTool/TimerLabel/Timer.start()
 	
 	$ToolHolder.show()
 	
@@ -231,6 +231,7 @@ func play_mid_dialogue(totalTime):
 
 func start_scoring():
 	$Sounds/GgaHaircutEnd.play()
+	add_time_to_timer(game_time_timer, 5)
 	$PlayerTool.active = false
 	currentCustomer.toolEnabled = false
 	#sound effect!
@@ -366,6 +367,10 @@ func _process(delta: float) -> void:
 func score_screen():
 	print("Murder!")
 	get_tree().change_scene_to_file("res://Scenes/score_screen.tscn")
+	
+func add_time_to_timer(timer: Timer, bonus: int) -> void:
+	var new_time = timer.time_left + bonus
+	timer.start(new_time)
 	
 func _on_timer_timeout():
 	if seqCurrent == Sequence.GAMEPLAY:

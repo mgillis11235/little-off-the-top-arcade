@@ -969,6 +969,23 @@ acceleration = 0.1
 startingPoint = Vector2(200, 55)
 gm = NodePath("..")
 
+[node name="TimerLabel" type="Label" parent="PlayerTool"]
+offset_left = 19.0
+offset_top = -11.0
+offset_right = 93.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("7_vlfs3")
+theme_override_colors/font_color = Color(0, 0.878431, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 2
+script = ExtResource("11_xhldp")
+
+[node name="Timer" type="Timer" parent="PlayerTool/TimerLabel"]
+wait_time = 10.0
+one_shot = true
+
 [node name="CustomerHolder" type="Node2D" parent="."]
 
 [node name="CustomerAnimator" type="AnimationPlayer" parent="CustomerHolder"]
@@ -1329,22 +1346,7 @@ theme = ExtResource("7_vlfs3")
 theme_override_colors/font_color = Color(0.870588, 0.870588, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "Game Time"
-
-[node name="TimerLabel" type="Label" parent="."]
-offset_left = 218.0
-offset_top = -142.0
-offset_right = 292.0
-offset_bottom = -91.0
-scale = Vector2(0.5, 0.5)
-theme = ExtResource("7_vlfs3")
-theme_override_font_sizes/font_size = 40
-horizontal_alignment = 2
-script = ExtResource("11_xhldp")
-
-[node name="Timer" type="Timer" parent="TimerLabel"]
-wait_time = 10.0
-one_shot = true
+text = "game time"
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 collision_layer = 8
@@ -1365,9 +1367,9 @@ shape = SubResource("WorldBoundaryShape2D_r42us")
 shape = SubResource("WorldBoundaryShape2D_jt6oj")
 
 [connection signal="sequence_update" from="." to="." method="_on_sequence_update"]
-[connection signal="sequence_update" from="." to="TimerLabel" method="_on_game_sequence_update"]
+[connection signal="sequence_update" from="." to="PlayerTool/TimerLabel" method="_on_game_sequence_update"]
 [connection signal="tool_mode_changed" from="PlayerTool" to="." method="_on_player_tool_tool_mode_changed"]
 [connection signal="tool_mode_changed" from="PlayerTool" to="PlayerTool" method="_on_tool_mode_changed"]
 [connection signal="tool_mode_changed" from="PlayerTool" to="ToolHolder" method="_on_player_tool_tool_mode_changed"]
+[connection signal="timeout" from="PlayerTool/TimerLabel/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="GameTimeLabel/GameTimeTimer" to="." method="_on_game_time_timer_timeout"]
-[connection signal="timeout" from="TimerLabel/Timer" to="." method="_on_timer_timeout"]
