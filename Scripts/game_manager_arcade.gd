@@ -53,6 +53,7 @@ var customerProgress: int = 0
 #var currentCustomer
 var currentDialogue: DialogueData
 var scores: Array[float]
+var time_bonus: int = 5
 
 #var toolEnables = {
 #	0: false,
@@ -231,7 +232,7 @@ func play_mid_dialogue(totalTime):
 
 func start_scoring():
 	$Sounds/GgaHaircutEnd.play()
-	add_time_to_timer(game_time_timer, 5)
+	add_time_to_timer(game_time_timer, time_bonus)
 	var tween = create_tween()
 	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
 	tween.tween_interval(1.0)
