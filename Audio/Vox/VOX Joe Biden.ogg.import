@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dq3p5trvfx21w"
+path="res://.godot/imported/VOX Joe Biden.ogg-28baec334d32b811c29c6e6ec1be1178.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX Joe Biden.ogg"
+dest_files=["res://.godot/imported/VOX Joe Biden.ogg-28baec334d32b811c29c6e6ec1be1178.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bwxbwd0cq808v"
+path="res://.godot/imported/VOX-INTRO whos ready to play.ogg-5b371bfc1b60897ba4df8fb10e9047ab.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-INTRO whos ready to play.ogg"
+dest_files=["res://.godot/imported/VOX-INTRO whos ready to play.ogg-5b371bfc1b60897ba4df8fb10e9047ab.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

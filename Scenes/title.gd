@@ -16,6 +16,9 @@ func _on_play_pressed():
 
 func _on_arcade_pressed() -> void:
 	$MarginContainer.set_visible(false)
+	$TitleSong.stop()
+	$Select.play()
+	$AnnouncerStart.play()
 	#$Credits.set_visible(false)
 	$TitleScreenMovieStart.play()
 	await get_tree().create_timer(3.5).timeout

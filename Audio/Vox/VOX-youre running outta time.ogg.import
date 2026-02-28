@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cd8fruol0ixns"
+path="res://.godot/imported/VOX-youre running outta time.ogg-72157026e4a264f9d7a74378275f2366.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-youre running outta time.ogg"
+dest_files=["res://.godot/imported/VOX-youre running outta time.ogg-72157026e4a264f9d7a74378275f2366.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

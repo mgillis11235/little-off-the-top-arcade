@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://doc2pbfxu7vk5"
+path="res://.godot/imported/VOX-number 1 clipper.ogg-050a9cae77a09ac936d14030d832a089.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-number 1 clipper.ogg"
+dest_files=["res://.godot/imported/VOX-number 1 clipper.ogg-050a9cae77a09ac936d14030d832a089.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://6kpwl2hr7yqm"]
+[gd_scene load_steps=14 format=3 uid="uid://6kpwl2hr7yqm"]
 
 [ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="1_duvqs"]
 [ext_resource type="Script" path="res://Scenes/title.gd" id="1_gfsg2"]
@@ -6,6 +6,8 @@
 [ext_resource type="VideoStream" path="res://Video/title_screen.ogv" id="2_w7ybc"]
 [ext_resource type="VideoStream" path="res://Video/title-zoom.ogv" id="3_0qid2"]
 [ext_resource type="AudioStream" uid="uid://bugw0kaqt34qn" path="res://Audio/title_theme.mp3" id="6_af645"]
+[ext_resource type="AudioStream" uid="uid://dcv2yomx183m2" path="res://Audio/Vox/DDR Intro Slam.ogg" id="7_d7t5p"]
+[ext_resource type="AudioStream" uid="uid://bwxbwd0cq808v" path="res://Audio/Vox/VOX-INTRO whos ready to play.ogg" id="7_it82e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jroi7"]
 
@@ -120,7 +122,7 @@ text = "Story"
 [node name="Time Trial" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
-text = "Time Trial"
+text = "Arcade"
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -166,6 +168,16 @@ autowrap_mode = 2
 visible = false
 stream = ExtResource("6_af645")
 autoplay = true
+bus = &"Music"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("7_d7t5p")
+bus = &"Music"
+
+[node name="AnnouncerStart" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("7_it82e")
 bus = &"Music"
 
 [connection signal="finished" from="TitleScreenMovie" to="." method="_on_title_screen_movie_finished"]

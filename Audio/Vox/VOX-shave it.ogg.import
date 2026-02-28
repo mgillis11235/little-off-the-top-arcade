@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://618nx74s764g"
+path="res://.godot/imported/VOX-shave it.ogg-2cc0f5d475e3cb8f40e4f257cd84ba9d.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-shave it.ogg"
+dest_files=["res://.godot/imported/VOX-shave it.ogg-2cc0f5d475e3cb8f40e4f257cd84ba9d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

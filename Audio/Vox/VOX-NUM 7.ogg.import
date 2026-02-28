@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c72i5pq7rkjm"
+path="res://.godot/imported/VOX-NUM 7.ogg-26d874e2b9602b9cf2314b307445eccc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-NUM 7.ogg"
+dest_files=["res://.godot/imported/VOX-NUM 7.ogg-26d874e2b9602b9cf2314b307445eccc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

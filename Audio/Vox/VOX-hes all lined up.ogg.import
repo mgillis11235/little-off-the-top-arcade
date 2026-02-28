@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpkdcyadmop84"
+path="res://.godot/imported/VOX-hes all lined up.ogg-49c67341ef00a7ba45159465599f85aa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-hes all lined up.ogg"
+dest_files=["res://.godot/imported/VOX-hes all lined up.ogg-49c67341ef00a7ba45159465599f85aa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

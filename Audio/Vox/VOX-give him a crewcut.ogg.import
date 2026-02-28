@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjkc8np4vfaod"
+path="res://.godot/imported/VOX-give him a crewcut.ogg-de7bd3898ce5aaa7548c3c3ea7429de9.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-give him a crewcut.ogg"
+dest_files=["res://.godot/imported/VOX-give him a crewcut.ogg-de7bd3898ce5aaa7548c3c3ea7429de9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

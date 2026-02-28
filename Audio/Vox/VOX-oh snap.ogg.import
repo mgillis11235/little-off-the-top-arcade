@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdasvwm5lyfx4"
+path="res://.godot/imported/VOX-oh snap.ogg-5274ff208cb1a79542773f8d27ba40a7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-oh snap.ogg"
+dest_files=["res://.godot/imported/VOX-oh snap.ogg-5274ff208cb1a79542773f8d27ba40a7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

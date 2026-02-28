@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bslbrgdiq7ig0"
+path="res://.godot/imported/VOX Donald Trump.ogg-840034abf94fb0a9aea938ac20cf2fe7.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX Donald Trump.ogg"
+dest_files=["res://.godot/imported/VOX Donald Trump.ogg-840034abf94fb0a9aea938ac20cf2fe7.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
