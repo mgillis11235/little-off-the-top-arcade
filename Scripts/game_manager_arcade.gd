@@ -26,29 +26,29 @@ signal sequence_update(seq: Sequence)
 @onready var game_time_timer = $GameTimeLabel/GameTimeTimer
 
 
-@onready var llamas = {
-	0: preload("res://Nodes/Llamas/customer_1.tscn"),
-	1: preload("res://Nodes/Llamas/customer_2.tscn"),
-	2: preload("res://Nodes/Llamas/customer_3v2.tscn"),
-	3: preload("res://Nodes/Llamas/customer_4.tscn"),
-	4: preload("res://Nodes/Llamas/customer_5.tscn"),
-	5: preload("res://Nodes/Llamas/customer_6.tscn"),
-	6: preload("res://Nodes/Llamas/customer_7.tscn"),
-	7: preload("res://Nodes/Llamas/customer_8.tscn"),
-	8: preload("res://Nodes/Llamas/customer_9.tscn"),
-	9: preload("res://Nodes/Llamas/customer_10.tscn"),
-	10: preload("res://Nodes/Llamas/customer_11.tscn"),
-	11: preload("res://Nodes/Llamas/customer_12.tscn"),
-	12: preload("res://Nodes/Llamas/customer_13.tscn"),
-	13: preload("res://Nodes/Llamas/customer_14.tscn"),
-	14: preload("res://Nodes/Llamas/customer_15.tscn"),
-	15: preload("res://Nodes/Llamas/customer_16.tscn"),
-	16: preload("res://Nodes/Llamas/customer_17.tscn"),
-	17: preload("res://Nodes/Llamas/customer_18.tscn"),
-	18: preload("res://Nodes/Llamas/customer_19.tscn"),
-	19: preload("res://Nodes/Llamas/customer_20.tscn"),
-	20: preload("res://Nodes/Llamas/customer_21.tscn")
-}
+#Llama Array
+@onready var llamas: Array[PackedScene] = [
+	preload("res://Nodes/Llamas/customer_1.tscn"),
+	preload("res://Nodes/Llamas/customer_2.tscn"),
+	preload("res://Nodes/Llamas/customer_3v2.tscn"),
+	preload("res://Nodes/Llamas/customer_4.tscn"),
+	preload("res://Nodes/Llamas/customer_5.tscn"),
+	preload("res://Nodes/Llamas/customer_6.tscn"),
+	preload("res://Nodes/Llamas/customer_7.tscn"),
+	preload("res://Nodes/Llamas/customer_8.tscn"),
+	preload("res://Nodes/Llamas/customer_9.tscn"),
+	preload("res://Nodes/Llamas/customer_10.tscn"),
+	preload("res://Nodes/Llamas/customer_11.tscn"),
+	preload("res://Nodes/Llamas/customer_12.tscn"),
+	preload("res://Nodes/Llamas/customer_13.tscn"),
+	preload("res://Nodes/Llamas/customer_14.tscn"),
+	preload("res://Nodes/Llamas/customer_15.tscn"),
+	preload("res://Nodes/Llamas/customer_16.tscn"),
+	preload("res://Nodes/Llamas/customer_17.tscn"),
+	preload("res://Nodes/Llamas/customer_18.tscn"),
+	preload("res://Nodes/Llamas/customer_19.tscn"),
+	preload("res://Nodes/Llamas/customer_20.tscn"),
+]
 var customerProgress: int = 0
 #var currentCustomer
 var currentDialogue: DialogueData
@@ -111,7 +111,8 @@ func sequence_next():
 			else:
 				tutorialOverride = false
 				if customerProgress < llamas.size():
-					load_llama(llamas[customerProgress])
+					var random_llama = llamas.pick_random()
+					load_llama(random_llama)
 				else:
 					await get_tree().create_timer(.75).timeout
 					score_screen()
@@ -134,6 +135,8 @@ func _on_tuft_state_changed():
 		return
 	if is_finished():
 		sequence_next()
+		
+#Load Llama Function
 func load_llama(ll):
 	# Remove previous llama if exists
 	if currentCustomer != null:
@@ -146,7 +149,7 @@ func load_llama(ll):
 	# Wait one frame so _ready() runs and tufts exist
 	await get_tree().process_frame
 
-	# Connect tuft signals safely
+	# Connect tuft signals
 	if currentCustomer.tufts != null:
 		for t in currentCustomer.tufts:
 			t.state_changed.connect(_on_tuft_state_changed)
@@ -258,11 +261,24 @@ func start_gameplay():
 	pass
 
 func play_mid_dialogue(totalTime):
-	for s in currentDialogue.midDialogue.size():
-		llamaTalkSFX.pick_random().play()
-		$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.midDialogue[s], (totalTime - 1) / currentDialogue.midDialogue.size(), currentDialogue.customerName)
-		await get_tree().create_timer((totalTime - 1) / currentDialogue.midDialogue.size()).timeout
+	if currentDialogue.midDialogue.is_empty():
+		return
 
+	var count = currentDialogue.midDialogue.size()
+	var segment_time = (totalTime - 1) / float(count)
+
+	for s in range(count):
+		llamaTalkSFX.pick_random().play()
+		$SpeechBubbleManager.create_bubble(
+			Vector2(-177,-78),
+			false,
+			0,
+			currentDialogue.midDialogue[s],
+			segment_time,
+			currentDialogue.customerName
+		)
+
+		await get_tree().create_timer(segment_time).timeout
 func start_scoring():
 	$Sounds/GgaHaircutEnd.play()
 	add_time_to_timer(game_time_timer, time_bonus)
