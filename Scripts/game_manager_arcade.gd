@@ -15,6 +15,8 @@ var tutorialOverride: bool
 
 var currentRef
 
+var currentCustomerIndex: int = -1
+
 var toolMode: Tool.Modes
 
 signal sequence_update(seq: Sequence)
@@ -100,23 +102,30 @@ func _connect_tuft_signals():
 func sequence_next():
 	if !blockInput:
 		seqCurrent += 1
-	
+
 	match seqCurrent:
 		Sequence.START:
+			# Check if a tutorial should play for this "progress step"
 			if tutorials.has(customerProgress) and !tutorialOverride:
 				call_tutorial(tutorials[customerProgress][0], tutorials[customerProgress][1])
 				tutorialOverride = true
 				seqCurrent -= 1
-				pass
+				return
 			else:
 				tutorialOverride = false
+				# Are there still customers left?
 				if customerProgress < llamas.size():
-					var random_llama = llamas.pick_random()
-					load_llama(random_llama)
+					# Pick a llama randomly that hasn't been used yet
+					var available_indexes = []
+					for i in range(llamas.size()):
+						if i != currentCustomerIndex:
+							available_indexes.append(i)
+					var random_index = available_indexes.pick_random()
+					currentCustomerIndex = random_index
+					load_llama(llamas[random_index])
 				else:
 					await get_tree().create_timer(.75).timeout
 					score_screen()
-					pass
 		Sequence.GAMEPLAY:
 			start_gameplay()
 		Sequence.SCORING:
@@ -141,6 +150,10 @@ func load_llama(ll):
 	# Remove previous llama if exists
 	if currentCustomer != null:
 		currentCustomer.queue_free()
+
+	# Remove old reference if it exists
+	if currentRef != null:
+		currentRef.queue_free()
 
 	# Instantiate new llama
 	currentCustomer = ll.instantiate()
@@ -168,20 +181,12 @@ func load_llama(ll):
 	await get_tree().create_timer(1.0).timeout
 
 	# Handle reference photo if required
-	if !currentCustomer.showRef:
+	if not currentCustomer.showRef:
 		$ReferenceHolder/ReferenceBackdrop.visible = false
-		$SpeechBubbleManager.create_bubble(
-			Vector2(-177, -78), false, 0,
-			currentDialogue.reqDialogue, 3, currentDialogue.customerName
-		)
+		show_dialogue(currentDialogue.reqDialogue, currentDialogue.customerName)
 		await get_tree().create_timer(3.0).timeout
-		# After dialogue, advance sequence
 		sequence_next()
 	else:
-		# Remove old reference if it exists
-		if currentRef != null:
-			currentRef.queue_free()
-
 		# Instantiate and show reference
 		currentRef = ll.instantiate()
 		$ReferenceHolder.add_child(currentRef)
@@ -190,6 +195,8 @@ func load_llama(ll):
 
 		# Start reference appear/disappear sequence
 		ref_start()
+
+
 
 func ref_start():
 	ref_appear()
@@ -218,6 +225,14 @@ func start_gameplay():
 	var totalTime = 10
 	if currentCustomer.timeOverride != 0:
 		totalTime = currentCustomer.timeOverride
+	add_time_to_timer(game_time_timer, currentCustomer.timeOverride)
+	var tween = create_tween()
+	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
+	tween.tween_interval(1.0)
+	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
+	tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
+	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
+
 	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
 	
 	play_mid_dialogue(totalTime)
@@ -260,6 +275,7 @@ func start_gameplay():
 	$ToolHolder.select_tool($ToolHolder/RazorIcon)
 	pass
 
+
 func play_mid_dialogue(totalTime):
 	if currentDialogue.midDialogue.is_empty():
 		return
@@ -269,16 +285,23 @@ func play_mid_dialogue(totalTime):
 
 	for s in range(count):
 		llamaTalkSFX.pick_random().play()
+		show_dialogue(currentDialogue.midDialogue[s], currentDialogue.customerName, segment_time)
+		await get_tree().create_timer(segment_time).timeout
+
+func show_dialogue(text: String, customerName: String, duration: float = 0) -> void:
+	# Remove any existing speech bubble
+	$SpeechBubbleManager.remove_bubble()
+	
+	# Only create if text is not empty
+	if text != "":
 		$SpeechBubbleManager.create_bubble(
-			Vector2(-177,-78),
+			Vector2(-177, -78),
 			false,
 			0,
-			currentDialogue.midDialogue[s],
-			segment_time,
-			currentDialogue.customerName
+			text,
+			duration,
+			customerName
 		)
-
-		await get_tree().create_timer(segment_time).timeout
 func start_scoring():
 	$Sounds/GgaHaircutEnd.play()
 	add_time_to_timer(game_time_timer, time_bonus)
