@@ -88,6 +88,13 @@ func call_tutorial(header: String, body: String):
 	tutorial_label.text = body
 	pass
 
+func _connect_tuft_signals():
+	if currentCustomer.tufts == null:
+		print("Warning: currentCustomer.tufts is null!")
+		return
+
+	for t in currentCustomer.tufts:
+		t.state_changed.connect(_on_tuft_state_changed)
 
 
 func sequence_next():
@@ -120,39 +127,65 @@ func sequence_next():
 		Sequence.WRAP:
 			seqCurrent = 0
 			sequence_next()
-
-
+func _on_tuft_state_changed():
+	if currentCustomer == null:
+		return
+	if seqCurrent != Sequence.GAMEPLAY:
+		return
+	if is_finished():
+		sequence_next()
 func load_llama(ll):
-	#check if game is over
+	# Remove previous llama if exists
 	if currentCustomer != null:
 		currentCustomer.queue_free()
-	
+
+	# Instantiate new llama
 	currentCustomer = ll.instantiate()
 	$CustomerHolder.add_child(currentCustomer)
-	$CustomerHolder/CustomerAnimator.play("Appear")
+
+	# Wait one frame so _ready() runs and tufts exist
+	await get_tree().process_frame
+
+	# Connect tuft signals safely
+	if currentCustomer.tufts != null:
+		for t in currentCustomer.tufts:
+			t.state_changed.connect(_on_tuft_state_changed)
+
+	# Set up dialogue and sound references
 	currentDialogue = currentCustomer.dialogue
 	currentCustomer.ref = false
 	currentCustomer.soundHolder = $Sounds
-	
+
+	# Play appear animation
+	$CustomerHolder/CustomerAnimator.play("Appear")
+
+	# Sound and footsteps
 	$Sounds/Doorbell.play()
 	footsteps()
-	
-	await get_tree().create_timer(1).timeout
-	
-	llamaTalkSFX.pick_random().play()
-	
+	await get_tree().create_timer(1.0).timeout
+
+	# Handle reference photo if required
 	if !currentCustomer.showRef:
 		$ReferenceHolder/ReferenceBackdrop.visible = false
-		$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.reqDialogue, 3, currentDialogue.customerName)
-		await get_tree().create_timer(3).timeout
+		$SpeechBubbleManager.create_bubble(
+			Vector2(-177, -78), false, 0,
+			currentDialogue.reqDialogue, 3, currentDialogue.customerName
+		)
+		await get_tree().create_timer(3.0).timeout
+		# After dialogue, advance sequence
 		sequence_next()
 	else:
+		# Remove old reference if it exists
 		if currentRef != null:
 			currentRef.queue_free()
+
+		# Instantiate and show reference
 		currentRef = ll.instantiate()
 		$ReferenceHolder.add_child(currentRef)
 		currentRef.ref = true
-		currentRef.scale = Vector2(2,2)
+		currentRef.scale = Vector2(2, 2)
+
+		# Start reference appear/disappear sequence
 		ref_start()
 
 func ref_start():
@@ -285,6 +318,18 @@ func start_scoring():
 		#prompt player to progress
 		#disable blockInput
 	pass
+	
+func is_finished() -> bool:
+	var tufts: Array = currentCustomer.tufts
+	
+	if tufts.size() == 0:
+		return false
+	
+	for t in tufts:
+		if t.currentState != t.desiredState:
+			return false
+	
+	return true
 
 func find_score() -> bool:
 	var tufts: Array = currentCustomer.tufts
@@ -356,6 +401,11 @@ func _input(event: InputEvent):
 
 func _process(delta: float) -> void:
 	game_time_label.text = str(int(game_time_timer.time_left))
+
+	if seqCurrent == Sequence.GAMEPLAY and currentCustomer != null:
+		if is_finished():
+			sequence_next()
+			
 	if currentCustomer != null:
 		if currentCustomer.murdered and !murdered:
 			murdered = true

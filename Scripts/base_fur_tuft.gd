@@ -4,6 +4,8 @@ extends Area2D
 
 enum States { NORMAL, SHAVED, FIRE, DYED, CHARRED }
 
+signal state_changed
+
 @export var startState: States
 @export var currentState: States
 @export var desiredState: States
@@ -88,18 +90,21 @@ func shave():
 		llama.soundHolder.get_node("GgaRazorRev(2)").play()
 		llama.soundHolder.get_node("GgaWoosh2").play()
 		display()
-
+		emit_signal("state_changed")
+		
 func regrow():
 	if currentState == States.SHAVED:
 		currentState = States.NORMAL
 		llama.gga_rogaine_drop_.play()
 		display()
+		emit_signal("state_changed")
 
 func dye():
 	if currentState == States.NORMAL:
 		currentState = States.DYED
 		llama.gga_hair_dye_1_.play()
 		display()
+		emit_signal("state_changed")
 
 func douse():
 	if currentState == States.FIRE:
@@ -109,6 +114,7 @@ func douse():
 		$FireParticles.process_material.color.a = .5
 		$FireParticles.emitting = true
 		display()
+		emit_signal("state_changed")
 
 func _on_body_entered(body: Node2D):
 	
