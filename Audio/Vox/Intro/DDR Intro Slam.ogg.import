@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcv2yomx183m2"
+path="res://.godot/imported/DDR Intro Slam.ogg-46a8228a06ae23bafca4f7f355beb51f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Intro/DDR Intro Slam.ogg"
+dest_files=["res://.godot/imported/DDR Intro Slam.ogg-46a8228a06ae23bafca4f7f355beb51f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

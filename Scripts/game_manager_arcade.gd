@@ -18,8 +18,12 @@ var currentRef
 var currentCustomerIndex: int = -1
 
 var toolMode: Tool.Modes
+var lastToolMode: Tool.Modes = Tool.Modes.RAZOR
+var toolModeInitialized := false
 
 signal sequence_update(seq: Sequence)
+
+
 
 @onready var header_label: Label = $TutorialHolder/HeaderLabel
 @onready var tutorial_label: Label = $TutorialHolder/TutorialLabel
@@ -27,6 +31,9 @@ signal sequence_update(seq: Sequence)
 @onready var game_time_label = $GameTimeLabel
 @onready var game_time_timer = $GameTimeLabel/GameTimeTimer
 
+#Grab clipper/announcer barks
+var bark_sounds: Array[AudioStream] = []
+var clipper_sounds: Array[AudioStream] = []
 
 #Llama Array
 @onready var llamas: Array[PackedScene] = [
@@ -76,12 +83,73 @@ var tutorialMode: bool
 
 @export var llamaTalkSFX: Array[AudioStreamPlayer]
 
+
 func _ready() -> void:
 	$PlayerTool.active = false
 	sequence_next()
 	game_time_label.text = str(game_time_timer.time_left)
 	game_time_timer.paused = true
 	
+	#Get Announcer Barks + Clipper Barks ready
+	load_bark_sounds()
+	load_clipper_sounds()
+
+func load_bark_sounds():
+	var dir = DirAccess.open("res://Audio/Vox/")
+	if dir == null:
+		push_error("Could not open Vox directory.")
+		return
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".ogg"):
+			var path = "res://Audio/Vox/" + file_name
+			var sound = load(path)
+			if sound != null:
+				bark_sounds.append(sound)
+		file_name = dir.get_next()
+	
+	dir.list_dir_end()
+	
+func play_random_bark():
+	if bark_sounds.is_empty():
+		return
+	
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+	player.stream = bark_sounds.pick_random()
+	player.finished.connect(player.queue_free)
+	player.play()
+
+func load_clipper_sounds():
+	var dir = DirAccess.open("res://Audio/Vox/Clipper/")
+	if dir == null:
+		push_error("Could not open Clipper directory.")
+		return
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".ogg"):
+			var path = "res://Audio/Vox/Clipper/" + file_name
+			var sound = load(path)
+			if sound != null:
+				clipper_sounds.append(sound)
+		file_name = dir.get_next()
+	
+	dir.list_dir_end()
+	
+
+func play_random_clipper_sound():
+	if clipper_sounds.is_empty():
+		return
+	
+	$ClipperBarkPlayer.stream = clipper_sounds.pick_random()
+	$ClipperBarkPlayer.pitch_scale = randf_range(0.95, 1.05) # subtle variation
+	$ClipperBarkPlayer.play()
 
 func call_tutorial(header: String, body: String):
 	$Sounds/GgaWoosh.play()
@@ -334,9 +402,11 @@ func start_scoring():
 		$MirrorHolder/Mirror.play("Sparkle")
 		currentCustomer.animate_happy()
 		$Sounds/GgaScorePositive.play()
+		play_random_bark()
 	else:
 		currentCustomer.animate_upset()
 		$Sounds/GgaScoreNegative.play()
+		play_random_bark()
 	
 	await get_tree().create_timer(1).timeout
 	$MirrorHolder/MirrorAnim.play("Disappear")
@@ -463,6 +533,7 @@ func _process(delta: float) -> void:
 func score_screen():
 	print("Murder!")
 	get_tree().change_scene_to_file("res://Scenes/score_screen.tscn")
+	play_random_bark()
 	
 func add_time_to_timer(timer: Timer, bonus: int) -> void:
 	var new_time = timer.time_left + bonus
@@ -477,6 +548,27 @@ func _on_game_time_timer_timeout():
 
 func _on_player_tool_tool_mode_changed(mode: Tool.Modes) -> void:
 	toolMode = mode
-	$Sounds/GgaSwap.play()
+	
+	# Always update customer tool mode
 	if currentCustomer != null:
 		currentCustomer.tool_mode = toolMode
+	
+	# Prevent sound outside gameplay
+	if seqCurrent != Sequence.GAMEPLAY:
+		lastToolMode = mode
+		return
+	
+	# Prevent sound on first initialization
+	if not toolModeInitialized:
+		lastToolMode = mode
+		toolModeInitialized = true
+		return
+	
+	# Prevent sound if same tool
+	if mode == lastToolMode:
+		return
+	
+	lastToolMode = mode
+	
+	$Sounds/GgaSwap.play()
+	play_random_clipper_sound()

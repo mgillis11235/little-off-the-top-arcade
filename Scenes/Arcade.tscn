@@ -1313,7 +1313,7 @@ stream = ExtResource("43_4vt2p")
 volume_db = -6.0
 autoplay = true
 bus = &"Music"
-parameters/looping = false
+parameters/looping = true
 
 [node name="GameTimeLabel" type="Label" parent="."]
 z_index = 3001
@@ -1363,6 +1363,16 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 20
 text = "+5 sec
 bonus"
+
+[node name="BarkPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -14.106
+max_polyphony = 5
+bus = &"SFX"
+
+[node name="ClipperBarkPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -14.106
+max_polyphony = 5
+bus = &"SFX"
 
 [node name="WorldBoundaries" type="StaticBody2D" parent="."]
 collision_layer = 8
