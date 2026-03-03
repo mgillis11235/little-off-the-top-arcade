@@ -1370,7 +1370,7 @@ max_polyphony = 5
 bus = &"SFX"
 
 [node name="ClipperBarkPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -14.106
+volume_db = 0.199
 max_polyphony = 5
 bus = &"SFX"
 

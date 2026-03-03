@@ -345,16 +345,40 @@ func start_gameplay():
 
 
 func play_mid_dialogue(totalTime):
-	if currentDialogue.midDialogue.is_empty():
+	if currentDialogue.midDialogue == null:
 		return
 
-	var count = currentDialogue.midDialogue.size()
+	# Ensure midDialogue is always an array
+	var dialogue_lines: Array
+	if typeof(currentDialogue.midDialogue) == TYPE_STRING:
+		dialogue_lines = [currentDialogue.midDialogue]
+	elif typeof(currentDialogue.midDialogue) == TYPE_ARRAY:
+		dialogue_lines = currentDialogue.midDialogue.duplicate()
+	else:
+		return
+
+	if dialogue_lines.is_empty():
+		return
+
+	var count = dialogue_lines.size()
 	var segment_time = (totalTime - 1) / float(count)
 
 	for s in range(count):
+		
+		# Remove any previous bubble before showing new one
+		$SpeechBubbleManager.remove_bubble()
+
+		# Play llama sound
 		llamaTalkSFX.pick_random().play()
-		show_dialogue(currentDialogue.midDialogue[s], currentDialogue.customerName, segment_time)
+
+		# Show dialogue
+		show_dialogue(dialogue_lines[s], currentDialogue.customerName, segment_time)
+
+		# Wait for this segment before showing next
 		await get_tree().create_timer(segment_time).timeout
+
+		# Remove bubble at end of segment
+		$SpeechBubbleManager.remove_bubble()
 
 func show_dialogue(text: String, customerName: String, duration: float = 0) -> void:
 	# Remove any existing speech bubble
