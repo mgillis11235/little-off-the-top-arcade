@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://drboq8w537e8a"]
+[gd_scene load_steps=129 format=3 uid="uid://drboq8w537e8a"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager_arcade.gd" id="1_fqh0p"]
 [ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
@@ -44,6 +44,7 @@
 [ext_resource type="AudioStream" uid="uid://du2qw0mda7288" path="res://Audio/GGA_Footstep (3).mp3" id="37_2nngs"]
 [ext_resource type="AudioStream" uid="uid://vm8m8ay4sq1" path="res://Audio/whimper.wav" id="38_4auu2"]
 [ext_resource type="AudioStream" uid="uid://ciscen6r1t0wv" path="res://Audio/tech_oasis-take-me-away.mp3" id="43_4vt2p"]
+[ext_resource type="AudioStream" uid="uid://bl1xscqkjsbfr" path="res://Audio/alexgrohl-punk-rock.mp3" id="45_guaxb"]
 
 [sub_resource type="Animation" id="Animation_rdfi2"]
 resource_name = "Appear"
@@ -1313,7 +1314,11 @@ stream = ExtResource("43_4vt2p")
 volume_db = -6.0
 autoplay = true
 bus = &"Music"
-parameters/looping = true
+
+[node name="PopPunkTheme2" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("45_guaxb")
+volume_db = -6.0
+bus = &"Music"
 
 [node name="GameTimeLabel" type="Label" parent="."]
 z_index = 3001

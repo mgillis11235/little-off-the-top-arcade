@@ -23,13 +23,16 @@ var toolModeInitialized := false
 
 signal sequence_update(seq: Sequence)
 
-
-
 @onready var header_label: Label = $TutorialHolder/HeaderLabel
 @onready var tutorial_label: Label = $TutorialHolder/TutorialLabel
 @onready var tutorial_anim: AnimationPlayer = $TutorialHolder/TutorialAnim
 @onready var game_time_label = $GameTimeLabel
 @onready var game_time_timer = $GameTimeLabel/GameTimeTimer
+
+#Theme music
+@onready var pop_punk_theme = $Sounds/PopPunkTheme
+@onready var pop_punk_theme_2 = $Sounds/PopPunkTheme2
+
 
 #Grab clipper/announcer barks
 var bark_sounds: Array[AudioStream] = []
@@ -85,6 +88,8 @@ var tutorialMode: bool
 
 
 func _ready() -> void:
+	pop_punk_theme.finished.connect(func(): pop_punk_theme_2.play())
+	pop_punk_theme_2.finished.connect(func(): pop_punk_theme.play())
 	$PlayerTool.active = false
 	sequence_next()
 	game_time_label.text = str(game_time_timer.time_left)
