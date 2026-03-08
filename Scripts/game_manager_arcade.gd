@@ -218,55 +218,56 @@ func _on_tuft_state_changed():
 	if is_finished():
 		sequence_next()
 		
-#Load Llama Function
 func load_llama(ll):
-	# Remove previous llama if exists
+
+	# Stop any dialogue still running
+	$SpeechBubbleManager.stop_dialogue()
+
+	# Remove previous llama
 	if currentCustomer != null:
 		currentCustomer.queue_free()
 
-	# Remove old reference if it exists
+	# Remove old reference
 	if currentRef != null:
 		currentRef.queue_free()
 
-	# Instantiate new llama
 	currentCustomer = ll.instantiate()
 	$CustomerHolder.add_child(currentCustomer)
 
-	# Wait one frame so _ready() runs and tufts exist
 	await get_tree().process_frame
 
-	# Connect tuft signals
 	if currentCustomer.tufts != null:
 		for t in currentCustomer.tufts:
 			t.state_changed.connect(_on_tuft_state_changed)
 
-	# Set up dialogue and sound references
 	currentDialogue = currentCustomer.dialogue
 	currentCustomer.ref = false
 	currentCustomer.soundHolder = $Sounds
 
-	# Play appear animation
 	$CustomerHolder/CustomerAnimator.play("Appear")
 
-	# Sound and footsteps
 	$Sounds/Doorbell.play()
 	footsteps()
 	await get_tree().create_timer(1.0).timeout
 
-	# Handle reference photo if required
 	if not currentCustomer.showRef:
 		$ReferenceHolder/ReferenceBackdrop.visible = false
-		show_dialogue(currentDialogue.reqDialogue, currentDialogue.customerName)
+
+		$SpeechBubbleManager.play_dialogue(
+			currentDialogue.reqDialogue,
+			currentDialogue.customerName,
+			3.0
+		)
+
 		await get_tree().create_timer(3.0).timeout
 		sequence_next()
+
 	else:
-		# Instantiate and show reference
 		currentRef = ll.instantiate()
 		$ReferenceHolder.add_child(currentRef)
 		currentRef.ref = true
-		currentRef.scale = Vector2(2, 2)
+		currentRef.scale = Vector2(2,2)
 
-		# Start reference appear/disappear sequence
 		ref_start()
 
 
@@ -282,7 +283,11 @@ func ref_appear():
 	$Sounds/GgaWoosh.play()
 	$ReferenceHolder/ReferenceBackdrop.visible = true
 	$ReferenceHolder/ReferenceAnimator.play("Appear")
-	$SpeechBubbleManager.create_bubble(Vector2(165,110), true, 0, currentDialogue.reqDialogue, 0, currentDialogue.customerName)
+	$SpeechBubbleManager.play_dialogue(
+		currentDialogue.reqDialogue,
+		currentDialogue.customerName,
+		3
+	)
 	pass
 
 func ref_disappear():
@@ -308,7 +313,11 @@ func start_gameplay():
 
 	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
 	
-	play_mid_dialogue(totalTime)
+	$SpeechBubbleManager.play_dialogue(
+		currentDialogue.midDialogue,
+		currentDialogue.customerName,
+		totalTime - 1
+)
 	#$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.midDialogue[0], totalTime - 1, currentDialogue.customerName)
 	
 	$PlayerTool/TimerLabel/Timer.start()
@@ -348,43 +357,6 @@ func start_gameplay():
 	$ToolHolder.select_tool($ToolHolder/RazorIcon)
 	pass
 
-
-func play_mid_dialogue(totalTime):
-	if currentDialogue.midDialogue == null:
-		return
-
-	# Ensure midDialogue is always an array
-	var dialogue_lines: Array
-	if typeof(currentDialogue.midDialogue) == TYPE_STRING:
-		dialogue_lines = [currentDialogue.midDialogue]
-	elif typeof(currentDialogue.midDialogue) == TYPE_ARRAY:
-		dialogue_lines = currentDialogue.midDialogue.duplicate()
-	else:
-		return
-
-	if dialogue_lines.is_empty():
-		return
-
-	var count = dialogue_lines.size()
-	var segment_time = (totalTime - 1) / float(count)
-
-	for s in range(count):
-		
-		# Remove any previous bubble before showing new one
-		$SpeechBubbleManager.remove_bubble()
-
-		# Play llama sound
-		llamaTalkSFX.pick_random().play()
-
-		# Show dialogue
-		show_dialogue(dialogue_lines[s], currentDialogue.customerName, segment_time)
-
-		# Wait for this segment before showing next
-		await get_tree().create_timer(segment_time).timeout
-
-		# Remove bubble at end of segment
-		$SpeechBubbleManager.remove_bubble()
-
 func show_dialogue(text: String, customerName: String, duration: float = 0) -> void:
 	# Remove any existing speech bubble
 	$SpeechBubbleManager.remove_bubble()
@@ -400,6 +372,7 @@ func show_dialogue(text: String, customerName: String, duration: float = 0) -> v
 			customerName
 		)
 func start_scoring():
+	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
 	add_time_to_timer(game_time_timer, time_bonus)
 	var tween = create_tween()
