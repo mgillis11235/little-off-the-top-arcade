@@ -232,6 +232,8 @@ func load_llama(ll):
 		currentRef.queue_free()
 
 	currentCustomer = ll.instantiate()
+	if currentCustomer.showRef == false:
+		currentCustomer.showRef = true
 	$CustomerHolder.add_child(currentCustomer)
 
 	await get_tree().process_frame
