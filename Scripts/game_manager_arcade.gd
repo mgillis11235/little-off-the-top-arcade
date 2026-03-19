@@ -66,6 +66,7 @@ var customerProgress: int = 0
 var currentDialogue: DialogueData
 var scores: Array[float]
 var time_bonus: int = 5
+var llamaQueue: Array[int] = []
 
 #var toolEnables = {
 #	0: false,
@@ -90,12 +91,19 @@ var tutorialMode: bool
 func _ready() -> void:
 	pop_punk_theme.finished.connect(func(): pop_punk_theme_2.play())
 	pop_punk_theme_2.finished.connect(func(): pop_punk_theme.play())
+	
 	$PlayerTool.active = false
+	
+	# Create shuffled llama order
+	llamaQueue.clear()
+	for i in range(llamas.size()):
+		llamaQueue.append(i)
+	llamaQueue.shuffle()
+	
 	sequence_next()
 	game_time_label.text = str(game_time_timer.time_left)
 	game_time_timer.paused = true
 	
-	#Get Announcer Barks + Clipper Barks ready
 	load_bark_sounds()
 	load_clipper_sounds()
 
@@ -178,7 +186,7 @@ func sequence_next():
 
 	match seqCurrent:
 		Sequence.START:
-			# Check if a tutorial should play for this "progress step"
+			# Tutorial check
 			if tutorials.has(customerProgress) and !tutorialOverride:
 				call_tutorial(tutorials[customerProgress][0], tutorials[customerProgress][1])
 				tutorialOverride = true
@@ -186,19 +194,27 @@ func sequence_next():
 				return
 			else:
 				tutorialOverride = false
-				# Are there still customers left?
-				if customerProgress < llamas.size():
-					# Pick a llama randomly that hasn't been used yet
-					var available_indexes = []
-					for i in range(llamas.size()):
-						if i != currentCustomerIndex:
-							available_indexes.append(i)
-					var random_index = available_indexes.pick_random()
-					currentCustomerIndex = random_index
-					load_llama(llamas[random_index])
-				else:
-					await get_tree().create_timer(.75).timeout
-					score_screen()
+
+			# Refill shuffled queue if empty
+			if llamaQueue.is_empty():
+				var last = currentCustomerIndex
+				
+				for i in range(llamas.size()):
+					llamaQueue.append(i)
+				
+				llamaQueue.shuffle()
+				
+				# Prevent immediate repeat across reshuffle
+				if llamaQueue.size() > 1 and llamaQueue[0] == last:
+					var temp = llamaQueue[0]
+					llamaQueue[0] = llamaQueue[1]
+					llamaQueue[1] = temp
+
+			# Pull next llama
+			var next_index = llamaQueue.pop_front()
+			currentCustomerIndex = next_index
+			
+			load_llama(llamas[next_index])
 		Sequence.GAMEPLAY:
 			start_gameplay()
 		Sequence.SCORING:
@@ -238,6 +254,7 @@ func load_llama(ll):
 
 	await get_tree().process_frame
 
+	# Connect tufts
 	if currentCustomer.tufts != null:
 		for t in currentCustomer.tufts:
 			t.state_changed.connect(_on_tuft_state_changed)
@@ -271,7 +288,6 @@ func load_llama(ll):
 		currentRef.scale = Vector2(2,2)
 
 		ref_start()
-
 
 
 func ref_start():
