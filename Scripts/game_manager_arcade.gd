@@ -301,11 +301,11 @@ func ref_appear():
 	$Sounds/GgaWoosh.play()
 	$ReferenceHolder/ReferenceBackdrop.visible = true
 	$ReferenceHolder/ReferenceAnimator.play("Appear")
-	$SpeechBubbleManager.play_dialogue(
-		currentDialogue.reqDialogue,
-		currentDialogue.customerName,
-		3
-	)
+	#$SpeechBubbleManager.play_dialogue(
+		#currentDialogue.reqDialogue,
+		#currentDialogue.customerName,
+		#3
+	#)
 	pass
 
 func ref_disappear():
@@ -331,11 +331,11 @@ func start_gameplay():
 
 	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
 	
-	$SpeechBubbleManager.play_dialogue(
-		currentDialogue.midDialogue,
-		currentDialogue.customerName,
-		totalTime - 1
-)
+	#$SpeechBubbleManager.play_dialogue(
+		#currentDialogue.midDialogue,
+		#currentDialogue.customerName,
+		#totalTime - 1
+#)
 	#$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.midDialogue[0], totalTime - 1, currentDialogue.customerName)
 	
 	$PlayerTool/TimerLabel/Timer.start()
