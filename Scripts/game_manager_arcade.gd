@@ -272,6 +272,10 @@ func load_llama(ll):
 	currentCustomer = ll.instantiate()
 	$CustomerHolder.add_child(currentCustomer)
 	await get_tree().process_frame
+	
+	# show reference photo always, even if showRef is 'false' in the resource
+	if currentCustomer.showRef == false:
+		currentCustomer.showRef = true
 
 	# Connect tufts
 	if currentCustomer.tufts != null:
@@ -295,11 +299,11 @@ func load_llama(ll):
 	if not currentCustomer.showRef:
 		$ReferenceHolder/ReferenceBackdrop.visible = false
 
-		$SpeechBubbleManager.play_dialogue(
-			currentDialogue.reqDialogue,
-			currentDialogue.customerName,
-			3.0
-		)
+		#$SpeechBubbleManager.play_dialogue(
+			#currentDialogue.reqDialogue,
+			#currentDialogue.customerName,
+			#3.0
+		#)
 
 		await get_tree().create_timer(3.0).timeout
 		sequence_next()
@@ -579,7 +583,7 @@ func _process(delta: float) -> void:
 	game_time_label.text = str(int(game_time_timer.time_left))
 
 	if seqCurrent == Sequence.GAMEPLAY and currentCustomer != null:
-		if is_finished():
+		if is_finished() and not currentCustomer.is_in_group("no_auto_finish"):
 			sequence_next()
 			
 	if currentCustomer != null:

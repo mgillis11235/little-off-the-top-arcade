@@ -344,7 +344,7 @@ animations = [{
 "speed": 4.0
 }]
 
-[node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises")]
+[node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises") groups=["no_auto_finish"]]
 position = Vector2(-32, -3)
 script = ExtResource("1_r012p")
 showRef = true
