@@ -76,11 +76,17 @@ var llamaQueue: Array[int] = []
 #}
 
 var tutorials = {
-	0: ["the basics", "Use WASD or arrow keys to move your razor and give these llamas the haircuts they desire!"],
-	4: ["reference photos", "Some llamas like to bring in a reference photo for you to work off of. Try to match it as exactly as you can!"],
-	9: ["tools", "You can press Q or E to switch tools. Try using some hair dye on your next customer!"],
-	13: ["fur serum","Some llamas want less hair. Others want more. Use fur serum for the latter."],
-	20: ["your hands","They're slippery. You feel the razor escaping your grip."]
+	0: ["how to play", "Make the llamas look like their reference pics before time runs out!
+	
+		Use WASD to move your razor, hair dye, rogaine, or extinguisher.
+		
+		Switch tools with Q/E
+		
+		End a cut early with SPACE"],
+	#4: ["reference photos", "Some llamas like to bring in a reference photo for you to work off of. Try to match it as exactly as you can!"],
+	#9: ["tools", "You can press Q or E to switch tools. Try using some hair dye on your next customer!"],
+	#13: ["fur serum","Some llamas want less hair. Others want more. Use fur serum for the latter."],
+	#20: ["your hands","They're slippery. You feel the razor escaping your grip."]
 }
 
 var tutorialMode: bool
