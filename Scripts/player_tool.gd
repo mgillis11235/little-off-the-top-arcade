@@ -82,13 +82,14 @@ func get_input():
 
 func _physics_process(delta):
 	if active:
-		#z_index = -position.y + 500
-		
 		var direction = get_input()
+		var current_speed = speed * gm.shaver_speed_multiplier  # apply multiplier here
+
 		if direction.length() > 0:
-			velocity = velocity.lerp(direction.normalized() * speed, acceleration)
+			velocity = velocity.lerp(direction.normalized() * current_speed, acceleration)
 		else:
 			velocity = velocity.lerp(Vector2.ZERO, friction)
+
 		move_and_slide()
 
 func _process(delta: float):

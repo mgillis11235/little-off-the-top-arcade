@@ -21,6 +21,12 @@ var toolMode: Tool.Modes
 var lastToolMode: Tool.Modes = Tool.Modes.RAZOR
 var toolModeInitialized := false
 
+# Multiplier for shaver speed (1 = normal)
+var shaver_speed_multiplier: float = 1.0
+var shaver_boost_timer: Timer
+
+
+
 signal sequence_update(seq: Sequence)
 
 @onready var header_label: Label = $TutorialHolder/HeaderLabel
@@ -28,6 +34,7 @@ signal sequence_update(seq: Sequence)
 @onready var tutorial_anim: AnimationPlayer = $TutorialHolder/TutorialAnim
 @onready var game_time_label = $GameTimeLabel
 @onready var game_time_timer = $GameTimeLabel/GameTimeTimer
+@onready var cash_label: Label = $GameTimeLabel/CashLabel
 
 #Theme music
 @onready var pop_punk_theme = $Sounds/PopPunkTheme
@@ -67,6 +74,7 @@ var currentDialogue: DialogueData
 var scores: Array[float]
 var time_bonus: int = 5
 var llamaQueue: Array[int] = []
+var cash = 0
 
 #var toolEnables = {
 #	0: false,
@@ -109,6 +117,12 @@ func _ready() -> void:
 	sequence_next()
 	game_time_label.text = str(game_time_timer.time_left)
 	game_time_timer.paused = true
+	
+	#Bonus
+	shaver_boost_timer = Timer.new()
+	add_child(shaver_boost_timer)
+	shaver_boost_timer.one_shot = true
+	shaver_boost_timer.timeout.connect(_on_shaver_boost_timeout)
 	
 	load_bark_sounds()
 	load_clipper_sounds()
@@ -160,8 +174,11 @@ func load_clipper_sounds():
 		file_name = dir.get_next()
 	
 	dir.list_dir_end()
-	
 
+#Speed boost bonus handling for perfect scores
+func _on_shaver_boost_timeout():
+	shaver_speed_multiplier = 1.0
+	
 func play_random_clipper_sound():
 	if clipper_sounds.is_empty():
 		return
@@ -241,7 +258,6 @@ func _on_tuft_state_changed():
 		sequence_next()
 		
 func load_llama(ll):
-
 	# Stop any dialogue still running
 	$SpeechBubbleManager.stop_dialogue()
 
@@ -254,10 +270,7 @@ func load_llama(ll):
 		currentRef.queue_free()
 
 	currentCustomer = ll.instantiate()
-	if currentCustomer.showRef == false:
-		currentCustomer.showRef = true
 	$CustomerHolder.add_child(currentCustomer)
-
 	await get_tree().process_frame
 
 	# Connect tufts
@@ -270,10 +283,14 @@ func load_llama(ll):
 	currentCustomer.soundHolder = $Sounds
 
 	$CustomerHolder/CustomerAnimator.play("Appear")
-
 	$Sounds/Doorbell.play()
 	footsteps()
 	await get_tree().create_timer(1.0).timeout
+
+	# Start shaver boost timer if multiplier > 1
+	if shaver_speed_multiplier > 1.0:
+		shaver_boost_timer.wait_time = 10.0  # boost lasts the whole next llama gameplay
+		shaver_boost_timer.start()
 
 	if not currentCustomer.showRef:
 		$ReferenceHolder/ReferenceBackdrop.visible = false
@@ -294,7 +311,6 @@ func load_llama(ll):
 		currentRef.scale = Vector2(2,2)
 
 		ref_start()
-
 
 func ref_start():
 	ref_appear()
@@ -399,21 +415,21 @@ func start_scoring():
 	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
 	add_time_to_timer(game_time_timer, time_bonus)
+	
 	var tween = create_tween()
 	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
 	tween.tween_interval(1.0)
 	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
 	tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
 	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
+	
 	$PlayerTool.active = false
 	currentCustomer.toolEnabled = false
-	#sound effect!
-	
 	$ToolHolder.hide()
 	
-	log_score()
-	
+	var perfect := false
 	if find_score():
+		perfect = currentCustomer.tufts.size() > 0 and currentCustomer.tufts.filter(func(t): return t.currentState != t.desiredState).size() == 0
 		$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.finshDialogueHappy, 2, currentDialogue.customerName)
 	else:
 		$SpeechBubbleManager.create_bubble(Vector2(-177,-78), false, 0, currentDialogue.finshDialogueUpset, 2, currentDialogue.customerName)
@@ -427,8 +443,12 @@ func start_scoring():
 	if find_score():
 		$MirrorHolder/Mirror.play("Sparkle")
 		currentCustomer.animate_happy()
-		$Sounds/GgaScorePositive.play()
-		play_random_bark()
+		if perfect:
+			# Only play Perfect sound, no bark
+			$Sounds/Perfect.play()
+		else:
+			$Sounds/GgaScorePositive.play()
+			play_random_bark()
 	else:
 		currentCustomer.animate_upset()
 		$Sounds/GgaScoreNegative.play()
@@ -437,22 +457,10 @@ func start_scoring():
 	await get_tree().create_timer(1).timeout
 	$MirrorHolder/MirrorAnim.play("Disappear")
 	$CustomerHolder/CustomerAnimator.play("Disappear")
+	log_score()
 	footsteps()
 	await get_tree().create_timer(.75).timeout
 	sequence_next()
-		#llama's face updates
-		#mirror animates off-screen
-	#another short delay
-		#score shows on-screen
-		#score sound effect
-		#score appearance updates to positive or negative
-	#another short delay
-		#llama sound effect
-		#llama dialogue
-	#another short delay
-		#prompt player to progress
-		#disable blockInput
-	pass
 	
 func is_finished() -> bool:
 	var tufts: Array = currentCustomer.tufts
@@ -484,13 +492,46 @@ func log_score():
 	var tufts: Array = currentCustomer.tufts
 	var correct: float = 0
 	var total: int = tufts.size()
+	
 	for t in tufts:
 		if t.currentState == t.desiredState:
 			correct += 1
 	
-	scores.append(correct / float(total))
-	ScoreHolder.scores.append(correct / float(total))
+	var ratio := 0.0
+	if total > 0:
+		ratio = correct / float(total)
+	
+	# Store score
+	scores.append(ratio)
+	ScoreHolder.scores.append(ratio)
 
+	# Calculate earned cash
+	var earned := 35 * ratio
+
+	if earned > 0:
+		# Play money sound and popup only if earned > 0
+		$Sounds/Money.play()
+		await get_tree().create_timer(0.25).timeout
+		cash += round(earned)
+		spawn_cash_popup(earned, ratio == 1.0) # gold popup if perfect
+		update_cash_display()
+
+	# Perfect bonus handling
+	if ratio == 1.0:
+		cash += 15
+		update_cash_display()
+		
+		# Activate shaver speed boost for next llama
+		shaver_speed_multiplier = 1.6
+		shaver_boost_timer.stop()  # stop any previous timer, just in case
+		# The timer wait time will be set when the next llama loads
+	else:
+		pass
+		# Play random llama bark if not perfect
+		#play_random_bark()
+	
+	print("Earned: ", earned, " | Total cash: ", cash)
+	
 func start_spit():
 	sequence_next()
 	pass
@@ -568,10 +609,115 @@ func add_time_to_timer(timer: Timer, bonus: int) -> void:
 func _on_timer_timeout():
 	if seqCurrent == Sequence.GAMEPLAY:
 		sequence_next()
-
+		
 func _on_game_time_timer_timeout():
 	score_screen()
+	
+func update_cash_display():
+	cash_label.text = "$pit: " + str(int(cash))
 
+	# Remove existing tween so they don't stack weirdly
+	if cash_label.has_meta("tween"):
+		var old_tween = cash_label.get_meta("tween")
+		if old_tween:
+			old_tween.kill()
+
+	var tween = create_tween()
+	cash_label.set_meta("tween", tween)
+
+	# Store original color
+	var original_color: Color = cash_label.modulate
+	var money_green := Color(0.4, 1.0, 0.4)
+
+	tween.tween_property(
+		cash_label, "scale",
+		Vector2(1.35, 1.35),
+		0.2
+	).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+
+	#Color to green
+	tween.parallel().tween_property(
+		cash_label, "modulate",
+		money_green,
+		0.25
+	)
+
+	tween.tween_interval(0.1)
+
+	tween.tween_property(
+		cash_label, "scale",
+		Vector2(1, 1),
+		0.4
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	tween.parallel().tween_property(
+		cash_label, "modulate",
+		original_color,
+		0.45
+	)
+
+func spawn_cash_popup(amount: float, perfect: bool = false) -> void:
+	if amount <= 0:
+		return # don't spawn anything if the player earned nothing
+
+	var popup = Label.new()
+	add_child(popup)
+
+	# Text
+	popup.text = "+$" + str(int(amount))
+	popup.position = cash_label.global_position + Vector2(0, -10)
+
+	# Style
+	if perfect:
+		popup.modulate = Color(1.0, 0.84, 0.0) # gold for perfect
+	else:
+		popup.modulate = Color(0.4, 1.0, 0.4) # green for normal
+	popup.scale = Vector2(1, 1)
+
+	# Optional particles for perfect
+	if perfect:
+		var particles = CPUParticles2D.new()
+		particles.amount = 20
+		particles.lifetime = 0.6
+		particles.one_shot = true
+		particles.position = popup.position
+		particles.direction = Vector2(0, -1)
+		particles.speed_scale = 150
+		particles.emission_shape = CPUParticles2D.EMISSION_SHAPE_POINT
+		particles.gravity = Vector2(0, 300)
+		particles.color = Color(1.0, 0.84, 0.0)
+		add_child(particles)
+		particles.emitting = true
+		await get_tree().create_timer(particles.lifetime).timeout
+		particles.queue_free()
+
+	# Animate popup
+	var tween = create_tween()
+
+	# Move upward
+	tween.tween_property(
+		popup, "position",
+		popup.position + Vector2(0, -50),
+		1.0
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	# Fade out
+	tween.parallel().tween_property(
+		popup, "modulate:a",
+		0.0,
+		1.0
+	)
+
+	# Slight scale up (juicy)
+	tween.parallel().tween_property(
+		popup, "scale",
+		Vector2(1.3, 1.3),
+		0.4
+	)
+
+	# Cleanup
+	tween.finished.connect(popup.queue_free)
+	
 func _on_player_tool_tool_mode_changed(mode: Tool.Modes) -> void:
 	toolMode = mode
 	
