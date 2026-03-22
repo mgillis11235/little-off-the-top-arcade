@@ -25,6 +25,8 @@ var toolModeInitialized := false
 var shaver_speed_multiplier: float = 1.0
 var shaver_boost_timer: Timer
 
+#Blink and red clock countdown variable
+var clock_blink_timer: float = 0.0
 
 
 signal sequence_update(seq: Sequence)
@@ -178,6 +180,7 @@ func load_clipper_sounds():
 #Speed boost bonus handling for perfect scores
 func _on_shaver_boost_timeout():
 	shaver_speed_multiplier = 1.0
+	$PlayerTool/SpeedParticles.emitting = false
 	
 func play_random_clipper_sound():
 	if clipper_sounds.is_empty():
@@ -528,6 +531,7 @@ func log_score():
 		# Activate shaver speed boost for next llama
 		shaver_speed_multiplier = 1.6
 		shaver_boost_timer.stop()  # stop any previous timer, just in case
+		$PlayerTool/SpeedParticles.emitting = true
 		# The timer wait time will be set when the next llama loads
 	else:
 		pass
@@ -582,6 +586,24 @@ func _input(event: InputEvent):
 func _process(delta: float) -> void:
 	game_time_label.text = str(int(game_time_timer.time_left))
 
+	# Flash red + blink when 10 seconds or less
+	if game_time_timer.time_left <= 10 and not game_time_timer.paused:
+		clock_blink_timer += delta * 6.0  # speed of blinking
+
+		var blink := sin(clock_blink_timer) > 0
+
+		if blink:
+			game_time_label.modulate = Color(1, 0.2, 0.2) # red
+			$Sounds/Timer.play()
+		else:
+			game_time_label.modulate = Color(1, 1, 1) # white
+
+	else:
+		# Reset when above 10 seconds
+		game_time_label.modulate = Color(1, 1, 1)
+		clock_blink_timer = 0.0
+		$Sounds/Timer.stop()
+		
 	if seqCurrent == Sequence.GAMEPLAY and currentCustomer != null:
 		if is_finished() and not currentCustomer.is_in_group("no_auto_finish"):
 			sequence_next()
@@ -748,3 +770,9 @@ func _on_player_tool_tool_mode_changed(mode: Tool.Modes) -> void:
 	
 	$Sounds/GgaSwap.play()
 	play_random_clipper_sound()
+	
+	# Only turn on when the razor is active
+	if mode == Tool.Modes.RAZOR:
+		$PlayerTool/SpeedParticles.emitting = true
+	else:
+		$PlayerTool/SpeedParticles.emitting = false

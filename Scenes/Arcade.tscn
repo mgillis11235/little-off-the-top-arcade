@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://drboq8w537e8a"]
+[gd_scene load_steps=135 format=3 uid="uid://drboq8w537e8a"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager_arcade.gd" id="1_fqh0p"]
 [ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="4_akp6u"]
 [ext_resource type="Texture2D" uid="uid://klpqkjvye2qm" path="res://Sprites/UI_Box_Big2.png" id="5_enmim"]
 [ext_resource type="Texture2D" uid="uid://dhjtdj658md8p" path="res://Sprites/SPLATTER.png" id="5_jvm6e"]
+[ext_resource type="Texture2D" uid="uid://bgg0whlxy2yi5" path="res://Sprites/speedpixel.png" id="6_8gtqu"]
 [ext_resource type="Texture2D" uid="uid://cgw5bsdg7brxr" path="res://Sprites/mirror1.png" id="7_e7h5e"]
 [ext_resource type="Script" path="res://Scripts/speech_bubble_manager.gd" id="7_v8bqo"]
 [ext_resource type="Theme" uid="uid://ivb4q04wd7r1" path="res://Themes/header_text.tres" id="7_vlfs3"]
@@ -27,6 +28,7 @@
 [ext_resource type="AudioStream" uid="uid://c3c8asywle6gx" path="res://Audio/GGA_Razor Rev (2).mp3" id="20_t4u5g"]
 [ext_resource type="AudioStream" uid="uid://bdvdrusm3h54o" path="res://Audio/Vox/Perfect/VOX-youre not an ordinary fella.ogg" id="20_ypbo7"]
 [ext_resource type="AudioStream" uid="uid://bh7eq14jg33pd" path="res://Audio/GGA_Swap.mp3" id="21_1e33n"]
+[ext_resource type="AudioStream" uid="uid://x1lvshtsbf1h" path="res://Audio/timer.wav" id="21_vt3s3"]
 [ext_resource type="AudioStream" uid="uid://cqep5t7d0allj" path="res://Audio/money.mp3" id="22_cabjj"]
 [ext_resource type="AudioStream" uid="uid://bp4ugk4o0t4th" path="res://Audio/GGA_UI Select (1).mp3" id="22_cvdfi"]
 [ext_resource type="AudioStream" uid="uid://bwyocu7k38eru" path="res://Audio/GGA_UI Select (2).mp3" id="23_j4446"]
@@ -47,6 +49,12 @@
 [ext_resource type="AudioStream" uid="uid://vm8m8ay4sq1" path="res://Audio/whimper.wav" id="38_4auu2"]
 [ext_resource type="AudioStream" uid="uid://ciscen6r1t0wv" path="res://Audio/tech_oasis-take-me-away.mp3" id="43_4vt2p"]
 [ext_resource type="AudioStream" uid="uid://bl1xscqkjsbfr" path="res://Audio/alexgrohl-punk-rock.mp3" id="45_guaxb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6wotj"]
+
+[sub_resource type="Gradient" id="Gradient_8107r"]
+offsets = PackedFloat32Array(0, 0.548223, 0.997462, 1)
+colors = PackedColorArray(0.349147, 0.465087, 0.962901, 1, 0.54902, 0.113725, 0.188235, 0.45098, 0.0745098, 0.0745098, 0.0745098, 0, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_rdfi2"]
 resource_name = "Appear"
@@ -989,6 +997,26 @@ script = ExtResource("11_xhldp")
 wait_time = 10.0
 one_shot = true
 
+[node name="SpeedParticles" type="CPUParticles2D" parent="PlayerTool"]
+show_behind_parent = true
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_6wotj")
+position = Vector2(1, 54)
+emitting = false
+amount = 20
+lifetime = 0.3
+randomness = 0.22
+local_coords = true
+texture = ExtResource("6_8gtqu")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector2(0, 1)
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+scale_amount_max = 4.0
+color = Color(0.21871, 0.484168, 0.872959, 1)
+color_ramp = SubResource("Gradient_8107r")
+
 [node name="CustomerHolder" type="Node2D" parent="."]
 
 [node name="CustomerAnimator" type="AnimationPlayer" parent="CustomerHolder"]
@@ -1203,6 +1231,10 @@ bus = &"SFX"
 
 [node name="Perfect" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("20_ypbo7")
+bus = &"SFX"
+
+[node name="Timer" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("21_vt3s3")
 bus = &"SFX"
 
 [node name="RazorHum" type="AudioStreamPlayer2D" parent="Sounds"]
