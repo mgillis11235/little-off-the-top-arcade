@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://drboq8w537e8a"]
+[gd_scene load_steps=136 format=3 uid="uid://drboq8w537e8a"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager_arcade.gd" id="1_fqh0p"]
 [ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://dy52thx2idto5" path="res://Audio/GGA_Llama Talk (1).mp3" id="13_seicj"]
 [ext_resource type="AudioStream" uid="uid://de75mhitqtiel" path="res://Audio/GGA_Llama Talk (2).mp3" id="14_yfv15"]
 [ext_resource type="AudioStream" uid="uid://crdu7boev1yhu" path="res://Audio/GGA_Llama Talk (3).mp3" id="15_b1ugq"]
+[ext_resource type="Texture2D" uid="uid://dfwqgdbsvj3ml" path="res://Sprites/till.png" id="19_ody6t"]
 [ext_resource type="AudioStream" uid="uid://c3c8asywle6gx" path="res://Audio/GGA_Razor Rev (2).mp3" id="20_t4u5g"]
 [ext_resource type="AudioStream" uid="uid://bdvdrusm3h54o" path="res://Audio/Vox/Perfect/VOX-youre not an ordinary fella.ogg" id="20_ypbo7"]
 [ext_resource type="AudioStream" uid="uid://bh7eq14jg33pd" path="res://Audio/GGA_Swap.mp3" id="21_1e33n"]
@@ -1036,6 +1037,7 @@ z_index = 1000
 scale = Vector2(0.496667, 0.496667)
 
 [node name="ReferenceBackdrop" type="AnimatedSprite2D" parent="ReferenceHolder"]
+visible = false
 modulate = Color(0.998305, 0.904363, 0.838376, 1)
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_qpbgw")
@@ -1162,9 +1164,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -150.0
-offset_top = -101.0
+offset_top = -106.0
 offset_right = 450.0
-offset_bottom = -50.0
+offset_bottom = -55.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme = ExtResource("7_vlfs3")
@@ -1178,14 +1180,15 @@ horizontal_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
+offset_left = -104.0
 offset_top = -76.0
-offset_right = 288.0
+offset_right = 316.0
 offset_bottom = 242.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme = ExtResource("8_nv5ob")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 26
 text = "tutorial text goes here more sample writing just to show how it works yes yes yes yes yes"
 vertical_alignment = 1
@@ -1196,9 +1199,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -96.0
-offset_top = 84.0
+offset_top = 90.0
 offset_right = 288.0
-offset_bottom = 122.0
+offset_bottom = 128.0
 grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
 theme = ExtResource("8_nv5ob")
@@ -1214,6 +1217,25 @@ libraries = {
 "": SubResource("AnimationLibrary_iylyc")
 }
 autoplay = "Offscreen"
+
+[node name="TillHolder" type="Node2D" parent="."]
+position = Vector2(-259, 19)
+
+[node name="Till" type="Sprite2D" parent="TillHolder"]
+position = Vector2(443.711, -112.375)
+scale = Vector2(0.0664665, 0.0596055)
+texture = ExtResource("19_ody6t")
+
+[node name="CashLabel" type="Label" parent="TillHolder"]
+offset_left = 402.0
+offset_top = -123.0
+offset_right = 546.0
+offset_bottom = -83.0
+theme = ExtResource("7_vlfs3")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "$pit:   0"
 
 [node name="SpeechBubbleManager" type="Node" parent="."]
 script = ExtResource("7_v8bqo")
@@ -1393,18 +1415,6 @@ theme_override_colors/font_color = Color(0.870588, 0.870588, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "game time"
-
-[node name="CashLabel" type="Label" parent="GameTimeLabel"]
-layout_mode = 0
-offset_left = -25.0
-offset_top = 65.0
-offset_right = 119.0
-offset_bottom = 105.0
-theme = ExtResource("7_vlfs3")
-theme_override_colors/font_color = Color(0.870588, 0.870588, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "$pit: 0"
 
 [node name="BonusTime" type="Label" parent="GameTimeLabel"]
 visible = false

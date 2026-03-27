@@ -36,7 +36,7 @@ signal sequence_update(seq: Sequence)
 @onready var tutorial_anim: AnimationPlayer = $TutorialHolder/TutorialAnim
 @onready var game_time_label = $GameTimeLabel
 @onready var game_time_timer = $GameTimeLabel/GameTimeTimer
-@onready var cash_label: Label = $GameTimeLabel/CashLabel
+@onready var cash_label: Label = $TillHolder/CashLabel
 
 #Theme music
 @onready var pop_punk_theme = $Sounds/PopPunkTheme
@@ -88,11 +88,11 @@ var cash = 0
 var tutorials = {
 	0: ["how to play", "Make the llamas look like their reference pics before time runs out!
 	
-		Use WASD to move your razor, hair dye, rogaine, or extinguisher.
+		Move your tools - razor, rogaine, hair dye, or extinguisher - with WASD, and swap them with Q/E.
 		
-		Switch tools with Q/E
+		End a cut early with SPACE.
 		
-		End a cut early with SPACE"],
+		Tip: Better cuts earn more $pit."],
 	#4: ["reference photos", "Some llamas like to bring in a reference photo for you to work off of. Try to match it as exactly as you can!"],
 	#9: ["tools", "You can press Q or E to switch tools. Try using some hair dye on your next customer!"],
 	#13: ["fur serum","Some llamas want less hair. Others want more. Use fur serum for the latter."],
@@ -640,7 +640,7 @@ func _on_game_time_timer_timeout():
 	score_screen()
 	
 func update_cash_display():
-	cash_label.text = "$pit: " + str(int(cash))
+	cash_label.text = "$pit:   " + str(int(cash))
 
 	# Remove existing tween so they don't stack weirdly
 	if cash_label.has_meta("tween"):
