@@ -106,6 +106,8 @@ var tutorialMode: bool
 
 
 func _ready() -> void:
+	clear_scores()
+	
 	pop_punk_theme.finished.connect(func(): pop_punk_theme_2.play())
 	pop_punk_theme_2.finished.connect(func(): pop_punk_theme.play())
 	
@@ -263,7 +265,7 @@ func _on_tuft_state_changed():
 		
 func load_llama(ll):
 	# Add to the number of customers seen
-	ScoreHolder.cust_seen += 1
+	ScoreHolder.stats["cust_seen"] += 1
 	# Stop any dialogue still running
 	$SpeechBubbleManager.stop_dialogue()
 
@@ -457,7 +459,7 @@ func start_scoring():
 			# Only play Perfect sound, no bark
 			$Sounds/Perfect.play()
 			# Add to perfection score bonus
-			ScoreHolder.perf_bonus += perfection_bonus
+			ScoreHolder.stats["perf_bonus"] += perfection_bonus
 		else:
 			$Sounds/GgaScorePositive.play()
 			play_random_bark()
@@ -632,7 +634,7 @@ func _process(delta: float) -> void:
 
 func score_screen():
 	print("Murder!")
-	ScoreHolder.final_spit = cash
+	ScoreHolder.stats["final_spit"] = cash
 	get_tree().change_scene_to_file("res://Scenes/score_screen_arcade.tscn")
 	play_random_bark()
 	
@@ -751,6 +753,11 @@ func spawn_cash_popup(amount: float, perfect: bool = false) -> void:
 
 	# Cleanup
 	tween.finished.connect(popup.queue_free)
+	
+func clear_scores() -> void:
+	ScoreHolder.stats["cust_seen"] = 0
+	ScoreHolder.stats["final_spit"] = 0
+	ScoreHolder.stats["perf_bonus"] = 0 
 	
 func _on_player_tool_tool_mode_changed(mode: Tool.Modes) -> void:
 	toolMode = mode

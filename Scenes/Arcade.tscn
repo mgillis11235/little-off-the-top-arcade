@@ -1037,7 +1037,6 @@ z_index = 1000
 scale = Vector2(0.496667, 0.496667)
 
 [node name="ReferenceBackdrop" type="AnimatedSprite2D" parent="ReferenceHolder"]
-visible = false
 modulate = Color(0.998305, 0.904363, 0.838376, 1)
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_qpbgw")
