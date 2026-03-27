@@ -102,6 +102,7 @@ var tutorials = {
 var tutorialMode: bool
 
 @export var llamaTalkSFX: Array[AudioStreamPlayer]
+@export var perfection_bonus: int = 20
 
 
 func _ready() -> void:
@@ -261,6 +262,8 @@ func _on_tuft_state_changed():
 		sequence_next()
 		
 func load_llama(ll):
+	# Add to the number of customers seen
+	ScoreHolder.cust_seen += 1
 	# Stop any dialogue still running
 	$SpeechBubbleManager.stop_dialogue()
 
@@ -453,6 +456,8 @@ func start_scoring():
 		if perfect:
 			# Only play Perfect sound, no bark
 			$Sounds/Perfect.play()
+			# Add to perfection score bonus
+			ScoreHolder.perf_bonus += perfection_bonus
 		else:
 			$Sounds/GgaScorePositive.play()
 			play_random_bark()
@@ -567,6 +572,8 @@ func start_post():
 	pass
 
 func _input(event: InputEvent):
+	if event.is_action_pressed("ScoreScreen"):
+		score_screen()
 	if event.is_action_pressed("Interact") and seqCurrent == Sequence.NONE and tutorialOverride:
 		game_time_timer.paused = false
 		sequence_next()
@@ -625,7 +632,8 @@ func _process(delta: float) -> void:
 
 func score_screen():
 	print("Murder!")
-	get_tree().change_scene_to_file("res://Scenes/score_screen.tscn")
+	ScoreHolder.final_spit = cash
+	get_tree().change_scene_to_file("res://Scenes/score_screen_arcade.tscn")
 	play_random_bark()
 	
 func add_time_to_timer(timer: Timer, bonus: int) -> void:
