@@ -36,6 +36,9 @@ var perfect_bonus_base: int = 15
 var difficulty_step: float = 0.05
 var difficulty_min: float = 0.4 
 
+#For whether you get cash or not
+var skipped_customer: bool = false
+
 signal sequence_update(seq: Sequence)
 
 @onready var header_label: Label = $TutorialHolder/HeaderLabel
@@ -307,6 +310,10 @@ func _on_tuft_state_changed():
 		sequence_next()
 		
 func load_llama(ll):
+	
+	#Resets for skipping customer no cash penalty
+	skipped_customer = false
+	
 	# Add to the number of customers seen
 	ScoreHolder.stats["cust_seen"] += 1
 	# Stop any dialogue still running
@@ -564,8 +571,11 @@ func log_score():
 	scores.append(ratio)
 	ScoreHolder.scores.append(ratio)
 
-	# Calculate earned cash
-	var earned := cash_base * get_difficulty_multiplier() * ratio
+	# Calculate earned cash, but only if we haven't skipped the customer
+	var earned := 0.0
+
+	if not skipped_customer:
+		earned = cash_base * get_difficulty_multiplier() * ratio
 
 	if earned > 0:
 		# Play money sound and popup only if earned > 0
@@ -629,6 +639,7 @@ func _input(event: InputEvent):
 		pass
 	# end the cut	
 	if event.is_action_pressed("Interact") and seqCurrent == Sequence.GAMEPLAY:
+		skipped_customer = true
 		sequence_next()
 	if event.is_action_pressed("Preview") and seqCurrent == Sequence.GAMEPLAY:
 		#ref_appear()
