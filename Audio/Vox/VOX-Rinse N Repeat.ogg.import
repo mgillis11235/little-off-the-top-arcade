@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ctlphlnq785yw"
+path="res://.godot/imported/VOX-Rinse N Repeat.ogg-bceb104e49d9729b7d2df18dbae66269.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Rinse N Repeat.ogg"
+dest_files=["res://.godot/imported/VOX-Rinse N Repeat.ogg-bceb104e49d9729b7d2df18dbae66269.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

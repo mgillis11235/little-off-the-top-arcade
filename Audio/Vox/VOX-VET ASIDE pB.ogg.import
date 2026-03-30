@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bexg11y7l7lt4"
+path="res://.godot/imported/VOX-VET ASIDE pB.ogg-f266578dbf90e7a08039a0ea78bbb4bc.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-VET ASIDE pB.ogg"
+dest_files=["res://.godot/imported/VOX-VET ASIDE pB.ogg-f266578dbf90e7a08039a0ea78bbb4bc.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

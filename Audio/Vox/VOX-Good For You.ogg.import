@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cdjvheedq0a0i"
+path="res://.godot/imported/VOX-Good For You.ogg-c9c5dc56f4bf47e77086a5484b068242.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Good For You.ogg"
+dest_files=["res://.godot/imported/VOX-Good For You.ogg-c9c5dc56f4bf47e77086a5484b068242.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

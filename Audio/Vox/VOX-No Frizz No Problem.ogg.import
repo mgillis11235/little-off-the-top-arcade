@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b54rulleefcj0"
+path="res://.godot/imported/VOX-No Frizz No Problem.ogg-087781eed9d61583be4e7ee76c1ba951.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-No Frizz No Problem.ogg"
+dest_files=["res://.godot/imported/VOX-No Frizz No Problem.ogg-087781eed9d61583be4e7ee76c1ba951.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

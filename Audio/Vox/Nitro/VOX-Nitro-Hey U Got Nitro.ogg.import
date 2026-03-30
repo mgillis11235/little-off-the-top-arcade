@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvd4njbsagnxc"
+path="res://.godot/imported/VOX-Nitro-Hey U Got Nitro.ogg-66b255fa5742db77fe9c985ae406736f.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Nitro/VOX-Nitro-Hey U Got Nitro.ogg"
+dest_files=["res://.godot/imported/VOX-Nitro-Hey U Got Nitro.ogg-66b255fa5742db77fe9c985ae406736f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

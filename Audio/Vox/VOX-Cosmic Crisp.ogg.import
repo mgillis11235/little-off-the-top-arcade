@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://df4yd6crw4nuo"
+path="res://.godot/imported/VOX-Cosmic Crisp.ogg-e74da49f4c93063e961be3344b7bc42b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Cosmic Crisp.ogg"
+dest_files=["res://.godot/imported/VOX-Cosmic Crisp.ogg-e74da49f4c93063e961be3344b7bc42b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

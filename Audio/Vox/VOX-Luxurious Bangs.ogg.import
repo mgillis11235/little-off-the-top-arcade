@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cs7nik2u70ypi"
+path="res://.godot/imported/VOX-Luxurious Bangs.ogg-dbcd747324d8620ec6c65722d82be073.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Luxurious Bangs.ogg"
+dest_files=["res://.godot/imported/VOX-Luxurious Bangs.ogg-dbcd747324d8620ec6c65722d82be073.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d25l7qftg57qc"
+path="res://.godot/imported/VOX-French Crop.ogg-7061fd8c30f1407f68016a07ef99ae0b.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-French Crop.ogg"
+dest_files=["res://.godot/imported/VOX-French Crop.ogg-7061fd8c30f1407f68016a07ef99ae0b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

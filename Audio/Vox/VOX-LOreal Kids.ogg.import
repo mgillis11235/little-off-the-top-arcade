@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cc1rc0vpgi8yl"
+path="res://.godot/imported/VOX-LOreal Kids.ogg-83f30f3a565d9a191b598fdb7b1eec34.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-LOreal Kids.ogg"
+dest_files=["res://.godot/imported/VOX-LOreal Kids.ogg-83f30f3a565d9a191b598fdb7b1eec34.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

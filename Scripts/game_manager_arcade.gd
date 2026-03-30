@@ -28,6 +28,13 @@ var shaver_boost_timer: Timer
 #Blink and red clock countdown variable
 var clock_blink_timer: float = 0.0
 
+# Difficulty scaling
+var time_bonus_base: int = 5
+var cash_base: float = 35.0
+var perfect_bonus_base: int = 15
+
+var difficulty_step: float = 0.05
+var difficulty_min: float = 0.4 
 
 signal sequence_update(seq: Sequence)
 
@@ -46,6 +53,7 @@ signal sequence_update(seq: Sequence)
 #Grab clipper/announcer barks
 var bark_sounds: Array[AudioStream] = []
 var clipper_sounds: Array[AudioStream] = []
+var nitro_bark_sounds: Array[AudioStream] = []
 
 #Llama Array
 @onready var llamas: Array[PackedScene] = [
@@ -103,7 +111,7 @@ var tutorialMode: bool
 
 @export var llamaTalkSFX: Array[AudioStreamPlayer]
 @export var perfection_bonus: int = 20
-
+@export var perfect_time_bonus: int = 5
 
 func _ready() -> void:
 	clear_scores()
@@ -131,6 +139,12 @@ func _ready() -> void:
 	
 	load_bark_sounds()
 	load_clipper_sounds()
+	load_nitro_bark_sounds()
+
+#Difficulty scaling
+func get_difficulty_multiplier() -> float:
+	var mult = 1.1 - (customerProgress * difficulty_step) #difficulty multiplier 
+	return max(mult, difficulty_min)
 
 func load_bark_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/")
@@ -179,6 +193,35 @@ func load_clipper_sounds():
 		file_name = dir.get_next()
 	
 	dir.list_dir_end()
+
+func load_nitro_bark_sounds():
+	var dir = DirAccess.open("res://Audio/Vox/Nitro/")
+	if dir == null:
+		push_error("Could not open Nitro directory.")
+		return
+	
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".ogg"):
+			var path = "res://Audio/Vox/Nitro/" + file_name
+			var sound = load(path)
+			if sound != null:
+				nitro_bark_sounds.append(sound)
+		file_name = dir.get_next()
+	
+	dir.list_dir_end()
+
+func play_random_nitro_bark():
+	if nitro_bark_sounds.is_empty():
+		return
+	
+	var player = AudioStreamPlayer.new()
+	add_child(player)
+	player.stream = nitro_bark_sounds.pick_random()
+	player.finished.connect(player.queue_free)
+	player.play()
 
 #Speed boost bonus handling for perfect scores
 func _on_shaver_boost_timeout():
@@ -426,7 +469,8 @@ func show_dialogue(text: String, customerName: String, duration: float = 0) -> v
 func start_scoring():
 	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
-	add_time_to_timer(game_time_timer, time_bonus)
+	var scaled_time_bonus = int(time_bonus_base * get_difficulty_multiplier())
+	add_time_to_timer(game_time_timer, scaled_time_bonus)
 	
 	var tween = create_tween()
 	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
@@ -457,9 +501,10 @@ func start_scoring():
 		currentCustomer.animate_happy()
 		if perfect:
 			# Only play Perfect sound, no bark
-			$Sounds/Perfect.play()
+			play_random_nitro_bark()
 			# Add to perfection score bonus
 			ScoreHolder.stats["perf_bonus"] += perfection_bonus
+			add_time_to_timer(game_time_timer, perfect_time_bonus)
 		else:
 			$Sounds/GgaScorePositive.play()
 			play_random_bark()
@@ -520,7 +565,7 @@ func log_score():
 	ScoreHolder.scores.append(ratio)
 
 	# Calculate earned cash
-	var earned := 35 * ratio
+	var earned := cash_base * get_difficulty_multiplier() * ratio
 
 	if earned > 0:
 		# Play money sound and popup only if earned > 0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ce667ex8kek4o"
+path="res://.godot/imported/VOX-Nitro-U Got Nitroo.ogg-06800d9aa47e6b79ef5c258d55d19851.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Nitro/VOX-Nitro-U Got Nitroo.ogg"
+dest_files=["res://.godot/imported/VOX-Nitro-U Got Nitroo.ogg-06800d9aa47e6b79ef5c258d55d19851.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

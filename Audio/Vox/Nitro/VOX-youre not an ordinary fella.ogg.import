@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3oxb1h6dov78"
+path="res://.godot/imported/VOX-youre not an ordinary fella.ogg-eea2b92847f1d2e7ba326aa0274085d0.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Nitro/VOX-youre not an ordinary fella.ogg"
+dest_files=["res://.godot/imported/VOX-youre not an ordinary fella.ogg-eea2b92847f1d2e7ba326aa0274085d0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://s06klkoki4xb"
+path="res://.godot/imported/VOX-Salon Colors.ogg-3dbf52fb26c21b8c13199a15e8395152.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Salon Colors.ogg"
+dest_files=["res://.godot/imported/VOX-Salon Colors.ogg-3dbf52fb26c21b8c13199a15e8395152.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

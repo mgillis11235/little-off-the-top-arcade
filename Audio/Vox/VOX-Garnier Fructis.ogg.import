@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c00vjcjxwrqiv"
+path="res://.godot/imported/VOX-Garnier Fructis.ogg-3e138cbbf17da4648bf092d8012e1701.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/VOX-Garnier Fructis.ogg"
+dest_files=["res://.godot/imported/VOX-Garnier Fructis.ogg-3e138cbbf17da4648bf092d8012e1701.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bsblu5nq6kidl"
+path="res://.godot/imported/VOX-Nitro-Nitro Mode.ogg-45d8bcbd47bc5cabcbbfd3a284935697.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Nitro/VOX-Nitro-Nitro Mode.ogg"
+dest_files=["res://.godot/imported/VOX-Nitro-Nitro Mode.ogg-45d8bcbd47bc5cabcbbfd3a284935697.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
