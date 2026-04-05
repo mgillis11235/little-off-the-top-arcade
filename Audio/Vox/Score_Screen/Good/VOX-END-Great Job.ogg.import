@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bol14p3a3efsv"
+path="res://.godot/imported/VOX-END-Great Job.ogg-bbc56da7fe4d050d46e54500863b16a3.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Score_Screen/Good/VOX-END-Great Job.ogg"
+dest_files=["res://.godot/imported/VOX-END-Great Job.ogg-bbc56da7fe4d050d46e54500863b16a3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

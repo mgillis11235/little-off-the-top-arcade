@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d4bcqerub3si4"
+path="res://.godot/imported/VOX-End-Try Again2.ogg-bba522ac47befeb4cd93b19093bb1bc6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Score_Screen/Bad/VOX-End-Try Again2.ogg"
+dest_files=["res://.godot/imported/VOX-End-Try Again2.ogg-bba522ac47befeb4cd93b19093bb1bc6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

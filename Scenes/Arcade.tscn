@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://drboq8w537e8a"]
+[gd_scene load_steps=137 format=3 uid="uid://drboq8w537e8a"]
 
 [ext_resource type="Script" path="res://Scripts/game_manager_arcade.gd" id="1_fqh0p"]
 [ext_resource type="PackedScene" uid="uid://38reb7jxkxpu" path="res://Nodes/player_tool.tscn" id="2_lo1ph"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://b0pgye73gof4p" path="res://Audio/GGA_Woosh.mp3" id="24_epfbo"]
 [ext_resource type="AudioStream" uid="uid://elwqwh853d1e" path="res://Audio/GGA_Score Positive.mp3" id="25_r4or6"]
 [ext_resource type="AudioStream" uid="uid://dh7e7k7wdufpq" path="res://Audio/GGA_Score Negative.mp3" id="26_x1vhv"]
+[ext_resource type="AudioStream" uid="uid://dddl18qyvsqks" path="res://Audio/GGA_Llama spit.mp3" id="27_cl0i3"]
 [ext_resource type="AudioStream" uid="uid://cyjd65144tqd6" path="res://Audio/GGA_Haircut Start.mp3" id="27_getoe"]
 [ext_resource type="AudioStream" uid="uid://bpbk6uiyrghxn" path="res://Audio/GGA_Haircut End.mp3" id="28_uen3s"]
 [ext_resource type="AudioStream" uid="uid://bx4g0jyel76lw" path="res://Audio/GGA_Douse (2).mp3" id="33_6bygs"]
@@ -1269,6 +1270,11 @@ bus = &"SFX"
 
 [node name="Money" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("22_cabjj")
+volume_db = 0.5
+
+[node name="Spit" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("27_cl0i3")
+volume_db = 1.619
 
 [node name="GgaRazorRev(2)" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("20_t4u5g")

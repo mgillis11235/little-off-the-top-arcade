@@ -16,6 +16,8 @@ var scores = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	$Play.grab_focus()
 	if ScoreHolder.scores.size() > 0:
 		var avg: float
 		for s in ScoreHolder.scores:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://6kpwl2hr7yqm"]
+[gd_scene load_steps=15 format=3 uid="uid://6kpwl2hr7yqm"]
 
 [ext_resource type="Texture2D" uid="uid://cukh4r1sfkicm" path="res://Sprites/Background.png" id="1_duvqs"]
 [ext_resource type="Script" path="res://Scenes/title.gd" id="1_gfsg2"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://bugw0kaqt34qn" path="res://Audio/title_theme.mp3" id="6_af645"]
 [ext_resource type="AudioStream" uid="uid://dcv2yomx183m2" path="res://Audio/Vox/Intro/DDR Intro Slam.ogg" id="7_3km0p"]
 [ext_resource type="AudioStream" uid="uid://bwxbwd0cq808v" path="res://Audio/Vox/Intro/VOX-INTRO whos ready to play.ogg" id="8_3alt7"]
+[ext_resource type="AudioStream" uid="uid://bh7eq14jg33pd" path="res://Audio/GGA_Swap.mp3" id="8_vi8sg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jroi7"]
 
@@ -116,6 +117,7 @@ layout_mode = 2
 
 [node name="Story" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Credits")
 theme_override_font_sizes/font_size = 70
 text = "Story"
 
@@ -126,6 +128,7 @@ text = "Arcade"
 
 [node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Story")
 theme_override_font_sizes/font_size = 70
 text = "Credits"
 
@@ -175,12 +178,20 @@ visible = false
 stream = ExtResource("7_3km0p")
 bus = &"Music"
 
+[node name="Switch" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("8_vi8sg")
+bus = &"Music"
+
 [node name="AnnouncerStart" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("8_3alt7")
 bus = &"Music"
 
 [connection signal="finished" from="TitleScreenMovie" to="." method="_on_title_screen_movie_finished"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Story" to="." method="_on_story_focus_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Story" to="." method="_on_play_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Time Trial" to="." method="_on_time_trial_focus_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Time Trial" to="." method="_on_arcade_pressed"]
+[connection signal="focus_entered" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_focus_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]

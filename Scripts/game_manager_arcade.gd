@@ -146,7 +146,7 @@ func _ready() -> void:
 
 #Difficulty scaling
 func get_difficulty_multiplier() -> float:
-	var mult = 1.1 - (customerProgress * difficulty_step) #difficulty multiplier 
+	var mult = 1.4 - (customerProgress * difficulty_step) #difficulty multiplier 
 	return max(mult, difficulty_min)
 
 func load_bark_sounds():
@@ -578,8 +578,9 @@ func log_score():
 		earned = cash_base * get_difficulty_multiplier() * ratio
 
 	if earned > 0:
-		# Play money sound and popup only if earned > 0
+		# Play money/spit sound and popup only if earned > 0
 		$Sounds/Money.play()
+		$Sounds/Spit.play()
 		await get_tree().create_timer(0.25).timeout
 		cash += round(earned)
 		spawn_cash_popup(earned, ratio == 1.0) # gold popup if perfect
@@ -631,7 +632,7 @@ func start_post():
 func _input(event: InputEvent):
 	if event.is_action_pressed("ScoreScreen"):
 		score_screen()
-	if event.is_action_pressed("Interact") and seqCurrent == Sequence.NONE and tutorialOverride:
+	if event.is_action_pressed("ui_accept") and seqCurrent == Sequence.NONE and tutorialOverride:
 		game_time_timer.paused = false
 		sequence_next()
 		tutorial_anim.play("Disappear")

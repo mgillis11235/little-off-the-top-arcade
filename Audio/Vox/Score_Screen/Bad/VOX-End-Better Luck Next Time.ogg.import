@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://doedgj7oc3aey"
+path="res://.godot/imported/VOX-End-Better Luck Next Time.ogg-0692f444460c097ad1df11a159a87083.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Vox/Score_Screen/Bad/VOX-End-Better Luck Next Time.ogg"
+dest_files=["res://.godot/imported/VOX-End-Better Luck Next Time.ogg-0692f444460c097ad1df11a159a87083.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

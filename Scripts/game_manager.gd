@@ -13,6 +13,8 @@ var seqCurrent: Sequence:
 var blockInput: bool
 var tutorialOverride: bool
 
+var shaver_speed_multiplier: float = 1.0
+
 var currentRef
 
 var toolMode: Tool.Modes
@@ -324,7 +326,7 @@ func start_post():
 	pass
 
 func _input(event: InputEvent):
-	if event.is_action_pressed("Interact") and seqCurrent == Sequence.NONE and tutorialOverride:
+	if event.is_action_pressed("ui_accept") and seqCurrent == Sequence.NONE and tutorialOverride:
 		sequence_next()
 		tutorial_anim.play("Disappear")
 		$"Sounds/GgaUiSelect(1)".play()

@@ -29,6 +29,9 @@ func _ready() -> void:
 	$Button.set_visible(true)
 	$Button2.set_visible(true)
 	
+	
+	$Button.grab_focus() 
+	
 	#Now buttons appear
 
 
@@ -83,6 +86,7 @@ func _on_button_2_pressed() -> void:
 	$Button.set_visible(false)
 	$Button2.set_visible(false)
 	
+	
 	$RichTextLabel8.set_visible(true)
 	$Car_Door.play()
 	await get_tree().create_timer(2.0).timeout
@@ -103,6 +107,7 @@ func _on_button_2_pressed() -> void:
 	$Button3.set_visible(true)	
 	$Button4.set_visible(true)
 	
+	$Button3.grab_focus() 
 	
 func _on_button3_pressed() -> void:
 	$RichTextLabel10b.set_visible(false)
