@@ -1422,7 +1422,6 @@ theme_override_font_sizes/font_size = 20
 text = "game time"
 
 [node name="BonusTime" type="Label" parent="GameTimeLabel"]
-visible = false
 layout_mode = 0
 offset_left = 72.0
 offset_top = 9.0

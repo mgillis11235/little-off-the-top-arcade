@@ -34,6 +34,10 @@ movie_writer/movie_file="/Users/mgillis/Documents/GitHub/little-off-the-top-arca
 
 no_auto_finish=""
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 ui_accept={
