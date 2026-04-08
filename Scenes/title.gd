@@ -34,7 +34,6 @@ func _on_arcade_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
-	$Select.play()
 	get_tree().change_scene_to_file("res://Scenes/opening_credits.tscn")
 
 
