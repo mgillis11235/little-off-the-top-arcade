@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://dxcav3get4vb8"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_6re81"]
+
+[resource]
+script = ExtResource("1_6re81")
+customerName = "Llomp N. Circumstance"
+referenceName = ""
+reqDialogue = ""
+midDialogue = Array[String]([])
+finshDialogueHappy = "I look like a million spits"
+finshDialogueUpset = "There goes my one shot at mating"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

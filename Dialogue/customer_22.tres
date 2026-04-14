@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://qfxboxekn741"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_enbn7"]
+
+[resource]
+script = ExtResource("1_enbn7")
+customerName = "Victor Wembanllama"
+referenceName = ""
+reqDialogue = ""
+midDialogue = Array[String]([])
+finshDialogueHappy = "Couldn't have chewed it off better myself"
+finshDialogueUpset = "You should be paying ME"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0

@@ -80,6 +80,8 @@ var nitro_bark_sounds: Array[AudioStream] = []
 	preload("res://Nodes/Llamas/customer_18.tscn"),
 	preload("res://Nodes/Llamas/customer_19.tscn"),
 	preload("res://Nodes/Llamas/customer_20.tscn"),
+	preload("res://Nodes/Llamas/customer_22.tscn"),
+	preload("res://Nodes/Llamas/customer_23.tscn"),
 ]
 var customerProgress: int = 0
 #var currentCustomer

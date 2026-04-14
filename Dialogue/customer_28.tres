@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogueData" load_steps=2 format=3 uid="uid://cl1acfk3enuao"]
+
+[ext_resource type="Script" path="res://Scripts/dialogue_data.gd" id="1_b42pa"]
+
+[resource]
+script = ExtResource("1_b42pa")
+customerName = "Llomy Tuberville"
+referenceName = ""
+reqDialogue = ""
+midDialogue = Array[String]([])
+finshDialogueHappy = "2 stars out of 2!"
+finshDialogueUpset = "This is not the new hotness"
+reactiveDialogueAny = Array[String]([])
+reactiveDialogueHappy = Array[String]([])
+reactiveDialogueUpset = Array[String]([])
+reactiveRate = 0
