@@ -30,7 +30,7 @@ var tool_mode: Modes:
 		var dir = value - tool_mode
 		tool_mode = value
 		if tool_mode > max_tools:
-			tool_mode = 0
+			tool_mode = 0 as Modes
 		elif tool_mode < 0:
 			tool_mode = max_tools
 		

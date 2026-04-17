@@ -30,6 +30,10 @@ window/stretch/mode="viewport"
 
 movie_writer/movie_file="/Users/mgillis/Documents/GitHub/little-off-the-top-arcade/movie.avi"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simpleboards_plugin/plugin.cfg")
+
 [global_group]
 
 no_auto_finish=""

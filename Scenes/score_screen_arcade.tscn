@@ -325,13 +325,14 @@ libraries = {
 autoplay = "Scrolling"
 
 [node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_top = -25.0
 offset_right = 1919.0
 offset_bottom = 468.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 50
+theme_override_constants/outline_size = 9
 theme_override_fonts/font = ExtResource("3_qbcke")
 theme_override_font_sizes/font_size = 175
 text = "Game Over"

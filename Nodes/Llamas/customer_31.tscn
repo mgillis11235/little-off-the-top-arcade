@@ -347,9 +347,10 @@ animations = [{
 [node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises")]
 position = Vector2(-32, -3)
 script = ExtResource("1_ltiql")
-skinColor = Color(0.813781, 0.995155, 0.636781, 1)
-furColor = Color(0.948977, 0.582329, 0.38213, 1)
-dyeColor = Color(0.54315, 0.705023, 0.992317, 1)
+skinColor = Color(0.847807, 0.943383, 0.994726, 1)
+furColor = Color(0.813698, 0.676267, 3.85046e-07, 1)
+dyeColor = Color(0.545098, 0, 0.992157, 1)
+disable_razor = true
 timeOverride = 10.0
 dialogue = ExtResource("2_q4o3o")
 passingGradePercentage = 0.7
@@ -361,91 +362,61 @@ upsetNoises = [NodePath("LlamaSFX/GgaLlamaUpset(1)"), NodePath("LlamaSFX/GgaLlam
 
 [node name="BaseFurTuft" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
 position = Vector2(17, -49)
-startState = 2
-desiredState = 2
 llama = NodePath("../..")
 
 [node name="BaseFurTuft2" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(38, -44)
-startState = 2
-desiredState = 2
+position = Vector2(39, -39)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft3" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(63, -46)
-startState = 2
-desiredState = 2
+position = Vector2(60, -30)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft4" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(78, -17)
-startState = 2
-desiredState = 2
+position = Vector2(80, -18)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft5" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(60, -20)
-startState = 2
-desiredState = 2
+position = Vector2(35, 47)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft6" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(42, -7)
-startState = 2
-desiredState = 2
+position = Vector2(54, 61)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft7" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(62, 6)
-startState = 2
-desiredState = 2
+position = Vector2(72, 84)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft8" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(82, 14)
+position = Vector2(59, 18)
 startState = 2
-desiredState = 2
+desiredState = 4
 llama = NodePath("../..")
 
 [node name="BaseFurTuft9" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(6, 123)
-startState = 1
-desiredState = 3
+position = Vector2(33, 102)
+startState = 2
+desiredState = 4
 llama = NodePath("../..")
 
 [node name="BaseFurTuft10" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(32, 125)
-startState = 1
+position = Vector2(-50, -13)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft11" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(57, 134)
-startState = 1
+position = Vector2(-32, 3)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft12" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(9, 106)
-startState = 1
+position = Vector2(-11, 17)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft13" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(39, 106)
-startState = 1
-desiredState = 3
-llama = NodePath("../..")
-
-[node name="BaseFurTuft14" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(68, 106)
-startState = 1
-desiredState = 3
-llama = NodePath("../..")
-
-[node name="BaseFurTuft15" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_kjfks")]
-position = Vector2(68, 106)
-startState = 1
+position = Vector2(11, 29)
 desiredState = 3
 llama = NodePath("../..")
 

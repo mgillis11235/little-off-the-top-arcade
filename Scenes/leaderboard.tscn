@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypt2aja14l0x"]
+
+[ext_resource type="Script" path="res://Scripts/leaderboard.gd" id="1_hocda"]
+[ext_resource type="Script" path="res://addons/simpleboards_plugin/SimpleBoardsApi.gd" id="7_m7vyg"]
+
+[node name="Leaderboard" type="VBoxContainer" node_paths=PackedStringArray("entries_container")]
+offset_right = 260.0
+offset_bottom = 40.0
+script = ExtResource("1_hocda")
+leaderboard_id = "fc5424a3-36c9-4d52-794d-08de8dfb793f"
+api_key = "18234ba5-53cd-4afc-80c4-9407a6bef4cf"
+entries_container = NodePath("VBoxContainer/Entries")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "LEADERBOARD"
+horizontal_alignment = 1
+
+[node name="Entries" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SimpleBoardsApi" type="Node" parent="."]
+script = ExtResource("7_m7vyg")

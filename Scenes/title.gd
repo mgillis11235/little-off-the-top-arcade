@@ -18,7 +18,7 @@ func _on_play_pressed():
 	#$Credits.set_visible(false)
 	$TitleScreenMovieStart.play()
 	$Select.play()
-	await get_tree().create_timer(3.5).timeout
+	await get_tree().create_timer(3.5, true, true).timeout
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
@@ -29,7 +29,7 @@ func _on_arcade_pressed() -> void:
 	$AnnouncerStart.play()
 	#$Credits.set_visible(false)
 	$TitleScreenMovieStart.play()
-	await get_tree().create_timer(3.5).timeout
+	await get_tree().create_timer(3.5, true, true).timeout
 	get_tree().change_scene_to_file("res://Scenes/Arcade.tscn")
 
 

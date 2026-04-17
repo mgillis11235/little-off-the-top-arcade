@@ -347,9 +347,12 @@ animations = [{
 [node name="BaseLlama" type="Node2D" node_paths=PackedStringArray("happyNoises", "upsetNoises")]
 position = Vector2(-32, -3)
 script = ExtResource("1_jsuw2")
-skinColor = Color(0.813781, 0.995155, 0.636781, 1)
-furColor = Color(0.00108513, 9.35679e-05, 2.29837e-05, 1)
+skinColor = Color(1, 0.890426, 0.948805, 1)
+furColor = Color(0.952805, 0.966544, 0.301867, 1)
 dyeColor = Color(0.54315, 0.705023, 0.992317, 1)
+disable_rogaine = true
+disable_fire_extinguisher = true
+disable_dye = true
 timeOverride = 10.0
 dialogue = ExtResource("2_ntlyq")
 passingGradePercentage = 0.7
@@ -373,31 +376,6 @@ llama = NodePath("../..")
 position = Vector2(63, -46)
 desiredState = 1
 llama = NodePath("../..")
-
-[node name="BaseFurTuft3" parent="Tufts/BaseFurTuft3" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-13, 70)
-desiredState = 1
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft4" parent="Tufts/BaseFurTuft3" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(2, 99)
-desiredState = 1
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft5" parent="Tufts/BaseFurTuft3" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-16, 96)
-desiredState = 1
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft7" parent="Tufts/BaseFurTuft3" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-14, 122)
-desiredState = 1
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft8" parent="Tufts/BaseFurTuft3" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(6, 130)
-desiredState = 1
-llama = NodePath("../../..")
 
 [node name="BaseFurTuft4" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
 position = Vector2(78, -17)
@@ -454,42 +432,65 @@ position = Vector2(68, 106)
 desiredState = 1
 llama = NodePath("../..")
 
-[node name="BaseFurTuft11" parent="Tufts/BaseFurTuft14" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-75, -22)
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft12" parent="Tufts/BaseFurTuft14/BaseFurTuft11" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(2, -63)
-llama = NodePath("../../../..")
-
-[node name="BaseFurTuft14" parent="Tufts/BaseFurTuft14/BaseFurTuft11" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-25, -52)
-llama = NodePath("../../../..")
-
-[node name="BaseFurTuft15" parent="Tufts/BaseFurTuft14/BaseFurTuft11" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-1, -34)
-llama = NodePath("../../../..")
-
-[node name="BaseFurTuft12" parent="Tufts/BaseFurTuft14" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-131, -46)
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft13" parent="Tufts/BaseFurTuft14" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-108, -21)
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft14" parent="Tufts/BaseFurTuft14" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-128, -14)
-llama = NodePath("../../..")
-
-[node name="BaseFurTuft15" parent="Tufts/BaseFurTuft14" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
-position = Vector2(-104, -50)
-llama = NodePath("../../..")
-
 [node name="BaseFurTuft15" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
 position = Vector2(68, 106)
-startState = 1
-desiredState = 3
+llama = NodePath("../..")
+
+[node name="BaseFurTuft16" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(50, 24)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft17" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(65, 53)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft18" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(47, 50)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft19" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(49, 76)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft20" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(69, 84)
+desiredState = 1
+llama = NodePath("../..")
+
+[node name="BaseFurTuft21" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-7, 84)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft22" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-63, 60)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft23" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-40, 85)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft24" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-60, 92)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft25" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-36, 56)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft26" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-5, 21)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft27" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-32, 32)
+llama = NodePath("../..")
+
+[node name="BaseFurTuft28" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_lst4n")]
+position = Vector2(-8, 50)
 llama = NodePath("../..")
 
 [node name="LlamaRig" type="Node2D" parent="."]
