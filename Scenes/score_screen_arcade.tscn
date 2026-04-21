@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmxd3lwufige3"]
+[gd_scene load_steps=22 format=3 uid="uid://dmxd3lwufige3"]
 
 [ext_resource type="Script" path="res://Scripts/score_screen_arcade.gd" id="1_pon0c"]
 [ext_resource type="Texture2D" uid="uid://b5egjms8hb54c" path="res://Sprites/FurTufts2.png" id="2_08eft"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://b0pgye73gof4p" path="res://Audio/GGA_Woosh.mp3" id="5_y65x4"]
 [ext_resource type="AudioStream" uid="uid://dcv2yomx183m2" path="res://Audio/Vox/Intro/DDR Intro Slam.ogg" id="6_5p22v"]
 [ext_resource type="AudioStream" uid="uid://c284yqbh3a2j4" path="res://Audio/barberBitFix.mp3" id="6_ikgkb"]
+[ext_resource type="PackedScene" uid="uid://cypt2aja14l0x" path="res://Scenes/leaderboard.tscn" id="9_q5wm6"]
+[ext_resource type="Script" path="res://addons/simpleboards_plugin/SimpleBoardsApi.gd" id="10_ay242"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoy1k"]
 bg_color = Color(1, 1, 1, 1)
@@ -262,10 +264,25 @@ _data = {
 "appear": SubResource("Animation_nnfg6")
 }
 
-[node name="ScoreScreenArcade" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dyvx"]
+bg_color = Color(0.415686, 0.0431373, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aklwp"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="ScoreScreenArcade" type="Control" node_paths=PackedStringArray("player_name", "submit_button", "leaderboard")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_pon0c")
+leaderboard_id = "fc5424a3-36c9-4d52-794d-08de8dfb793f"
+api_key = "18234ba5-53cd-4afc-80c4-9407a6bef4cf"
+player_name = NodePath("HighScorePanel/HBoxContainer/PlayerName")
+submit_button = NodePath("HighScorePanel/HBoxContainer/ScoreSubmit")
+leaderboard = NodePath("LeaderboardPanel/VBoxContainer2/Leaderboard")
+metadata/_edit_horizontal_guides_ = [1059.0]
 
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(0.948673, 3.7542e-06, 0.572317, 1)
@@ -325,7 +342,7 @@ libraries = {
 autoplay = "Scrolling"
 
 [node name="Label" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
+texture_filter = 2
 layout_mode = 0
 offset_top = -25.0
 offset_right = 1919.0
@@ -352,7 +369,7 @@ bus = &"Music"
 stream = ExtResource("6_5p22v")
 bus = &"Music"
 
-[node name="Play" type="Button" parent="."]
+[node name="ReturnToTitle" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -377,9 +394,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 560.0
+offset_left = 189.0
 offset_top = 368.0
-offset_right = 1560.0
+offset_right = 1189.0
 offset_bottom = 912.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -489,4 +506,60 @@ libraries = {
 }
 autoplay = "appear"
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[node name="LeaderboardPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_left = 1271.0
+offset_top = 368.0
+offset_right = 1846.0
+offset_bottom = 1018.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="LeaderboardPanel"]
+layout_mode = 2
+
+[node name="Leaderboard" parent="LeaderboardPanel/VBoxContainer2" instance=ExtResource("9_q5wm6")]
+layout_mode = 2
+
+[node name="HighScorePanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 713.0
+offset_top = 540.0
+offset_right = 1213.0
+offset_bottom = 740.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1dyvx")
+
+[node name="Label" type="Label" parent="HighScorePanel"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "New High Score!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScorePanel"]
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+
+[node name="PlayerName" type="LineEdit" parent="HighScorePanel/HBoxContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 25
+placeholder_text = "Player Initials"
+max_length = 3
+
+[node name="ScoreSubmit" type="Button" parent="HighScorePanel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_aklwp")
+text = "SUBMIT"
+
+[node name="SimpleBoardsApi" type="Node" parent="."]
+script = ExtResource("10_ay242")
+
+[connection signal="pressed" from="ReturnToTitle" to="." method="_on_play_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cypt2aja14l0x"]
+[gd_scene load_steps=4 format=3 uid="uid://cypt2aja14l0x"]
 
 [ext_resource type="Script" path="res://Scripts/leaderboard.gd" id="1_hocda"]
+[ext_resource type="FontFile" uid="uid://c5u4osxoijuau" path="res://Fonts/Schoolbell-Regular.ttf" id="2_isokc"]
 [ext_resource type="Script" path="res://addons/simpleboards_plugin/SimpleBoardsApi.gd" id="7_m7vyg"]
 
 [node name="Leaderboard" type="VBoxContainer" node_paths=PackedStringArray("entries_container")]
@@ -16,7 +17,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-text = "LEADERBOARD"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_isokc")
+theme_override_font_sizes/font_size = 65
+text = "High Scores"
 horizontal_alignment = 1
 
 [node name="Entries" type="VBoxContainer" parent="VBoxContainer"]

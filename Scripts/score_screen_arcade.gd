@@ -1,5 +1,14 @@
 extends Control
 
+@export var leaderboard_id := "REPLACE_WITH_YOUR_LEADERBOARD_ID"
+@export var api_key := "REPLACE_WITH_YOUR_API_KEY"
+
+@export var player_name: LineEdit
+@export var submit_button: Button
+@export var leaderboard: Leaderboard
+
+@onready var simpleboards := $SimpleBoardsApi
+
 @onready var spit_earned = %SpitEarned
 @onready var cust_seen = %CustSeen
 @onready var perf_bonus = %PerfBonus
@@ -11,9 +20,22 @@ var new_record_barks: Array[AudioStream] = []
 var bad_barks: Array[AudioStream] = []
 
 var final_score_value: int = 0
+var new_high_score := false
+
+var _time_text := ""
+var _is_sending := false
+var _is_sent := false
 
 func _ready() -> void:
-	$Play.grab_focus()
+	
+	simpleboards.set_api_key(api_key)
+	simpleboards.entry_sent.connect(_on_entry_sent)
+	simpleboards.request_failed.connect(_on_request_failed)
+	
+	player_name.text_changed.connect(_on_text_changed)
+	submit_button.pressed.connect(_on_submit_score_button_pressed)
+	
+	$ReturnToTitle.grab_focus()
 	
 	load_barks("res://Audio/Vox/Score_Screen/Good/", good_barks)
 	load_barks("res://Audio/Vox/Score_Screen/New_Record/", new_record_barks)
@@ -22,7 +44,13 @@ func _ready() -> void:
 	update_stats()
 	hide_stats()
 	
-	$Play.grab_focus()
+	check_if_new_high_score()
+	
+	$ReturnToTitle.grab_focus()
+
+func check_if_new_high_score() -> void:
+	if ScoreHolder.lowest_high_score < final_score_value or ScoreHolder.not_enough_scores_yet:
+		new_high_score = true
 
 func update_stats() -> void:
 	spit_earned.text = str(ScoreHolder.stats["final_spit"])
@@ -34,6 +62,8 @@ func update_stats() -> void:
 						ScoreHolder.stats["cust_seen"] + \
 						ScoreHolder.stats["perf_bonus"]
 	
+	# check if there's a new high score, and if so, set new_high_score to 'true'
+	
 func hide_stats() -> void:
 	for child in $VBoxContainer/HBoxContainer/VBoxContainer.get_children():
 		child.self_modulate.a = 0.0
@@ -42,7 +72,7 @@ func hide_stats() -> void:
 	
 	$VBoxContainer/HBoxContainer2/Label4.self_modulate.a = 0.0
 	final_score.self_modulate.a = 0.0
-	$Play.modulate.a = 0.0
+	$ReturnToTitle.modulate.a = 0.0
 
 func animate_stats() -> void:
 	var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
@@ -77,9 +107,13 @@ func animate_stats() -> void:
 	
 	tween.tween_callback(play_score_bark)
 	
-	tween.tween_interval(1.0)
-	tween.tween_property($Play, "position:y", 904, 0.3).from(get_viewport_rect().size.y)
-	tween.parallel().tween_property($Play, "modulate:a", 1.0, 0.1).from(0.0)
+	if not new_high_score:
+		tween.tween_interval(1.0)
+		tween.tween_property($ReturnToTitle, "position:y", 904, 0.3).from(get_viewport_rect().size.y)
+		tween.parallel().tween_property($ReturnToTitle, "modulate:a", 1.0, 0.1).from(0.0)
+	else:
+		await tween.finished
+		$HighScorePanel.visible = true
 	
 	
 func set_label_number(number: int, label: Label) -> void:
@@ -119,9 +153,64 @@ func play_random_from(arr: Array):
 func play_score_bark():
 	var score = final_score_value
 
-	if score >= 150:
+	if new_high_score:
 		play_random_from(new_record_barks)
 	elif score >= 80:
 		play_random_from(good_barks)
 	else:
 		play_random_from(bad_barks)
+	
+
+func _on_text_changed(new_text: String):
+	player_name.text = new_text.to_upper()
+	player_name.caret_column = player_name.text.length()
+
+func _on_submit_score_button_pressed() -> void:
+	if _is_sending or _is_sent:
+		return
+
+	_is_sending = true
+	_update_submit_ui()
+
+	var name := player_name.text.strip_edges()
+	if name.is_empty():
+		name = "???"
+
+	await simpleboards.send_score_without_id(
+		leaderboard_id,
+		name,
+		str(final_score_value),
+		_time_text
+	)
+
+func _on_entry_sent(_entry) -> void:
+	_is_sending = false
+	_is_sent = true
+	_update_submit_ui()
+	leaderboard.get_scores()
+
+func _on_request_failed(response_code, body) -> void:
+	_is_sending = false
+	_is_sent = false
+	_update_submit_ui()
+	
+func _update_submit_ui() -> void:
+	if _is_sending:
+		submit_button.disabled = true
+		submit_button.text = "Submitting..."
+		player_name.editable = false
+		return
+
+	if _is_sent:
+		submit_button.disabled = true
+		submit_button.text = "Score saved"
+		player_name.editable = false
+		
+		var tween: Tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property($ReturnToTitle, "position:y", 904, 0.3).from(get_viewport_rect().size.y)
+		tween.parallel().tween_property($ReturnToTitle, "modulate:a", 1.0, 0.1).from(0.0)
+		return
+
+	submit_button.disabled = false
+	submit_button.text = "Submit Score"
+	player_name.editable = true

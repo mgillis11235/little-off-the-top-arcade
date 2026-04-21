@@ -28,6 +28,10 @@ func _on_entries_got(entries) -> void:
 	if entries == null or entries.size() == 0:
 		_show_empty_state()
 		return
+	
+	if entries.size() > 8:
+		ScoreHolder.lowest_high_score = entries[9]
+		ScoreHolder.not_enough_scores_yet = false
 
 	for i in entries.size():
 		var entry = entries[i]
@@ -60,11 +64,11 @@ func _create_entry_row(entry) -> Control:
 
 	var name_label := Label.new()
 	name_label.text = str(entry.playerDisplayName)
-	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	var score_label := Label.new()
 	score_label.text = str(entry.score)
-	score_label.custom_minimum_size.x = 80
+	score_label.custom_minimum_size.x = 80 # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	row.add_child(name_label)
 	row.add_child(score_label)
@@ -86,11 +90,11 @@ func _add_header_row() -> void:
 
 	var name_label := Label.new()
 	name_label.text = "Name"
-	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	var score_label := Label.new()
 	score_label.text = "Score"
-	score_label.custom_minimum_size.x = 80
+	score_label.custom_minimum_size.x = 80 # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	row.add_child(name_label)
 	row.add_child(score_label)
