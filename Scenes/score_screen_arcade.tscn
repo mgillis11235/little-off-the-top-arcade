@@ -508,9 +508,9 @@ autoplay = "appear"
 
 [node name="LeaderboardPanel" type="PanelContainer" parent="."]
 layout_mode = 2
-offset_left = 1271.0
+offset_left = 1370.0
 offset_top = 368.0
-offset_right = 1846.0
+offset_right = 1795.0
 offset_bottom = 1018.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="LeaderboardPanel"]
@@ -531,7 +531,8 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1dyvx")
 [node name="Label" type="Label" parent="HighScorePanel"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("4_0d6av")
+theme_override_font_sizes/font_size = 52
 text = "New High Score!"
 horizontal_alignment = 1
 

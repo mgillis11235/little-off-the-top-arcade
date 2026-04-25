@@ -6,7 +6,11 @@ class_name Leaderboard
 @export var entries_container: VBoxContainer
 
 @onready var simpleboards = $SimpleBoardsApi
+@onready var leaderboard_font = preload("res://Fonts/Schoolbell-Regular.ttf")
 
+var header_font_size : int = 40
+var entry_font_size : int = 30
+var separation : int = 60
 
 func _ready():
 	simpleboards.set_api_key(api_key)
@@ -61,12 +65,20 @@ func _show_empty_state() -> void:
 
 func _create_entry_row(entry) -> Control:
 	var row := HBoxContainer.new()
+	row.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	row.add_theme_constant_override("separation", separation)
 
 	var name_label := Label.new()
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.add_theme_font_override("font", leaderboard_font)
+	name_label.add_theme_font_size_override("font_size", entry_font_size)
 	name_label.text = str(entry.playerDisplayName)
-	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
+	#name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	var score_label := Label.new()
+	score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	score_label.add_theme_font_override("font", leaderboard_font)
+	score_label.add_theme_font_size_override("font_size", entry_font_size)
 	score_label.text = str(entry.score)
 	score_label.custom_minimum_size.x = 80 # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
@@ -87,14 +99,24 @@ func _format_metadata(entry) -> String:
 
 func _add_header_row() -> void:
 	var row := HBoxContainer.new()
+	row.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	row.add_theme_constant_override("separation", separation)
 
 	var name_label := Label.new()
+	name_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_label.add_theme_font_override("font", leaderboard_font)
+	name_label.add_theme_color_override("font_color", Color.ANTIQUE_WHITE)
+	name_label.add_theme_font_size_override("font_size", header_font_size)
 	name_label.text = "Name"
-	name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
+	#name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	var score_label := Label.new()
+	score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	score_label.add_theme_font_override("font", leaderboard_font)
+	score_label.add_theme_color_override("font_color", Color.ANTIQUE_WHITE)
+	score_label.add_theme_font_size_override("font_size", header_font_size)
 	score_label.text = "Score"
-	score_label.custom_minimum_size.x = 80 # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
+	#score_label.custom_minimum_size.x = 80 # might have to tweak this value since it's a holdover from when there were 4 labels (rank, name, score, time)
 
 	row.add_child(name_label)
 	row.add_child(score_label)

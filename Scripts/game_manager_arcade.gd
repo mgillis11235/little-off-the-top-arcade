@@ -187,7 +187,7 @@ func play_random_bark():
 	add_child(player)
 	player.stream = bark_sounds.pick_random()
 	player.finished.connect(player.queue_free)
-	player.play()
+	#player.play()
 
 func load_clipper_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/Clipper/")
