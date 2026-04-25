@@ -415,11 +415,6 @@ position = Vector2(30, 135)
 desiredState = 1
 llama = NodePath("../..")
 
-[node name="BaseFurTuft13" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(29, 164)
-desiredState = 1
-llama = NodePath("../..")
-
 [node name="BaseFurTuft14" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
 position = Vector2(95, -2)
 desiredState = 3

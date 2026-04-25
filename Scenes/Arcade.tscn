@@ -1405,7 +1405,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 
 [node name="GameTimeTimer" type="Timer" parent="GameTimeLabel"]
-wait_time = 5.0
+wait_time = 20.0
 one_shot = true
 autostart = true
 

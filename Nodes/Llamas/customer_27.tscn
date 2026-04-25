@@ -437,24 +437,6 @@ startState = 2
 desiredState = 4
 llama = NodePath("../..")
 
-[node name="BaseFurTuft14" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_bmr2t")]
-position = Vector2(-24, 146)
-startState = 2
-desiredState = 4
-llama = NodePath("../..")
-
-[node name="BaseFurTuft15" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_bmr2t")]
-position = Vector2(-11, 143)
-startState = 2
-desiredState = 4
-llama = NodePath("../..")
-
-[node name="BaseFurTuft16" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_bmr2t")]
-position = Vector2(2, 151)
-startState = 2
-desiredState = 4
-llama = NodePath("../..")
-
 [node name="BaseFurTuft17" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_bmr2t")]
 position = Vector2(-79, 67)
 startState = 2

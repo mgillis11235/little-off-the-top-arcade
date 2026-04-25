@@ -123,8 +123,10 @@ func disable_all_tools():
 	$DyeAnim/DyeColorAnim.modulate = Color.WHITE
 	$RogaineAnim.visible = false
 	$FireExtAnim.visible = false
-	$DefaultShape.disabled = false
-	$FireExtShape.disabled = true
+	$DefaultShape.set_deferred("monitoring", false)
+	$FireExtShape.set_deferred("monitoring", false)
+	#$DefaultShape.disabled = false
+	#$FireExtShape.disabled = true
 	pass
 
 func _on_tool_mode_changed(mode: Tool.Modes):

@@ -416,13 +416,16 @@ func start_gameplay():
 	var totalTime = 10
 	if currentCustomer.timeOverride != 0:
 		totalTime = currentCustomer.timeOverride
+		$GameTimeLabel/BonusTime.text = "+" + str(currentCustomer.timeOverride) + " sec"
+		var tween = create_tween()
+		tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
+		tween.tween_interval(1.0)
+		tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
+		tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
+		tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
+	
 	add_time_to_timer(game_time_timer, currentCustomer.timeOverride)
-	var tween = create_tween()
-	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
-	tween.tween_interval(1.0)
-	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
-	tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
-	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
+	
 
 	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
 	
@@ -488,6 +491,7 @@ func start_scoring():
 	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
 	var scaled_time_bonus = int(time_bonus_base * get_difficulty_multiplier())
+	$GameTimeLabel/BonusTime.text = "+" + str(scaled_time_bonus) + " sec"
 	add_time_to_timer(game_time_timer, scaled_time_bonus)
 	
 	var tween = create_tween()
@@ -522,6 +526,7 @@ func start_scoring():
 			play_random_nitro_bark()
 			# Add to perfection score bonus
 			ScoreHolder.stats["perf_bonus"] += perfection_bonus
+			$GameTimeLabel/BonusTime.text = "+" + str(perfect_time_bonus) + " sec"
 			add_time_to_timer(game_time_timer, perfect_time_bonus)
 		else:
 			$Sounds/GgaScorePositive.play()
