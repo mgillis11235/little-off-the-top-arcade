@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmxd3lwufige3"]
+[gd_scene load_steps=26 format=3 uid="uid://dmxd3lwufige3"]
 
 [ext_resource type="Script" path="res://Scripts/score_screen_arcade.gd" id="1_pon0c"]
 [ext_resource type="Texture2D" uid="uid://b5egjms8hb54c" path="res://Sprites/FurTufts2.png" id="2_08eft"]
@@ -266,12 +266,62 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dyvx"]
 bg_color = Color(0.415686, 0.0431373, 1, 1)
+corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aklwp"]
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jroi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c135u"]
+bg_color = Color(0.826192, 0.733746, 0.565492, 1)
+border_width_bottom = 5
+border_color = Color(0.512916, 0.43114, 0.278998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 20.0
+expand_margin_right = 20.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxojj"]
+bg_color = Color(0.719242, 0.620137, 0.437805, 1)
+border_width_bottom = 5
+border_color = Color(0.512916, 0.43114, 0.278998, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 20.0
+expand_margin_top = 10.0
+expand_margin_right = 20.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hfjr"]
+bg_color = Color(0.58693, 0.496349, 0.328305, 1)
+border_width_left = 20
+border_width_top = 10
+border_width_right = 20
+border_width_bottom = 5
+border_color = Color(0.588235, 0.498039, 0.329412, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_color = Color(0.136826, 0.136826, 0.136826, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="Theme" id="Theme_7d6ws"]
+Button/fonts/font = ExtResource("4_0d6av")
+Button/styles/focus = SubResource("StyleBoxEmpty_jroi7")
+Button/styles/hover = SubResource("StyleBoxFlat_c135u")
+Button/styles/normal = SubResource("StyleBoxFlat_dxojj")
+Button/styles/pressed = SubResource("StyleBoxFlat_3hfjr")
 
 [node name="ScoreScreenArcade" type="Control" node_paths=PackedStringArray("player_name", "submit_button", "leaderboard")]
 layout_mode = 3
@@ -279,8 +329,8 @@ anchors_preset = 0
 script = ExtResource("1_pon0c")
 leaderboard_id = "fc5424a3-36c9-4d52-794d-08de8dfb793f"
 api_key = "18234ba5-53cd-4afc-80c4-9407a6bef4cf"
-player_name = NodePath("HighScorePanel/HBoxContainer/PlayerName")
-submit_button = NodePath("HighScorePanel/HBoxContainer/ScoreSubmit")
+player_name = NodePath("HighScorePanel/VBoxContainer/HBoxContainer/PlayerName")
+submit_button = NodePath("HighScorePanel/VBoxContainer/HBoxContainer/ScoreSubmit")
 leaderboard = NodePath("LeaderboardPanel/VBoxContainer2/Leaderboard")
 metadata/_edit_horizontal_guides_ = [1059.0]
 
@@ -509,9 +559,9 @@ autoplay = "appear"
 [node name="LeaderboardPanel" type="PanelContainer" parent="."]
 layout_mode = 2
 offset_left = 1370.0
-offset_top = 368.0
+offset_top = 335.0
 offset_right = 1795.0
-offset_bottom = 1018.0
+offset_bottom = 1035.0
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="LeaderboardPanel"]
 layout_mode = 2
@@ -522,42 +572,47 @@ layout_mode = 2
 [node name="HighScorePanel" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 713.0
-offset_top = 540.0
-offset_right = 1213.0
-offset_bottom = 740.0
+offset_left = 698.0
+offset_top = 492.0
+offset_right = 1198.0
+offset_bottom = 714.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1dyvx")
 
-[node name="Label" type="Label" parent="HighScorePanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HighScorePanel"]
 layout_mode = 2
-size_flags_vertical = 0
+theme_override_constants/separation = -25
+
+[node name="Label" type="Label" parent="HighScorePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
 theme_override_fonts/font = ExtResource("4_0d6av")
 theme_override_font_sizes/font_size = 52
 text = "New High Score!"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HighScorePanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HighScorePanel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 175)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/separation = 20
+theme_override_constants/separation = 37
 
-[node name="PlayerName" type="LineEdit" parent="HighScorePanel/HBoxContainer"]
-custom_minimum_size = Vector2(200, 60)
+[node name="PlayerName" type="LineEdit" parent="HighScorePanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 24
 placeholder_text = "Player Initials"
 max_length = 3
 
-[node name="ScoreSubmit" type="Button" parent="HighScorePanel/HBoxContainer"]
-custom_minimum_size = Vector2(100, 60)
+[node name="ScoreSubmit" type="Button" parent="HighScorePanel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxFlat_aklwp")
+theme = SubResource("Theme_7d6ws")
+theme_override_font_sizes/font_size = 23
 text = "SUBMIT"
 
 [node name="SimpleBoardsApi" type="Node" parent="."]
