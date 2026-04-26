@@ -172,6 +172,7 @@ func _on_submit_score_button_pressed() -> void:
 	_is_sending = true
 	_update_submit_ui()
 
+	@warning_ignore("shadowed_variable_base_class")
 	var name := player_name.text.strip_edges()
 	if name.is_empty():
 		name = "???"
@@ -189,7 +190,7 @@ func _on_entry_sent(_entry) -> void:
 	_update_submit_ui()
 	leaderboard.get_scores()
 
-func _on_request_failed(response_code, body) -> void:
+func _on_request_failed(_response_code, _body) -> void:
 	_is_sending = false
 	_is_sent = false
 	_update_submit_ui()

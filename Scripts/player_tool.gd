@@ -32,41 +32,41 @@ var tool_mode: Modes:
 		if tool_mode > max_tools:
 			tool_mode = 0 as Modes
 		elif tool_mode < 0:
-			tool_mode = max_tools
+			tool_mode = max_tools as Modes
 		
 		var allgood: bool = false
 		
 		if !gm.toolEnables[tool_mode]:
 			if !allgood and gm.toolEnables.size() > tool_mode + dir and tool_mode + dir >= 0:
 				if gm.toolEnables[tool_mode + dir]:
-					tool_mode += dir
+					tool_mode = (tool_mode + dir) as Modes
 					allgood = true
 			
 			if !allgood and gm.toolEnables.size() > tool_mode + dir + dir and tool_mode + dir + dir >= 0:
 				if gm.toolEnables[tool_mode + dir + dir]:
-					tool_mode += dir + dir
+					tool_mode = (tool_mode + dir + dir) as Modes
 					allgood = true
 			
 			if !allgood and gm.toolEnables.size() > tool_mode + dir + dir + dir and tool_mode + dir + dir >= 0:
 				if gm.toolEnables[tool_mode + dir + dir + dir]:
-					tool_mode += dir + dir + dir
+					tool_mode = (tool_mode + dir + dir + dir) as Modes
 					allgood = true
 			
 			if !allgood:
-				tool_mode = 0
+				tool_mode = 0 as Modes
 		
 		print("tool mode changed - signal sent")
 		tool_mode_changed.emit(tool_mode)
 
 func increase_tool_mode(val: int):
-	tool_mode += val
+	tool_mode = (tool_mode + val) as Modes
 
-func _input(event: InputEvent):
+func _input(_event: InputEvent):
 	if active:
 		if Input.is_action_just_pressed("ToolRight"):
-			tool_mode += 1
+			tool_mode = (tool_mode + 1) as Modes
 		elif Input.is_action_just_pressed("ToolLeft"):
-			tool_mode -= 1
+			tool_mode = (tool_mode - 1) as Modes
 
 func get_input():
 	var input = Vector2()
@@ -80,7 +80,7 @@ func get_input():
 		input.y -= 1
 	return input
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if active:
 		var direction = get_input()
 		var current_speed = speed * gm.shaver_speed_multiplier  # apply multiplier here
@@ -92,7 +92,7 @@ func _physics_process(delta):
 
 		move_and_slide()
 
-func _process(delta: float):
+func _process(_delta: float):
 	if active:
 		var direction = get_input()
 		if direction.length() > 0:

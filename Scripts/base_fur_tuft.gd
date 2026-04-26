@@ -4,6 +4,7 @@ extends Area2D
 
 enum States { NORMAL, SHAVED, FIRE, DYED, CHARRED }
 
+@warning_ignore("unused_signal")
 signal state_changed
 
 @export var startState: States
@@ -45,6 +46,7 @@ func randomize_fur():
 	
 
 func z_sort():
+	@warning_ignore("narrowing_conversion")
 	z_index = -position.y + 500
 
 func display():
@@ -116,7 +118,7 @@ func douse():
 		display()
 		emit_signal("state_changed")
 
-func _on_body_entered(body: Node2D):
+func _on_body_entered(_body: Node2D):
 	
 	if llama.ref == false and llama.toolEnabled:
 		match llama.tool_mode:

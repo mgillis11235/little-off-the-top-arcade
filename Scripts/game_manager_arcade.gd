@@ -268,7 +268,7 @@ func _connect_tuft_signals():
 
 func sequence_next():
 	if !blockInput:
-		seqCurrent += 1
+		seqCurrent = (seqCurrent + 1) as Sequence
 
 	match seqCurrent:
 		Sequence.START:
@@ -276,7 +276,7 @@ func sequence_next():
 			if tutorials.has(customerProgress) and !tutorialOverride:
 				call_tutorial(tutorials[customerProgress][0], tutorials[customerProgress][1])
 				tutorialOverride = true
-				seqCurrent -= 1
+				seqCurrent = (seqCurrent - 1) as Sequence
 				return
 			else:
 				tutorialOverride = false
@@ -310,7 +310,7 @@ func sequence_next():
 		Sequence.POST:
 			start_post()
 		Sequence.WRAP:
-			seqCurrent = 0
+			seqCurrent = 0 as Sequence
 			sequence_next()
 func _on_tuft_state_changed():
 	if currentCustomer == null:

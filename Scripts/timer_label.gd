@@ -7,7 +7,7 @@ var currentSeq: int:
 			self.text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if currentSeq == 2:
 		var time_left = ceil($Timer.time_left)
 		self.text = str(time_left)
