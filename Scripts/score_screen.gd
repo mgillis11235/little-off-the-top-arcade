@@ -19,7 +19,7 @@ func _ready() -> void:
 	
 	$Play.grab_focus()
 	if ScoreHolder.scores.size() > 0:
-		var avg: float
+		var avg: float = 0.0
 		for s in ScoreHolder.scores:
 			avg += s
 		avg = avg / ScoreHolder.scores.size()

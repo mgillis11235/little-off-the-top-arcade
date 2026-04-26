@@ -298,6 +298,7 @@ libraries = {
 autoplay = "Scrolling"
 
 [node name="ScoreLetter" type="Label" parent="."]
+texture_filter = 2
 offset_top = 117.0
 offset_right = 1919.0
 offset_bottom = 610.0

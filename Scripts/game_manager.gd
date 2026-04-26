@@ -87,14 +87,14 @@ func call_tutorial(header: String, body: String):
 
 func sequence_next():
 	if !blockInput:
-		seqCurrent += 1
+		seqCurrent = (seqCurrent + 1) as Sequence
 	
 	match seqCurrent:
 		Sequence.START:
 			if tutorials.has(customerProgress) and !tutorialOverride:
 				call_tutorial(tutorials[customerProgress][0], tutorials[customerProgress][1])
 				tutorialOverride = true
-				seqCurrent -= 1
+				seqCurrent = (seqCurrent - 1) as Sequence
 				pass
 			else:
 				tutorialOverride = false
@@ -113,7 +113,7 @@ func sequence_next():
 		Sequence.POST:
 			start_post()
 		Sequence.WRAP:
-			seqCurrent = 0
+			seqCurrent = 0 as Sequence
 			sequence_next()
 
 
@@ -338,7 +338,7 @@ func _input(event: InputEvent):
 		#ref_disappear()
 		pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if currentCustomer != null:
 		if currentCustomer.murdered and !murdered:
 			murdered = true
