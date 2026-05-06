@@ -57,6 +57,7 @@ signal sequence_update(seq: Sequence)
 var bark_sounds: Array[AudioStream] = []
 var clipper_sounds: Array[AudioStream] = []
 var nitro_bark_sounds: Array[AudioStream] = []
+var bark_pool: Array[AudioStream] = []
 
 #Llama Array
 @onready var llamas: Array[PackedScene] = [
@@ -97,6 +98,7 @@ var customerProgress: int = 0
 var currentDialogue: DialogueData
 var scores: Array[float]
 var time_bonus: int = 5
+var perfect_streak: int = 0
 var llamaQueue: Array[int] = []
 var cash = 0
 
@@ -179,15 +181,25 @@ func load_bark_sounds():
 	
 	dir.list_dir_end()
 	
+	
+	bark_pool = bark_sounds.duplicate()
+	bark_pool.shuffle()
+	
 func play_random_bark():
 	if bark_sounds.is_empty():
 		return
 	
+	if bark_pool.is_empty():
+		bark_pool = bark_sounds.duplicate()
+		bark_pool.shuffle()
+	
+	var sound = bark_pool.pop_back()
+
 	var player = AudioStreamPlayer.new()
 	add_child(player)
-	player.stream = bark_sounds.pick_random()
+	player.stream = sound
 	player.finished.connect(player.queue_free)
-	#player.play()
+	player.play()
 
 func load_clipper_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/Clipper/")
@@ -522,8 +534,8 @@ func start_scoring():
 		$MirrorHolder/Mirror.play("Sparkle")
 		currentCustomer.animate_happy()
 		if perfect:
-			# Only play Perfect sound, no bark
-			play_random_nitro_bark()
+			if perfect_streak != 1:
+				%Perfect.play()
 			# Add to perfection score bonus
 			ScoreHolder.stats["perf_bonus"] += perfection_bonus
 			$GameTimeLabel/BonusTime.text = "+" + str(perfect_time_bonus) + " sec"
@@ -604,20 +616,25 @@ func log_score():
 
 	# Perfect bonus handling
 	if ratio == 1.0:
+		perfect_streak += 1
+
 		cash += 15
 		update_cash_display()
-		
-		# Activate shaver speed boost for next llama
-		shaver_speed_multiplier = 1.6
-		shaver_boost_timer.stop()  # stop any previous timer, just in case
-		$PlayerTool/SpeedParticles.emitting = true
-		# The timer wait time will be set when the next llama loads
+
+		if perfect_streak >= 2:
+			# Activate nitro
+			shaver_speed_multiplier = 1.6
+			shaver_boost_timer.stop()
+			$PlayerTool/SpeedParticles.emitting = true
+			play_random_nitro_bark()
+
+			# Reset streak after triggering
+			perfect_streak = 0
 	else:
-		pass
-		# Play random llama bark if not perfect
-		#play_random_bark()
-	
-	print("Earned: ", earned, " | Total cash: ", cash)
+		# Break the streak on anything not perfect
+		perfect_streak = 0
+		
+		print("Earned: ", earned, " | Total cash: ", cash)
 	
 func start_spit():
 	sequence_next()
