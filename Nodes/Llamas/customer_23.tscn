@@ -365,7 +365,7 @@ upsetNoises = [NodePath("LlamaSFX/GgaLlamaUpset(1)"), NodePath("LlamaSFX/GgaLlam
 position = Vector2(17, -49)
 startState = 2
 currentState = 2
-desiredState = 4
+desiredState = 2
 llama = NodePath("../..")
 
 [node name="BaseFurTuft2" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("2_knx31")]
