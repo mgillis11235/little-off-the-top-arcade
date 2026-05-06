@@ -362,41 +362,41 @@ upsetNoises = [NodePath("LlamaSFX/GgaLlamaUpset(1)"), NodePath("LlamaSFX/GgaLlam
 [node name="Tufts" type="Node2D" parent="."]
 
 [node name="BaseFurTuft" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(31, 45)
+position = Vector2(22, 45)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft2" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(21, 63)
+position = Vector2(12, 63)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft3" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(9, 86)
+position = Vector2(0, 86)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft4" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(3, 108)
+position = Vector2(-6, 108)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft5" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(1, 129)
+position = Vector2(-8, 129)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft6" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(4, 153)
+position = Vector2(-5, 153)
 llama = NodePath("../..")
 
 [node name="BaseFurTuft7" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(67, 13)
+position = Vector2(59, 15)
 desiredState = 1
 llama = NodePath("../..")
 
 [node name="BaseFurTuft8" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(60, 36)
+position = Vector2(55, 39)
 desiredState = 1
 llama = NodePath("../..")
 
 [node name="BaseFurTuft9" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(54, 63)
+position = Vector2(51, 63)
 desiredState = 1
 llama = NodePath("../..")
 
@@ -416,37 +416,37 @@ desiredState = 1
 llama = NodePath("../..")
 
 [node name="BaseFurTuft14" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(95, -2)
+position = Vector2(95, 3)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft15" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(92, 25)
+position = Vector2(94, 27)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft16" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(87, 50)
+position = Vector2(91, 50)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft17" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(80, 73)
+position = Vector2(84, 73)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft18" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(70, 98)
+position = Vector2(77, 97)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft19" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(61, 122)
+position = Vector2(74, 122)
 desiredState = 3
 llama = NodePath("../..")
 
 [node name="BaseFurTuft20" parent="Tufts" node_paths=PackedStringArray("llama") instance=ExtResource("3_l0cw1")]
-position = Vector2(60, 151)
+position = Vector2(73, 151)
 desiredState = 3
 llama = NodePath("../..")
 
