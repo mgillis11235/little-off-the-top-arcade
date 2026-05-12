@@ -413,11 +413,11 @@ bus = &"Music"
 
 [node name="Whoosh" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_y65x4")
-bus = &"Music"
+bus = &"SFX"
 
 [node name="Slam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_5p22v")
-bus = &"Music"
+bus = &"SFX"
 
 [node name="ReturnToTitle" type="Button" parent="."]
 layout_mode = 1

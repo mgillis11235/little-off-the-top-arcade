@@ -43,6 +43,7 @@ var difficulty_min: float = 0.4
 
 #For whether you get cash or not
 var skipped_customer: bool = false
+var skip_penalty_next_llama: bool = false
 
 signal sequence_update(seq: Sequence)
 
@@ -232,8 +233,8 @@ func play_random_bark():
 	add_child(player)
 	player.stream = sound
 	player.bus = "Bark"
-	player.finished.connect(player.queue_free)
 	player.play()
+	player.finished.connect(player.queue_free)
 
 func load_clipper_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/Clipper/")
@@ -283,8 +284,9 @@ func play_random_nitro_bark():
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = nitro_bark_sounds.pick_random()
-	player.finished.connect(player.queue_free)
+	player.bus = "Bark"
 	player.play()
+	player.finished.connect(player.queue_free)
 
 #Speed boost bonus handling for perfect scores
 func _on_shaver_boost_timeout():
@@ -476,7 +478,13 @@ func start_gameplay():
 		tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
 		tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
 	
-	add_time_to_timer(game_time_timer, currentCustomer.timeOverride)
+		var bonus: int = currentCustomer.timeOverride
+
+		if skip_penalty_next_llama:
+			bonus = int(ceil(bonus * 0.5))
+			skip_penalty_next_llama = false
+
+		add_time_to_timer(game_time_timer, bonus)
 	
 
 	$PlayerTool/TimerLabel/Timer.wait_time = totalTime
@@ -715,6 +723,7 @@ func _input(event: InputEvent):
 	# end the cut	
 	if event.is_action_pressed("Interact") and seqCurrent == Sequence.GAMEPLAY:
 		skipped_customer = true
+		skip_penalty_next_llama = true
 		sequence_next()
 	if event.is_action_pressed("Preview") and seqCurrent == Sequence.GAMEPLAY:
 		#ref_appear()

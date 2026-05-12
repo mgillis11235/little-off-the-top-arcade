@@ -147,6 +147,7 @@ func play_random_from(arr: Array):
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = arr.pick_random()
+	player.bus = "Bark"
 	player.finished.connect(player.queue_free)
 	player.play()
 	
