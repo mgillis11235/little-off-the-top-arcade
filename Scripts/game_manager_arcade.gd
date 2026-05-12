@@ -13,6 +13,11 @@ var seqCurrent: Sequence:
 var blockInput: bool
 var tutorialOverride: bool
 
+#Gate llama difficulty
+var easy_llamas := [0,1,2,3,4,15]
+var medium_llamas := [5,6,7,8,9,10,11,12,13,14,16,17,18,19,20,22,23,25,30]
+var hard_llamas := [21,24,26,27,28,29]
+
 var currentRef
 
 var currentCustomerIndex: int = -1
@@ -58,6 +63,7 @@ var bark_sounds: Array[AudioStream] = []
 var clipper_sounds: Array[AudioStream] = []
 var nitro_bark_sounds: Array[AudioStream] = []
 var bark_pool: Array[AudioStream] = []
+var clipper_pool: Array[AudioStream] = []
 
 #Llama Array
 @onready var llamas: Array[PackedScene] = [
@@ -139,10 +145,12 @@ func _ready() -> void:
 	
 	# Create shuffled llama order
 	llamaQueue.clear()
+
 	for i in range(llamas.size()):
-		llamaQueue.append(i)
+		if is_llama_unlocked(i):
+			llamaQueue.append(i)
+
 	llamaQueue.shuffle()
-	
 	sequence_next()
 	game_time_label.text = str(game_time_timer.time_left)
 	game_time_timer.paused = true
@@ -184,7 +192,32 @@ func load_bark_sounds():
 	
 	bark_pool = bark_sounds.duplicate()
 	bark_pool.shuffle()
-	
+
+func get_llama_pool() -> Array[int]:
+	var pool: Array[int] = []
+
+	# Always include easy
+	pool.append_array(easy_llamas)
+
+	# Unlock medium
+	if customerProgress >= 5:
+		pool.append_array(medium_llamas)
+
+	# Unlock hard
+	if customerProgress >= 12:
+		pool.append_array(hard_llamas)
+
+	return pool
+
+func is_llama_unlocked(i: int) -> bool:
+	if easy_llamas.has(i):
+		return true
+	if medium_llamas.has(i):
+		return customerProgress >= 5
+	if hard_llamas.has(i):
+		return customerProgress >= 12
+	return false
+
 func play_random_bark():
 	if bark_sounds.is_empty():
 		return
@@ -219,7 +252,10 @@ func load_clipper_sounds():
 		file_name = dir.get_next()
 	
 	dir.list_dir_end()
-
+	
+	clipper_pool = clipper_sounds.duplicate()
+	clipper_pool.shuffle()
+	
 func load_nitro_bark_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/Nitro/")
 	if dir == null:
@@ -258,8 +294,12 @@ func play_random_clipper_sound():
 	if clipper_sounds.is_empty():
 		return
 	
-	$ClipperBarkPlayer.stream = clipper_sounds.pick_random()
-	$ClipperBarkPlayer.pitch_scale = randf_range(0.95, 1.05) # subtle variation
+	if clipper_pool.is_empty():
+		clipper_pool = clipper_sounds.duplicate()
+		clipper_pool.shuffle()
+	
+	$ClipperBarkPlayer.stream = clipper_pool.pop_back()
+	$ClipperBarkPlayer.pitch_scale = randf_range(0.95, 1.05)
 	$ClipperBarkPlayer.play()
 
 func call_tutorial(header: String, body: String):
@@ -293,37 +333,36 @@ func sequence_next():
 			else:
 				tutorialOverride = false
 
-			# Refill shuffled queue if empty
+			# Always rebuild pool based on progression
 			if llamaQueue.is_empty():
-				var last = currentCustomerIndex
-				
-				for i in range(llamas.size()):
-					llamaQueue.append(i)
-				
+				llamaQueue = get_llama_pool()
 				llamaQueue.shuffle()
-				
-				# Prevent immediate repeat across reshuffle
-				if llamaQueue.size() > 1 and llamaQueue[0] == last:
-					var temp = llamaQueue[0]
-					llamaQueue[0] = llamaQueue[1]
-					llamaQueue[1] = temp
 
 			# Pull next llama
 			var next_index = llamaQueue.pop_front()
 			currentCustomerIndex = next_index
-			
+
 			load_llama(llamas[next_index])
+
+			print("Chosen llama index: ", next_index)
+			print(llamas[next_index].resource_path)
+
 		Sequence.GAMEPLAY:
 			start_gameplay()
+
 		Sequence.SCORING:
 			start_scoring()
+
 		Sequence.SPIT:
 			start_spit()
+
 		Sequence.POST:
 			start_post()
+
 		Sequence.WRAP:
 			seqCurrent = 0 as Sequence
 			sequence_next()
+			
 func _on_tuft_state_changed():
 	if currentCustomer == null:
 		return
@@ -502,16 +541,17 @@ func show_dialogue(text: String, customerName: String, duration: float = 0) -> v
 func start_scoring():
 	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
-	var scaled_time_bonus = int(time_bonus_base * get_difficulty_multiplier())
-	$GameTimeLabel/BonusTime.text = "+" + str(scaled_time_bonus) + " sec"
-	add_time_to_timer(game_time_timer, scaled_time_bonus)
-	
-	var tween = create_tween()
-	tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
-	tween.tween_interval(1.0)
-	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
-	tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
-	tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
+	if not skipped_customer:
+		var scaled_time_bonus = int(time_bonus_base * get_difficulty_multiplier())
+		$GameTimeLabel/BonusTime.text = "+" + str(scaled_time_bonus) + " sec"
+		add_time_to_timer(game_time_timer, scaled_time_bonus)
+
+		var tween = create_tween()
+		tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
+		tween.tween_interval(1.0)
+		tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 0.0, 1.5)
+		tween.tween_property($GameTimeLabel/BonusTime, "visible", false, 0.01)
+		tween.tween_property($GameTimeLabel/BonusTime, "modulate:a", 1.0, 1.5)
 	
 	$PlayerTool.active = false
 	currentCustomer.toolEnabled = false
