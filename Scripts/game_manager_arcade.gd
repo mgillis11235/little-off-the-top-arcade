@@ -231,6 +231,7 @@ func play_random_bark():
 	var player = AudioStreamPlayer.new()
 	add_child(player)
 	player.stream = sound
+	player.bus = "Bark"
 	player.finished.connect(player.queue_free)
 	player.play()
 

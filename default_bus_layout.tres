@@ -1,4 +1,7 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://uwvwwu2dbseh"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://uwvwwu2dbseh"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_w0wn8"]
+resource_name = "Compressor"
 
 [resource]
 bus/0/volume_db = 0.000600815
@@ -14,3 +17,11 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/3/name = &"Bark"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -3.43255
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectCompressor_w0wn8")
+bus/3/effect/0/enabled = true
