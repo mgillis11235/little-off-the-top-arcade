@@ -33,8 +33,8 @@ func _on_entries_got(entries) -> void:
 		_show_empty_state()
 		return
 	
-	if entries.size() > 8:
-		ScoreHolder.lowest_high_score = entries[9]
+	if entries.size() > 9:
+		ScoreHolder.lowest_high_score = int(entries[9].score)
 		ScoreHolder.not_enough_scores_yet = false
 
 	for i in entries.size():

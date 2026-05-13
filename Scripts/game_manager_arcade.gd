@@ -587,8 +587,8 @@ func start_scoring():
 				%Perfect.play()
 			# Add to perfection score bonus
 			ScoreHolder.stats["perf_bonus"] += perfection_bonus
-			$GameTimeLabel/BonusTime.text = "+" + str(perfect_time_bonus) + " sec"
-			add_time_to_timer(game_time_timer, perfect_time_bonus)
+			#$GameTimeLabel/BonusTime.text = "+" + str(perfect_time_bonus) + " sec"
+			#add_time_to_timer(game_time_timer, perfect_time_bonus)
 		else:
 			$Sounds/GgaScorePositive.play()
 			play_random_bark()
