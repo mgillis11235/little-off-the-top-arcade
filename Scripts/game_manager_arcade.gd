@@ -21,6 +21,7 @@ var hard_llamas := [21,24,26,27,28,29]
 var currentRef
 
 var currentCustomerIndex: int = -1
+var customerCount: int = 0
 
 var toolMode: Tool.Modes
 var lastToolMode: Tool.Modes = Tool.Modes.RAZOR
@@ -220,21 +221,24 @@ func is_llama_unlocked(i: int) -> bool:
 	return false
 
 func play_random_bark():
-	if bark_sounds.is_empty():
-		return
-	
-	if bark_pool.is_empty():
-		bark_pool = bark_sounds.duplicate()
-		bark_pool.shuffle()
-	
-	var sound = bark_pool.pop_back()
+	if is_inside_tree():
+		if bark_sounds.is_empty():
+			return
+		
+		if bark_pool.is_empty():
+			bark_pool = bark_sounds.duplicate()
+			bark_pool.shuffle()
+		
+		var sound = bark_pool.pop_back()
 
-	var player = AudioStreamPlayer.new()
-	add_child(player)
-	player.stream = sound
-	player.bus = "Bark"
-	player.play()
-	player.finished.connect(player.queue_free)
+		var player = AudioStreamPlayer.new()
+		add_child(player)
+		player.stream = sound
+		player.bus = "Bark"
+		player.play()
+		player.finished.connect(player.queue_free)
+	else:
+		pass
 
 func load_clipper_sounds():
 	var dir = DirAccess.open("res://Audio/Vox/Clipper/")
@@ -344,6 +348,7 @@ func sequence_next():
 			# Pull next llama
 			var next_index = llamaQueue.pop_front()
 			currentCustomerIndex = next_index
+			customerCount += 1
 
 			load_llama(llamas[next_index])
 
@@ -464,13 +469,15 @@ func ref_disappear():
 	
 
 func start_gameplay():
+	print("This is customer number: ", customerCount)
 	$Sounds/GgaHaircutStart.play()
 	$PlayerTool.active = true
 	currentCustomer.toolEnabled = true
 	var totalTime = 10
-	if currentCustomer.timeOverride != 0:
+	# Only gives bonus if the time override is not 0 and you're past the first customer 
+	if currentCustomer.timeOverride != 0 and customerCount > 1:
 		totalTime = currentCustomer.timeOverride
-		$GameTimeLabel/BonusTime.text = "+" + str(currentCustomer.timeOverride) + " sec"
+		$GameTimeLabel/BonusTime.text = "+" + str(currentCustomer.timeOverride) + " sec\nnew client\nbonus"
 		var tween = create_tween()
 		tween.tween_property($GameTimeLabel/BonusTime, "visible", true, 0.01)
 		tween.tween_interval(1.0)
@@ -550,9 +557,10 @@ func show_dialogue(text: String, customerName: String, duration: float = 0) -> v
 func start_scoring():
 	$SpeechBubbleManager.stop_dialogue()
 	$Sounds/GgaHaircutEnd.play()
-	if not skipped_customer:
+	# only gives bonus if you didn't skip a customer and your previous llama left happy
+	if not skipped_customer and find_score():
 		var scaled_time_bonus = int(time_bonus_base * get_difficulty_multiplier())
-		$GameTimeLabel/BonusTime.text = "+" + str(scaled_time_bonus) + " sec"
+		$GameTimeLabel/BonusTime.text = "+" + str(scaled_time_bonus) + " sec style\nbonus"
 		add_time_to_timer(game_time_timer, scaled_time_bonus)
 
 		var tween = create_tween()

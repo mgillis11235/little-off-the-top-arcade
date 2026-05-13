@@ -148,8 +148,8 @@ func play_random_from(arr: Array):
 	add_child(player)
 	player.stream = arr.pick_random()
 	player.bus = "Bark"
-	player.finished.connect(player.queue_free)
 	player.play()
+	player.finished.connect(player.queue_free)
 	
 func play_score_bark():
 	var score = final_score_value

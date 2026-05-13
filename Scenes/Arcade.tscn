@@ -1432,9 +1432,8 @@ offset_bottom = 53.0
 theme = ExtResource("8_nv5ob")
 theme_override_colors/font_color = Color(0.972442, 0.612307, 0.465922, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = -10
 theme_override_constants/shadow_offset_y = 0
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "+5 sec
 bonus"
 
