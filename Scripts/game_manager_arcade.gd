@@ -469,7 +469,6 @@ func ref_disappear():
 	
 
 func start_gameplay():
-	print("This is customer number: ", customerCount)
 	$Sounds/GgaHaircutStart.play()
 	$PlayerTool.active = true
 	currentCustomer.toolEnabled = true
